@@ -4,7 +4,7 @@ import { sidebar } from './config/sidebar'
 export default defineConfig({
   title: `hsk-ui`,
   description: 'vuecomp-starter',
-  base: '/vuecomp-starter/',
+  base: '/wuyongGitHub.github.io/',
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: 'logo.svg' }],
   ],
