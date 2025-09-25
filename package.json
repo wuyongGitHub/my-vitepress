@@ -21,7 +21,7 @@
     "comp:new": "esno ./utils/createTestVue/index.ts",
     "docs:dev": "vitepress dev docs --port 8000",
     "docs:new": "esno ./utils/createVitepressComp/index.ts",
-    "docs:build": "vitepress build docs",
+    "docs:build": "vitepress build docs && (type nul > docs/.vitepress/dist/.nojekyll 2>nul || touch docs/.vitepress/dist/.nojekyll)",
     "docs:serve": "vitepress serve docs"
   },
   "files": [
