@@ -12,9 +12,7 @@
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
   "types": "dist/lib/index.d.ts",
-  "exports": {
-
-  },
+  "exports": {},
   "scripts": {
     "build": "gulp -f packages/script/build/index.ts",
     "component:create": "esno ./utils/create/index.ts",
@@ -23,7 +21,8 @@
     "comp:new": "esno ./utils/createTestVue/index.ts",
     "docs:dev": "vitepress dev docs --port 8000",
     "docs:new": "esno ./utils/createVitepressComp/index.ts",
-    "docs:build": "vitepress build docs"
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
   },
   "files": [
     "dist"
