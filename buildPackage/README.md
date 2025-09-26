@@ -5,22 +5,22 @@
  * @Description:
 -->
 
-# bq-design
+# JB-design
 
 ## 使用包管理器
 
-**我们建议您使用包管理器（如 NPM、Yarn 或 pnpm）安装 bq-design**
+**我们建议您使用包管理器（如 NPM、Yarn 或 pnpm）安装 JB-design**
 
 ```
 # 选择一个你喜欢的包管理器
 # NPM
-$ npm install bq-design --save
+$ npm install JB-design --save
 
 # Yarn
-$ yarn add bq-design
+$ yarn add JB-design
 
 # pnpm
-$ pnpm install bq-design
+$ pnpm install JB-design
 
 ```
 
@@ -31,8 +31,8 @@ $ pnpm install bq-design
 ```ts
 // main.ts
 import { createApp } from "vue";
-import BqDesign from "bq-design";
-import "bq-design/dist/index.css";
+import BqDesign from "JB-design";
+import "JB-design/dist/index.css";
 import App from "./App.vue";
 
 const app = createApp(App);
@@ -62,9 +62,9 @@ const BqDesignResolver = () => {
                 const pathName = name.slice(2).toLowerCase();
                 return {
                     importName: name,
-                    from: "bq-design",
-                    path: `bq-design/lib/components/${pathName}/index.js`,
-                    sideEffects: `bq-design/lib/components/${pathName}/${name.slice(2)}.css`,
+                    from: "JB-design",
+                    path: `JB-design/lib/components/${pathName}/index.js`,
+                    sideEffects: `JB-design/lib/components/${pathName}/${name.slice(2)}.css`,
                 };
             }
         },
@@ -92,13 +92,13 @@ export default defineConfig({
 
 ## 手动导入
 
-`bq-design` 提供了基于 ES Module 的开箱即用的`Tree Shaking` 功能。
+`JB-design` 提供了基于 ES Module 的开箱即用的`Tree Shaking` 功能。
 
 但你需要加载该插件vite-plugin-import，解决本地开发时的动态加载、代码如下：
 
 ```ts
 export default function importPlugin() {
-    const regStr = /(?<!\/\/.*|\/\*[\s\S]*?\*\/\s*)import\s*{\s*([^{}]+)\s*}\s*from\s*['"]bq-design['"]/g;
+    const regStr = /(?<!\/\/.*|\/\*[\s\S]*?\*\/\s*)import\s*{\s*([^{}]+)\s*}\s*from\s*['"]JB-design['"]/g;
     return {
         name: "vite-plugin-import",
         enforce: "pre",
@@ -110,8 +110,8 @@ export default function importPlugin() {
                     list.forEach((item: string) => {
                         item = item.trim();
                         const name = item.slice(2).charAt(0).toLowerCase() + item.slice(3);
-                        const str = `import ${item.trim()} from 'bq-design/es/components/${name.trim()}';
-                        import 'bq-design/es/components/${name.trim()}/${item.trim().slice(2)}.css'`;
+                        const str = `import ${item.trim()} from 'JB-design/es/components/${name.trim()}';
+                        import 'JB-design/es/components/${name.trim()}/${item.trim().slice(2)}.css'`;
                         pathList.push(str);
                     });
                     return pathList.join(";");
@@ -125,7 +125,7 @@ export default function importPlugin() {
 ```
 
 ::: warning
-exclude中必须排除bq-design、因为 bq-design 存在第三方包，vite预加载会报错、当然如果已安装了bq-design所有组件需要的包、则不需要做该处理
+exclude中必须排除JB-design、因为 JB-design 存在第三方包，vite预加载会报错、当然如果已安装了JB-design所有组件需要的包、则不需要做该处理
 :::
 
 ```ts{7}
@@ -135,7 +135,7 @@ import ViteImportPlugin from "./src/utils/vite-plugin-import";
 
 export default defineConfig({
     optimizeDeps:{
-        exclude: ["bq-design"],
+        exclude: ["JB-design"],
     },
   // ...
   plugins: [

@@ -46,7 +46,7 @@ export default defineConfig(() => {
             lib: {
                 entry: resolve(__dirname, "./packages/index.ts"),
                 name: "BqDesign",
-                fileName: (format) => `bq-design.${format}.js`,
+                fileName: (format) => `JB-design.${format}.js`,
                 formats: ["es", "cjs"],
             },
         },

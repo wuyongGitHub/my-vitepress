@@ -1,0 +1,85 @@
+{
+  "hash": "deb8f369",
+  "configHash": "59ad726e",
+  "lockfileHash": "6681d5fb",
+  "browserHash": "88977af0",
+  "optimized": {
+    "vue": {
+      "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "ce5dc500",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "64d541a6",
+      "needsInterop": false
+    },
+    "vitepress > @vueuse/core": {
+      "src": "../../../node_modules/@vueuse/core/index.mjs",
+      "file": "vitepress___@vueuse_core.js",
+      "fileHash": "07f9a367",
+      "needsInterop": false
+    },
+    "@arco-design/web-vue": {
+      "src": "../../../node_modules/@arco-design/web-vue/es/index.js",
+      "file": "@arco-design_web-vue.js",
+      "fileHash": "3fc5b8f3",
+      "needsInterop": false
+    },
+    "ant-design-vue": {
+      "src": "../../../node_modules/ant-design-vue/es/index.js",
+      "file": "ant-design-vue.js",
+      "fileHash": "afa41daa",
+      "needsInterop": false
+    },
+    "element-plus": {
+      "src": "../../../node_modules/element-plus/es/index.mjs",
+      "file": "element-plus.js",
+      "fileHash": "1d94fbf2",
+      "needsInterop": false
+    },
+    "resize-observer-polyfill": {
+      "src": "../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
+      "file": "resize-observer-polyfill.js",
+      "fileHash": "4963845d",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../../node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "8b0e0c59",
+      "needsInterop": false
+    },
+    "@theme/index": {
+      "src": "../../../node_modules/vitepress/dist/client/theme-default/index.js",
+      "file": "@theme_index.js",
+      "fileHash": "9a9544f4",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-XSRKKOPT": {
+      "file": "chunk-XSRKKOPT.js"
+    },
+    "chunk-7KC4OCGW": {
+      "file": "chunk-7KC4OCGW.js"
+    },
+    "chunk-URJNS5OJ": {
+      "file": "chunk-URJNS5OJ.js"
+    },
+    "chunk-7GYOZAMS": {
+      "file": "chunk-7GYOZAMS.js"
+    },
+    "chunk-YIP7QGVX": {
+      "file": "chunk-YIP7QGVX.js"
+    },
+    "chunk-J52K34YX": {
+      "file": "chunk-J52K34YX.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { defineConfig } from "vitepress";
 import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: "BQ-Design",
+    title: "JB-design",
     description: "组件库",
     vite: {
         server: {
@@ -17,7 +17,7 @@ export default defineConfig({
         resolve: resolveConfig,
         plugins: pluginsConfig,
     },
-    base: "/bq-design",
+    base: "/JB-design",
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [
@@ -44,6 +44,6 @@ export default defineConfig({
             },
         ],
 
-        socialLinks: [{ icon: "github", link: "http://git.ibaiqiu.com/wyk/bq-design" }],
+        socialLinks: [{ icon: "github", link: "http://git.ibaiqiu.com/wyk/JB-design" }],
     },
 });

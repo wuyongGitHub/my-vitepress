@@ -93,9 +93,9 @@ pnpm start
 
 ## 组件开发流程
 
--   在`bq-design/packages/components/`下建立组件
--   在`bq-design/examples/`下建立测试组件
--   组件开发完成，在 `bq-design/packages/components/index` 路径下添加相关组件、同时需要在`bq-design/typings/components.d` 中新增类型，确保组件打包后可以正常识别类型
+-   在`JB-design/packages/components/`下建立组件
+-   在`JB-design/examples/`下建立测试组件
+-   组件开发完成，在 `JB-design/packages/components/index` 路径下添加相关组件、同时需要在`JB-design/typings/components.d` 中新增类型，确保组件打包后可以正常识别类型
 
 ## 注意
 

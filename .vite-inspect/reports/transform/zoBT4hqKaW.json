@@ -1,5 +1,5 @@
 {
-    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/bq-design/packages/theme-chalk/global.scss",
+    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/theme-chalk/global.scss",
     "transforms": [
         {
             "name": "__load__",
@@ -12,7 +12,7 @@
         },
         {
             "name": "vite:css-post",
-            "result": "import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from \"/@vite/client\"\nconst __vite__id = \"/Users/haixiaonan/Desktop/test/vue3/bq-design/packages/theme-chalk/global.scss\"\nconst __vite__css = \"\"\n__vite__updateStyle(__vite__id, __vite__css)\nimport.meta.hot.accept()\nimport.meta.hot.prune(() => __vite__removeStyle(__vite__id))",
+            "result": "import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from \"/@vite/client\"\nconst __vite__id = \"/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/theme-chalk/global.scss\"\nconst __vite__css = \"\"\n__vite__updateStyle(__vite__id, __vite__css)\nimport.meta.hot.accept()\nimport.meta.hot.prune(() => __vite__removeStyle(__vite__id))",
             "start": 1725009516160,
             "end": 1725009516160,
             "order": "normal",
@@ -70,7 +70,7 @@
         },
         {
             "name": "vite:import-analysis",
-            "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/packages/theme-chalk/global.scss\");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from \"/@vite/client\"\nconst __vite__id = \"/Users/haixiaonan/Desktop/test/vue3/bq-design/packages/theme-chalk/global.scss\"\nconst __vite__css = \"\"\n__vite__updateStyle(__vite__id, __vite__css)\nimport.meta.hot.accept()\nimport.meta.hot.prune(() => __vite__removeStyle(__vite__id))",
+            "result": "import { createHotContext as __vite__createHotContext } from \"/@vite/client\";import.meta.hot = __vite__createHotContext(\"/packages/theme-chalk/global.scss\");import { updateStyle as __vite__updateStyle, removeStyle as __vite__removeStyle } from \"/@vite/client\"\nconst __vite__id = \"/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/theme-chalk/global.scss\"\nconst __vite__css = \"\"\n__vite__updateStyle(__vite__id, __vite__css)\nimport.meta.hot.accept()\nimport.meta.hot.prune(() => __vite__removeStyle(__vite__id))",
             "start": 1725009516161,
             "end": 1725009516161,
             "order": "normal",

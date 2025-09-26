@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-    name: "BQ-Design"
+    name: "JB-design"
     text: "组件库"
     tagline: 基于 Vue 3，面向开发者的组件库。
     actions:
