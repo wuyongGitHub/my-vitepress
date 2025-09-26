@@ -1,0 +1,48 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "allowJs": true,
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "strict": true,
+        "jsx": "preserve",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": false,
+        "lib": ["ESNext", "DOM"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["packages/*"],
+            "@examples/*": ["packages/examples/*"],
+            "@theme-chalk/*": ["packages/theme-chalk/*"]
+        },
+        "types": ["vite/client", "vue"],
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "pretty": true,
+        "noEmit": true
+    },
+    "include": [
+        "scripts/*.ts",
+        "packages/**/*.vue",
+        "packages/**/*.d.ts",
+        "packages/**/*.ts",
+        "packages/directives/domResize.ts",
+        "packages/examples/**/*.vue",
+        "packages/examples/**/*.d.ts",
+        "packages/examples/**/*.ts",
+        "docs/.vitepress/theme/*.ts",
+        "docs/**/*.d.ts",
+        "docs/**/*.ts"
+    ],
+    "exclude": ["node_modules", "build/global.d.ts", "vite.config.ts"],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
+}
