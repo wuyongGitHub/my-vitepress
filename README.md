@@ -6,6 +6,9 @@
 -->
 
 # Vue 3 + TypeScript + Vite
+<img width="1908" height="919" alt="image" src="https://github.com/user-attachments/assets/f8454bf7-3541-4117-8677-712d9c4d1c4e" />
+<img width="1917" height="930" alt="image" src="https://github.com/user-attachments/assets/a1ec02ec-47f9-4c9c-b2ca-709e137aaa30" />
+
 
 ## vsCode 安装插件
 
