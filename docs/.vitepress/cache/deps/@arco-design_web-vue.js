@@ -1,6 +1,6 @@
 import { es_default, i, require_quarterOfYear } from "./chunk-UY73ZLSN.js";
-import { require_advancedFormat, require_customParseFormat, require_dayjs_min, require_weekOfYear, require_weekYear } from "./chunk-4LRQNXVY.js";
 import { ResizeObserver_es_default } from "./chunk-M3NKFC6K.js";
+import { require_advancedFormat, require_customParseFormat, require_dayjs_min, require_weekOfYear, require_weekYear } from "./chunk-4LRQNXVY.js";
 import {
     Comment,
     Fragment,

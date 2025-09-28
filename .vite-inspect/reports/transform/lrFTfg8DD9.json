@@ -1,5 +1,5 @@
 {
-    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/main.ts",
+    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/Wy-design/packages/main.ts",
     "transforms": [
         {
             "name": "__load__",
@@ -21,9 +21,7 @@
             "order": "normal",
             "sourcemaps": {
                 "version": 3,
-                "sources": [
-                    "main.ts"
-                ],
+                "sources": ["main.ts"],
                 "sourcesContent": [
                     "/*\n * @Author: wyk\n * @Date: 2024-05-14 16:49:59\n * @LastEditTime: 2024-05-22 13:49:49\n * @Description:\n */\nimport { createApp } from \"vue\";\nimport App from \"./App.vue\";\n/* 样式文件 */\nimport router from \"./router\";\nimport { domResize } from \"./directives/domResize\";\nimport \"./theme-chalk/global.scss\";\nconst app = createApp(App);\napp.directive(\"domResize\", domResize);\napp.use(router).mount(\"#app\");\n"
                 ],

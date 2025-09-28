@@ -1,5 +1,5 @@
 {
-    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/router/index.ts",
+    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/Wy-design/packages/router/index.ts",
     "transforms": [
         {
             "name": "__load__",
@@ -21,9 +21,7 @@
             "order": "normal",
             "sourcemaps": {
                 "version": 3,
-                "sources": [
-                    "index.ts"
-                ],
+                "sources": ["index.ts"],
                 "sourcesContent": [
                     "/*\n * @Author: wyk\n * @Date: 2022-11-23 13:43:29\n * @LastEditTime: 2024-08-30 11:40:15\n * @Description:\n */\nimport { createRouter, createWebHistory, RouteRecordRaw } from \"vue-router\";\nconst routes: RouteRecordRaw[] = [\n    {\n        path: \"/\",\n        name: \"button\",\n        meta: {\n            title: \"login\",\n        },\n        component: () => import(/* webpackChunkName: \"button\" */ \"@/examples/button/components/BasicsButton.vue\"),\n    },\n    {\n        path: \"/pie\",\n        name: \"pie\",\n        meta: {\n            title: \"pie\",\n        },\n        component: () => import(/* webpackChunkName: \"pie\" */ \"@/examples/pie/components/BasicsPie.vue\"),\n    },\n    {\n        path: \"/scaleBox\",\n        name: \"scaleBox\",\n        meta: {\n            title: \"scaleBox\",\n        },\n        component: () => import(/* webpackChunkName: \"scaleBox\" */ \"@/examples/scaleBox/components/BasicsScaleBox.vue\"),\n    },\n    {\n        path: \"/selectAll\",\n        name: \"selectAll\",\n        meta: {\n            title: \"selectAll\",\n        },\n        component: () => import(/* webpackChunkName: \"selectAll\" */ \"@/examples/selectAll/components/BasicsSelectAll.vue\"),\n    },\n    {\n        path: \"/numberAnimate\",\n        name: \"numberAnimate\",\n        meta: {\n            title: \"numberAnimate\",\n        },\n        component: () => import(/* webpackChunkName: \"numberAnimate\" */ \"@/examples/numberAnimate/components/BasicsNumberAnimate.vue\"),\n    },\n    {\n        path: \"/scrollBar\",\n        name: \"scrollBar\",\n        meta: {\n            title: \"scrollBar\",\n        },\n        component: () => import(/* webpackChunkName: \"scrollBar\" */ \"@/examples/scrollBar/components/BasicsScrollBar.vue\"),\n    },\n    {\n        path: \"/visibleComponent\",\n        name: \"visibleComponent\",\n        meta: {\n            title: \"visibleComponent\",\n        },\n        component: () => import(/* webpackChunkName: \"visibleComponent\" */ \"@/examples/visibleComponent/components/BasicsVisibleComponent.vue\"),\n    },\n];\nconst router = createRouter({\n    // import.meta.env.VITE_APP_BASE_URL.slice(0, -1)\n    history: createWebHistory(),\n    routes,\n    strict: true,\n    scrollBehavior(to, from, savedPosition) {\n        return savedPosition || { top: 0 };\n    },\n});\nexport default router;\n"
                 ],

@@ -46,7 +46,7 @@ export default defineConfig(() => {
             lib: {
                 entry: resolve(__dirname, "./packages/index.ts"),
                 name: "JbDesign",
-                fileName: (format) => `JB-design.${format}.js`,
+                fileName: (format) => `Wy-design.${format}.js`,
                 formats: ["es", "cjs"],
             },
         },

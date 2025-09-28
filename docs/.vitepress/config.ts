@@ -8,7 +8,7 @@ import { defineConfig } from "vitepress";
 import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    title: "JB-design",
+    title: "Wy-design",
     description: "组件库",
     base: "/", // GitHub 仓库名
     vite: {

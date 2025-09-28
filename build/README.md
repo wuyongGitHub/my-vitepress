@@ -5,22 +5,22 @@
  * @Description:
 -->
 
-# JB-design
+# Wy-design
 
 ## 使用包管理器
 
-**我们建议您使用包管理器（如 NPM、Yarn 或 pnpm）安装 JB-design**
+**我们建议您使用包管理器（如 NPM、Yarn 或 pnpm）安装 Wy-design**
 
 ```
 # 选择一个你喜欢的包管理器
 # NPM
-$ npm install JB-design --save
+$ npm install Wy-design --save
 
 # Yarn
-$ yarn add JB-design
+$ yarn add Wy-design
 
 # pnpm
-$ pnpm install JB-design
+$ pnpm install Wy-design
 
 ```
 
@@ -31,8 +31,8 @@ $ pnpm install JB-design
 ```ts
 // main.ts
 import { createApp } from "vue";
-import BqDesign from "JB-design";
-import "JB-design/dist/index.css";
+import BqDesign from "Wy-design";
+import "Wy-design/dist/index.css";
 import App from "./App.vue";
 
 const app = createApp(App);
@@ -62,9 +62,9 @@ const BqDesignResolver = () => {
                 const pathName = name.slice(2).toLowerCase();
                 return {
                     importName: name,
-                    from: "JB-design",
-                    path: `JB-design/lib/components/${pathName}/index.js`,
-                    sideEffects: `JB-design/lib/components/${pathName}/${name.slice(2)}.css`,
+                    from: "Wy-design",
+                    path: `Wy-design/lib/components/${pathName}/index.js`,
+                    sideEffects: `Wy-design/lib/components/${pathName}/${name.slice(2)}.css`,
                 };
             }
         },
@@ -92,13 +92,13 @@ export default defineConfig({
 
 ## 手动导入
 
-`JB-design` 提供了基于 ES Module 的开箱即用的`Tree Shaking` 功能。
+`Wy-design` 提供了基于 ES Module 的开箱即用的`Tree Shaking` 功能。
 
 但你需要加载该插件vite-plugin-import，解决本地开发时的动态加载、代码如下：
 
 ```ts
 export default function importPlugin() {
-    const regStr = /(?<!\/\/.*|\/\*[\s\S]*?\*\/\s*)import\s*{\s*([^{}]+)\s*}\s*from\s*['"]JB-design['"]/g;
+    const regStr = /(?<!\/\/.*|\/\*[\s\S]*?\*\/\s*)import\s*{\s*([^{}]+)\s*}\s*from\s*['"]Wy-design['"]/g;
     return {
         name: "vite-plugin-import",
         enforce: "pre",
@@ -110,8 +110,8 @@ export default function importPlugin() {
                     list.forEach((item: string) => {
                         item = item.trim();
                         const name = item.slice(2).charAt(0).toLowerCase() + item.slice(3);
-                        const str = `import ${item.trim()} from 'JB-design/es/components/${name.trim()}';
-                        import 'JB-design/es/components/${name.trim()}/${item.trim().slice(2)}.css'`;
+                        const str = `import ${item.trim()} from 'Wy-design/es/components/${name.trim()}';
+                        import 'Wy-design/es/components/${name.trim()}/${item.trim().slice(2)}.css'`;
                         pathList.push(str);
                     });
                     return pathList.join(";");
@@ -125,7 +125,7 @@ export default function importPlugin() {
 ```
 
 ::: warning
-exclude中必须排除JB-design、因为 JB-design 存在第三方包，vite预加载会报错、当然如果已安装了JB-design所有组件需要的包、则不需要做该处理
+exclude中必须排除JB-design、因为 Wy-design 存在第三方包，vite预加载会报错、当然如果已安装了JB-design所有组件需要的包、则不需要做该处理
 :::
 
 ```ts{7}
@@ -135,7 +135,7 @@ import ViteImportPlugin from "./src/utils/vite-plugin-import";
 
 export default defineConfig({
     optimizeDeps:{
-        exclude: ["JB-design"],
+        exclude: ["Wy-design"],
     },
   // ...
   plugins: [

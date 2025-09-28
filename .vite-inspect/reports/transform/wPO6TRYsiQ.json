@@ -1,5 +1,5 @@
 {
-    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/JB-design/packages/directives/domResize.ts",
+    "resolvedId": "/Users/haixiaonan/Desktop/test/vue3/Wy-design/packages/directives/domResize.ts",
     "transforms": [
         {
             "name": "__load__",
@@ -21,16 +21,12 @@
             "order": "normal",
             "sourcemaps": {
                 "version": 3,
-                "sources": [
-                    "domResize.ts"
-                ],
+                "sources": ["domResize.ts"],
                 "sourcesContent": [
                     "/*\n * @Author: wyk\n * @Date: 2024-05-16 15:54:29\n * @LastEditTime: 2024-05-16 16:13:10\n * @Description:\n */\nimport ResizeObserver from \"resize-observer-polyfill\";\n// v-dom-resize 指令，绑定在dom元素上即可，监听dom尺寸变化，调用传入方法\nimport type { ObjectDirective } from \"vue\";\nexport const domResize: ObjectDirective = {\n    mounted(el, binding) {\n        const resizeFun = (observer: ResizeObserverEntry[]) => {\n            binding.value(observer);\n        };\n        const observer = new ResizeObserver(resizeFun);\n        observer.observe(el);\n        el._observer = observer;\n    },\n    unmounted(el) {\n        el._observer.disconnect();\n        el._observer = null;\n        delete el._observer;\n    },\n};\n"
                 ],
                 "mappings": "AAMA,OAAO,oBAAoB;AAGpB,aAAM,YAA6B;AAAA,EACtC,QAAQ,IAAI,SAAS;AACjB,UAAM,YAAY,CAACA,cAAoC;AACnD,cAAQ,MAAMA,SAAQ;AAAA,IAC1B;AACA,UAAM,WAAW,IAAI,eAAe,SAAS;AAC7C,aAAS,QAAQ,EAAE;AACnB,OAAG,YAAY;AAAA,EACnB;AAAA,EACA,UAAU,IAAI;AACV,OAAG,UAAU,WAAW;AACxB,OAAG,YAAY;AACf,WAAO,GAAG;AAAA,EACd;AACJ;",
-                "names": [
-                    "observer"
-                ]
+                "names": ["observer"]
             }
         },
         {

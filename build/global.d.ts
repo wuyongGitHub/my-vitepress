@@ -7,13 +7,13 @@
 declare module "vue" {
     // GlobalComponents for Volar
     export interface GlobalComponents {
-        BqButton: (typeof import("JB-design"))["BqButton"];
-        BqNumberAnimate: (typeof import("JB-design"))["BqNumberAnimate"];
-        BqPie: (typeof import("JB-design"))["BqPie"];
-        BqSelectAll: (typeof import("JB-design"))["BqSelectAll"];
-        BqScaleBox: (typeof import("JB-design"))["BqScaleBox"];
-        BqScrollBar: (typeof import("JB-design"))["BqScrollBar"];
-        BqVisibleComponent: (typeof import("JB-design"))["BqVisibleComponent"];
-        BqAwait: (typeof import("JB-design"))["BqAwait"];
+        BqButton: (typeof import("Wy-design"))["BqButton"];
+        BqNumberAnimate: (typeof import("Wy-design"))["BqNumberAnimate"];
+        BqPie: (typeof import("Wy-design"))["BqPie"];
+        BqSelectAll: (typeof import("Wy-design"))["BqSelectAll"];
+        BqScaleBox: (typeof import("Wy-design"))["BqScaleBox"];
+        BqScrollBar: (typeof import("Wy-design"))["BqScrollBar"];
+        BqVisibleComponent: (typeof import("Wy-design"))["BqVisibleComponent"];
+        BqAwait: (typeof import("Wy-design"))["BqAwait"];
     }
 }
