@@ -8,7 +8,7 @@ import "element-plus/dist/index.css";
 import "@arco-design/web-vue/dist/arco.css";
 import "../../../packages/styles/element/index.scss";
 
-// ✅ 必须引入并注册组件库
+// 必须引入并注册组件库
 import ElementPlus from "element-plus";
 import ArcoVue from "@arco-design/web-vue";
 
@@ -27,11 +27,11 @@ export default {
         let Components = await asyncComponents;
         app.directive("domResize", domResize);
 
-        // ✅ 注册 UI 库
+        //  注册 UI 库
         app.use(ElementPlus);
         app.use(ArcoVue);
 
-        // ✅ 注册你二次封装的组件
+        //  注册你二次封装的组件
         for (let i in Components) {
             app.use(Components[i]);
         }

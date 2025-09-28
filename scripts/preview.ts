@@ -12,7 +12,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const pluginsConfig = [
     // progress({ srcDir: "packages" }),
-    !isProd && progress({ srcDir: "packages" }), // 只在开发用
+    !isProd && progress({ srcDir: "packages" }),
     AutoImport({
         include: [
             /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
