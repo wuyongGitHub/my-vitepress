@@ -6,16 +6,15 @@
 -->
 <template>
     <div class="bq-button">
-        <span>-测试按钮-6</span>
-        -----------------------------
+        <h2>测试按钮组件是否可用</h2>
         <el-button>Default</el-button>
         <el-button type="primary">Primary</el-button>
         <el-button type="success">Success</el-button>
         <el-button type="info">Info</el-button>
         <el-button type="warning">Warning</el-button>
         <el-button type="danger">Danger</el-button>
+        <br />
         <el-button>中文</el-button>
-        -----------------------------
         <a-button type="primary">Primary</a-button>
         <a-button>Secondary</a-button>
         <a-button type="dashed">Dashed</a-button>

@@ -334,4 +334,28 @@ onUnmounted(() => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    .bg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        filter: blur(68px);
+        transform: translate(-50%, -50%);
+        background-image: linear-gradient(-45deg, #5672cd 50%, #47caff 50%);
+    }
+    .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+</style>
