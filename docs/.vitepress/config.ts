@@ -10,6 +10,7 @@ import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
 export default defineConfig({
     title: "JB-design",
     description: "组件库",
+    base: "/", // GitHub 仓库名
     vite: {
         server: {
             port: 5175,
