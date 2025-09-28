@@ -26,7 +26,7 @@ jobs:
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
               with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  github_token: ${{ secrets.GH_PAT }}
                   publish_dir: docs/.vitepress/dist
                   allow_empty_commit: true
                   force_orphan: true
