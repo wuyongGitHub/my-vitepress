@@ -21,11 +21,11 @@ EsLint@2.4.4、StyleLint@1.4.0、Vue - Official@2.0.16、Prettier@10.4.0
 
 ## 安装依赖
 
-pnpm install
+npm install
 
 ## 安装 husky
 
-pnpm prepare
+npm prepare
 
 ## git设置大小写文件区分
 
@@ -33,11 +33,11 @@ git config core.ignorecase true
 
 ## eslint 不生效？
 
-pnpm lint
+npm lint
 
 ## 项目启动
 
-pnpm start
+npm start
 
 ## 组件格式
 
