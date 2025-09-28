@@ -3,7 +3,7 @@ name: Deploy VitePress site
 on:
     push:
         branches:
-            - main # 触发构建的分支
+            - main
 
 jobs:
     deploy:
@@ -20,8 +20,13 @@ jobs:
             - run: npm ci
             - run: npm run docs:build
 
+            - name: Check build output
+              run: ls -la docs/.vitepress/dist
+
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_dir: docs/.vitepress/dist
+                  allow_empty_commit: true
+                  force_orphan: true
