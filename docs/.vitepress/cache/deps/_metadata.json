@@ -2,51 +2,72 @@
     "hash": "84022db3",
     "configHash": "1cacb195",
     "lockfileHash": "7296ab62",
-    "browserHash": "dcee830e",
+    "browserHash": "07c2a357",
     "optimized": {
         "vue": {
             "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
             "file": "vue.js",
-            "fileHash": "21114bca",
+            "fileHash": "c9db5b2f",
             "needsInterop": false
         },
         "vitepress > @vue/devtools-api": {
             "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
             "file": "vitepress___@vue_devtools-api.js",
-            "fileHash": "b561b655",
+            "fileHash": "7958ca4b",
             "needsInterop": false
         },
         "vitepress > @vueuse/core": {
             "src": "../../../../node_modules/@vueuse/core/index.mjs",
             "file": "vitepress___@vueuse_core.js",
-            "fileHash": "51c1957d",
+            "fileHash": "ccd763b9",
             "needsInterop": false
         },
         "resize-observer-polyfill": {
             "src": "../../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
             "file": "resize-observer-polyfill.js",
-            "fileHash": "3c0ee925",
+            "fileHash": "b18f4209",
             "needsInterop": false
         },
         "ant-design-vue": {
             "src": "../../../../node_modules/ant-design-vue/es/index.js",
             "file": "ant-design-vue.js",
-            "fileHash": "3ca11107",
+            "fileHash": "e0fd84f9",
             "needsInterop": false
         },
         "three": {
             "src": "../../../../node_modules/three/build/three.module.js",
             "file": "three.js",
-            "fileHash": "ff0e479f",
+            "fileHash": "6fc19d42",
+            "needsInterop": false
+        },
+        "element-plus": {
+            "src": "../../../../node_modules/element-plus/es/index.mjs",
+            "file": "element-plus.js",
+            "fileHash": "0a741b00",
+            "needsInterop": false
+        },
+        "@arco-design/web-vue": {
+            "src": "../../../../node_modules/@arco-design/web-vue/es/index.js",
+            "file": "@arco-design_web-vue.js",
+            "fileHash": "53bf15a2",
             "needsInterop": false
         }
     },
     "chunks": {
+        "chunk-HF2Q42BO": {
+            "file": "chunk-HF2Q42BO.js"
+        },
+        "chunk-UY73ZLSN": {
+            "file": "chunk-UY73ZLSN.js"
+        },
+        "chunk-4DBEEITM": {
+            "file": "chunk-4DBEEITM.js"
+        },
         "chunk-M3NKFC6K": {
             "file": "chunk-M3NKFC6K.js"
         },
-        "chunk-QAXAIFA7": {
-            "file": "chunk-QAXAIFA7.js"
+        "chunk-IOFU7UBR": {
+            "file": "chunk-IOFU7UBR.js"
         },
         "chunk-G3PMV62Z": {
             "file": "chunk-G3PMV62Z.js"

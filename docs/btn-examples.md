@@ -16,9 +16,6 @@
 
 ## button
 
-<BqButton>测试按钮</BqButton>
-
-<!-- <BqBasicsPie  /> -->
 <BqBasicsButton />
 
 **代码示例**

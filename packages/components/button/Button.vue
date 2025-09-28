@@ -25,9 +25,9 @@
 </template>
 
 <script setup lang="ts">
+import "@/styles/element/index.scss";
 defineOptions({
     name: "BqButton",
 });
 </script>
-
 <style lang="scss" scoped></style>

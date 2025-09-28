@@ -1,17 +1,19 @@
-/*
- * @Author: wyk
- * @Date: 2024-05-14 15:49:28
- * @LastEditTime: 2024-08-30 11:02:03
- * @Description:
- */
 import Theme from "vitepress/theme";
-import { App } from "vue";
+import { App, h, defineAsyncComponent } from "vue";
 import asyncComponents from "@/examples/index";
-// import { BqBasicsButton } from "@examples/button/index";
 import { domResize } from "@/directives/domResize";
-import { h, defineAsyncComponent } from "vue";
+
+// 样式
+import "element-plus/dist/index.css";
+import "@arco-design/web-vue/dist/arco.css";
+import "../../../packages/styles/element/index.scss";
+
+// ✅ 必须引入并注册组件库
+import ElementPlus from "element-plus";
+import ArcoVue from "@arco-design/web-vue";
 
 const BqBasicsDocsImage = defineAsyncComponent(() => asyncComponents.then((Components) => Components["BqBasicsDocsImage"]));
+
 export default {
     ...Theme,
     Layout() {
@@ -24,6 +26,12 @@ export default {
     async enhanceApp({ app }: { app: App }) {
         let Components = await asyncComponents;
         app.directive("domResize", domResize);
+
+        // ✅ 注册 UI 库
+        app.use(ElementPlus);
+        app.use(ArcoVue);
+
+        // ✅ 注册你二次封装的组件
         for (let i in Components) {
             app.use(Components[i]);
         }

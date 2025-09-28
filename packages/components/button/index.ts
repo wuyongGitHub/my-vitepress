@@ -6,5 +6,6 @@
  */
 import Button from "./Button.vue";
 import { withInstall } from "../../utils/tool";
+import "@/styles/element/index.scss";
 export const BqButton = withInstall(Button);
 export default BqButton;
