@@ -18,7 +18,6 @@ export default defineConfig({
         resolve: resolveConfig,
         plugins: pluginsConfig,
     },
-    base: "/JB-design",
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [

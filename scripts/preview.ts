@@ -8,9 +8,11 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import progress from "vite-plugin-progress";
 import { resolve } from "path";
+const isProd = process.env.NODE_ENV === "production";
 
 const pluginsConfig = [
-    progress({ srcDir: "packages" }),
+    // progress({ srcDir: "packages" }),
+    !isProd && progress({ srcDir: "packages" }), // 只在开发用
     AutoImport({
         include: [
             /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
