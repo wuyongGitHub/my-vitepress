@@ -1,55 +1,55 @@
 {
-  "hash": "a24d3cce",
-  "configHash": "1cacb195",
-  "lockfileHash": "6681d5fb",
-  "browserHash": "c14e2433",
-  "optimized": {
-    "vue": {
-      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
-      "file": "vue.js",
-      "fileHash": "99e89f1c",
-      "needsInterop": false
+    "hash": "84022db3",
+    "configHash": "1cacb195",
+    "lockfileHash": "7296ab62",
+    "browserHash": "dcee830e",
+    "optimized": {
+        "vue": {
+            "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "file": "vue.js",
+            "fileHash": "ed6bd2dc",
+            "needsInterop": false
+        },
+        "vitepress > @vue/devtools-api": {
+            "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
+            "file": "vitepress___@vue_devtools-api.js",
+            "fileHash": "684e7cd3",
+            "needsInterop": false
+        },
+        "vitepress > @vueuse/core": {
+            "src": "../../../../node_modules/@vueuse/core/index.mjs",
+            "file": "vitepress___@vueuse_core.js",
+            "fileHash": "721a1f5c",
+            "needsInterop": false
+        },
+        "resize-observer-polyfill": {
+            "src": "../../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
+            "file": "resize-observer-polyfill.js",
+            "fileHash": "8ce4ab3d",
+            "needsInterop": false
+        },
+        "ant-design-vue": {
+            "src": "../../../../node_modules/ant-design-vue/es/index.js",
+            "file": "ant-design-vue.js",
+            "fileHash": "341fab35",
+            "needsInterop": false
+        },
+        "three": {
+            "src": "../../../../node_modules/three/build/three.module.js",
+            "file": "three.js",
+            "fileHash": "8b920082",
+            "needsInterop": false
+        }
     },
-    "vitepress > @vue/devtools-api": {
-      "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
-      "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "41c2fe5a",
-      "needsInterop": false
-    },
-    "vitepress > @vueuse/core": {
-      "src": "../../../../node_modules/@vueuse/core/index.mjs",
-      "file": "vitepress___@vueuse_core.js",
-      "fileHash": "d8349f26",
-      "needsInterop": false
-    },
-    "resize-observer-polyfill": {
-      "src": "../../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
-      "file": "resize-observer-polyfill.js",
-      "fileHash": "c233efa9",
-      "needsInterop": false
-    },
-    "ant-design-vue": {
-      "src": "../../../../node_modules/ant-design-vue/es/index.js",
-      "file": "ant-design-vue.js",
-      "fileHash": "cd3b8fbc",
-      "needsInterop": false
-    },
-    "three": {
-      "src": "../../../../node_modules/three/build/three.module.js",
-      "file": "three.js",
-      "fileHash": "54593e52",
-      "needsInterop": false
+    "chunks": {
+        "chunk-M3NKFC6K": {
+            "file": "chunk-M3NKFC6K.js"
+        },
+        "chunk-QAXAIFA7": {
+            "file": "chunk-QAXAIFA7.js"
+        },
+        "chunk-G3PMV62Z": {
+            "file": "chunk-G3PMV62Z.js"
+        }
     }
-  },
-  "chunks": {
-    "chunk-M3NKFC6K": {
-      "file": "chunk-M3NKFC6K.js"
-    },
-    "chunk-QAXAIFA7": {
-      "file": "chunk-QAXAIFA7.js"
-    },
-    "chunk-G3PMV62Z": {
-      "file": "chunk-G3PMV62Z.js"
-    }
-  }
 }
