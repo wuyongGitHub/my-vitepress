@@ -5,64 +5,71 @@
  * @Description:
 -->
 
-# 3D 饼图
+# button
 
 ::: tip
-使用该组件需要提前安装threeJs、当前所用版本0.164.1
+
+<!-- 使用该组件需要提前安装threeJs、当前所用版本0.164.1 -->
+
+基础按钮组件
 :::
 
-## 圆环饼图
+## button
 
-<BqBasicsPie  />
+<BqButton>测试按钮</BqButton>
+
+<!-- <BqBasicsPie  /> -->
+<BqBasicsButton />
 
 **代码示例**
 
 ```vue
 <template>
-    <BqPie />
+    <BqBasicsButton />
 </template>
 ```
 
-## 饼图
+## button
 
-<BqBasicsPie :innerRadius="0" />
+<BqButton />
+<!-- <BqBasicsPie :innerRadius="0" /> -->
 
 **代码示例**
 
 ```vue{4}
 <template>
-  <BqPie :innerRadius="0"/>
+  <!-- <BqPie :innerRadius="0"/> -->
 </template>
 ```
 
 ## 隐藏中间提示
 
-<BqBasicsPie :centerTooltip="false"  />
+<!-- <BqBasicsPie :centerTooltip="false"  /> -->
 
 **代码示例**
 
 ```vue{4}
 <template>
-  <BqPie :centerTooltip="false" />
+  <!-- <BqPie :centerTooltip="false" /> -->
 </template>
 ```
 
 ## 增加背景图
 
-<BqSlotPie></BqSlotPie>
+<!-- <BqSlotPie></BqSlotPie> -->
 
 **代码示例**
 
 ```vue
 <template>
     <div class="slot-pie">
-        <BqPie>
+        <!-- <BqPie>
             <template v-slot:footer>
                 <div class="footer">
                     <img :src="imgSrc" />
                 </div>
             </template>
-        </BqPie>
+        </BqPie> -->
     </div>
 </template>
 

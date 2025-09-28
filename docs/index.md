@@ -12,7 +12,7 @@ hero:
           link: /guide-examples
         - theme: alt
           text: 组件示例
-          link: /pie-examples
+          link: /btn-examples
 
 features:
     - title: 🚀 支持多种引入方式

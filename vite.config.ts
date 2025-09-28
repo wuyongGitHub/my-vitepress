@@ -22,7 +22,7 @@ export default defineConfig(() => {
                         format: "es",
                         entryFileNames: "[name].js",
                         exports: "named",
-                        name: "BqDesign",
+                        name: "JbDesign",
                         dir: "./build/dist",
                     },
                     {
@@ -45,7 +45,7 @@ export default defineConfig(() => {
             },
             lib: {
                 entry: resolve(__dirname, "./packages/index.ts"),
-                name: "BqDesign",
+                name: "JbDesign",
                 fileName: (format) => `JB-design.${format}.js`,
                 formats: ["es", "cjs"],
             },

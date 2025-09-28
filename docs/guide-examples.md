@@ -31,13 +31,13 @@ $ pnpm install JB-design
 ```ts
 // main.ts
 import { createApp } from "vue";
-import BqDesign from "JB-design";
+import JbDesign from "JB-design";
 import "JB-design/dist/index.css";
 import App from "./App.vue";
 
 const app = createApp(App);
 
-app.use(BqDesign);
+app.use(JbDesign);
 app.mount("#app");
 ```
 
@@ -54,7 +54,7 @@ pnpm add  unplugin-vue-components -D
 2、复制该解析器
 
 ```ts
-const BqDesignResolver = () => {
+const JbDesignResolver = () => {
     return {
         type: "component" as const,
         resolve: (name) => {
@@ -77,14 +77,14 @@ const BqDesignResolver = () => {
 ```ts
 // vite.config.ts
 import Components from "unplugin-vue-components/vite";
-import { BqDesignResolver } from "xxxx-你存储BqDesignResolver的文件";
+import { JbDesignResolver } from "xxxx-你存储JbDesignResolver的文件";
 
 export default defineConfig({
     // ...
     plugins: [
         Components({
             //...
-            resolvers: [BqDesignResolver()],
+            resolvers: [JbDesignResolver()],
         }),
     ],
 });
