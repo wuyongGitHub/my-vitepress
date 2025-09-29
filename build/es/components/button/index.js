@@ -1,7 +1,7 @@
 import t from "./Button.vue.js";
 import { withInstall as o } from "../../utils/tool.js";
-const a = o(t);
+const n = o(t);
 export {
-  a as BqButton,
-  a as default
+  n as WyButton,
+  n as default
 };

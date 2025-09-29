@@ -7,19 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Action: typeof import('./components/action/Action.vue')['default']
-    Await: typeof import('./components/await/Await.vue')['default']
-    Bar: typeof import('./components/scrollBar/Bar.vue')['default']
     Button: typeof import('./components/button/Button.vue')['default']
-    Demo: typeof import('./components/scrollBar/demo/demo.vue')['default']
-    NumberAnimate: typeof import('./components/numberAnimate/NumberAnimate.vue')['default']
-    Pie: typeof import('./components/pie/Pie.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ScaleBox: typeof import('./components/scaleBox/ScaleBox.vue')['default']
-    ScrollBar: typeof import('./components/scrollBar/ScrollBar.vue')['default']
-    SelectAll: typeof import('./components/selectAll/SelectAll.vue')['default']
-    Test: typeof import('./components/numberAnimate/test.vue')['default']
-    VisibleComponent: typeof import('./components/visibleComponent/VisibleComponent.vue')['default']
   }
 }

@@ -16,7 +16,7 @@
 
 ## button
 
-<Wy-Button />
+<Wy-Button type="primary">111</Wy-Button>
 
 **代码示例**
 

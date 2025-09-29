@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./Action.vue.js"),u=require("../../utils/tool.js"),e=u.withInstall(t.default);exports.BqAction=e;exports.default=e;

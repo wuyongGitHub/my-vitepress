@@ -5,31 +5,45 @@
  * @Description:
 -->
 <template>
-    <div class="wy-button">
-        <div>
-            <el-button>Default</el-button>
-            <el-button type="primary">Primary</el-button>
-            <el-button type="success">Success</el-button>
-            <el-button type="info">Info</el-button>
-            <el-button type="warning">Warning</el-button>
-            <el-button type="danger">Danger</el-button>
-        </div>
-        <div style="margin-top: 10px">
-            <a-button>中文</a-button>
-            <a-button type="primary">Primary</a-button>
-            <a-button>Secondary</a-button>
-            <a-button type="dashed">Dashed</a-button>
-            <a-button type="outline">Outline</a-button>
-            <a-button type="text">Text</a-button>
-        </div>
-    </div>
+    <ElButton v-bind="attrs" :class="[attrs.class, customClass]" @click="handleClick">
+        <slot />
+    </ElButton>
 </template>
 
 <script setup lang="ts">
 defineOptions({
     name: "WyButton",
 });
+import { useAttrs, computed } from "vue";
+
+// 获取所有透传的属性（class, style, onClick, loading 等）
+const attrs = useAttrs();
+
+// 可选：扩展自定义 class
+const customClass = computed(() => {
+    return ["wy-button"]; // 你可以加一些全局定制 class
+});
+
+// 可选：处理自定义逻辑（如埋点、权限）
+const handleClick = (e: Event) => {
+    // 先触发原始 click
+    if (typeof attrs.onClick === "function") {
+        attrs.onClick(e);
+    }
+
+    // 自定义逻辑：埋点
+    console.log("[Button Click]", {
+        type: attrs.type,
+        text: (e.target as HTMLElement).textContent?.trim(),
+    });
+
+    //  自定义逻辑：权限校验
+    // if (attrs.permission && !checkPermission(attrs.permission)) {
+    //   e.preventDefault()
+    //   return
+    // }
+};
 </script>
 <style lang="scss" scoped>
-@import "../../theme-chalk/button.scss";
+@import "../../theme-chalk/button";
 </style>

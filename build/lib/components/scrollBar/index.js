@@ -1,1 +1,0 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("./ScrollBar.vue.js"),r=require("../../utils/tool.js"),e=r.withInstall(l.default);exports.BqScrollBar=e;exports.default=e;

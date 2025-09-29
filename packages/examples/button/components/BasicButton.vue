@@ -6,7 +6,10 @@
 -->
 <template>
     <div>
-        <Button>1111</Button>
+        <Button type="primary">1111</Button>
+        <Button type="text">1111</Button>
+        <Button type="primary">1111</Button>
+        <Button type="primary">1111</Button>
     </div>
 </template>
 
