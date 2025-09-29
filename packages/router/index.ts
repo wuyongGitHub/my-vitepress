@@ -10,9 +10,9 @@ const routes: RouteRecordRaw[] = [
         path: "/",
         name: "button",
         meta: {
-            title: "login",
+            title: "button",
         },
-        component: () => import(/* webpackChunkName: "button" */ "@/examples/button/components/BasicsButton.vue"),
+        component: () => import(/* webpackChunkName: "button" */ "@/examples/button/components/BasicButton.vue"),
     },
     {
         path: "/pie",

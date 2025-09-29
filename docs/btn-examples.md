@@ -16,12 +16,12 @@
 
 ## button
 
-<BqBasicsButton />
+<Wy-Button />
 
 **代码示例**
 
 ```vue
 <template>
-    <JbBasicsButton />
+    <Wy-Button />
 </template>
 ```

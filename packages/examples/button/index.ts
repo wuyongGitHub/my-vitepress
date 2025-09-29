@@ -4,7 +4,7 @@
  * @LastEditTime: 2024-05-16 15:14:55
  * @Description:
  */
-import BasicsButton from "./components/BasicsButton.vue";
+import Button from "./components/BasicButton.vue";
 import { withInstall } from "../../utils/tool";
-const BqBasicsButton = withInstall(BasicsButton);
-export { BqBasicsButton };
+const WyButton = withInstall(Button);
+export { WyButton };

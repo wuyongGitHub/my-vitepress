@@ -16,7 +16,7 @@ export default defineConfig(() => {
             outDir: "build",
             cssCodeSplit: true,
             rollupOptions: {
-                external: ["three", "@ant-design/icons-vue", "ant-design-vue", "unplugin-vue-components", "unplugin-auto-import", "vue"],
+                external: ["three", "@ant-design/icons-vue", "ant-design-vue", "element-plus", "unplugin-vue-components", "unplugin-auto-import", "vue"],
                 output: [
                     {
                         format: "es",

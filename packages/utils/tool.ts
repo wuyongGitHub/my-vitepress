@@ -6,6 +6,7 @@
  */
 import type { App, Plugin, Component } from "vue";
 
+// 为一个 Vue 组件添加 .install 方法，使其支持通过 app.use() 全局注册组件，就像使用 Element Plus、Ant Design Vue 等 UI 库一样。
 export const withInstall = <T extends Component>(comp: T): T & Plugin => {
     (comp as Record<string, unknown>).install = (app: App) => {
         const compName = comp.name;

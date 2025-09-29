@@ -5,9 +5,9 @@
  * @Description:
  */
 import { App } from "vue";
-import * as bqComponents from "./components";
+import * as WyComponents from "./components";
 export const installer = (app: App) => {
-    for (const i in bqComponents) {
-        app.use(bqComponents[i as never]);
+    for (const i in WyComponents) {
+        app.use(WyComponents[i as never]);
     }
 };
