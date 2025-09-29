@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "start": "vite --host --mode development",
+        "build1": "vite build --config vite.config.lib.ts",
         "build": "vue-tsc --noEmit && vite build --mode developmentBuild && node buildPackage/vetur.js  &&  node buildPackage/index.js ",
         "preview": "vite preview",
         "lint": "eslint . --ext .vue,.ts,.js,.jsx,.mjs --fix --ignore-path .gitignore",

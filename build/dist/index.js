@@ -1,5 +1,5 @@
-import { defineComponent as a, useAttrs as i, computed as _, resolveComponent as p, createBlock as f, openBlock as m, mergeProps as d, unref as r, withCtx as C, renderSlot as y } from "vue";
-const B = /* @__PURE__ */ a({
+import { defineComponent as u, useAttrs as i, computed as _, resolveComponent as p, createBlock as f, openBlock as m, mergeProps as d, unref as r, withCtx as C, renderSlot as y } from "vue";
+const B = /* @__PURE__ */ u({
   name: "WyButton",
   __name: "Button",
   setup(o) {
@@ -11,8 +11,8 @@ const B = /* @__PURE__ */ a({
       });
     };
     return (e, c) => {
-      const u = p("ElButton");
-      return m(), f(u, d(r(t), {
+      const a = p("ElButton");
+      return m(), f(a, d(r(t), {
         class: [r(t).class, n.value],
         onClick: s
       }), {
@@ -28,7 +28,7 @@ const B = /* @__PURE__ */ a({
   for (const [s, e] of t)
     n[s] = e;
   return n;
-}, v = /* @__PURE__ */ k(B, [["__scopeId", "data-v-2202448f"]]), g = (o) => (o.install = (t) => {
+}, v = /* @__PURE__ */ k(B, [["__scopeId", "data-v-1a19201c"]]), g = (o) => (o.install = (t) => {
   const n = o.name;
   n && t.component(n, o);
 }, o), x = g(v), l = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
