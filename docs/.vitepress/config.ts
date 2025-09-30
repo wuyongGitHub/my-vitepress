@@ -1,12 +1,6 @@
-/*
- * @Author: wyk
- * @Date: 2024-05-14 15:30:17
- * @LastEditTime: 2024-11-18 15:53:26
- * @Description:
- */
 import { defineConfig } from "vitepress";
 import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
-// https://vitepress.dev/reference/site-config
+
 export default defineConfig({
     title: "Wy-design",
     description: "组件库",
@@ -19,46 +13,25 @@ export default defineConfig({
         plugins: pluginsConfig,
     },
     themeConfig: {
-        // https://vitepress.dev/reference/default-theme-config
         nav: [
             { text: "Home", link: "/" },
-            { text: "Examples", link: "/guide-examples" },
-            { text: "JB-Echarts", link: "/btn-examples" },
+            { text: "组件", link: "/guide-examples" },
+            { text: "图表", link: "/demo" },
         ],
         sidebar: [
+            // 第一组：组件
             {
-                text: "Examples",
+                text: "组件",
                 items: [
                     { text: "操作指南", link: "/guide-examples" },
                     { text: "按钮", link: "/btn-examples" },
-                    // { text: "BqScale 大屏适配容器", link: "/scale-box-examples" },
-                    // { text: "BqSelectAll 全选筛选框", link: "/select-examples" },
-                    // { text: "BqNumberAnimate 数字翻牌器", link: "/number-animate-examples" },
-                    // { text: "BqScrollBar 自定义滚动条", link: "/scroll-bar-examples" },
-                    // { text: "BqVisibleComponent 可视组件", link: "/view-examples" },
-                    // { text: "BqAction 性能优化", link: "/action-examples" },
-                    // { text: "BqAwait 异步加载", link: "/await-examples" },
-                    // { text: "更新日志", link: "/update-log-examples" },
-                    // { text: "Runtime API Examples", link: "/api-examples" },
                 ],
             },
-            // {
-            //     text: "JB-Echarts",
-            //     items: [
-            //         { text: "按钮", link: "/btn-examples" },
-            //         { text: "操作指南", link: "/guide-examples" },
-            //         { text: "BqPie 3D饼图", link: "/btn-examples" },
-            //         { text: "BqScale 大屏适配容器", link: "/scale-box-examples" },
-            //         { text: "BqSelectAll 全选筛选框", link: "/select-examples" },
-            //         { text: "BqNumberAnimate 数字翻牌器", link: "/number-animate-examples" },
-            //         { text: "BqScrollBar 自定义滚动条", link: "/scroll-bar-examples" },
-            //         { text: "BqVisibleComponent 可视组件", link: "/view-examples" },
-            //         { text: "BqAction 性能优化", link: "/action-examples" },
-            //         { text: "BqAwait 异步加载", link: "/await-examples" },
-            //         { text: "更新日志", link: "/update-log-examples" },
-            //         { text: "Runtime API Examples", link: "/api-examples" },
-            //     ],
-            // },
+            // 第二组：图表
+            {
+                text: "图表",
+                items: [{ text: "demo1", link: "/demo" }],
+            },
         ],
         socialLinks: [{ icon: "github", link: "https://github.com/wuyongGitHub/wuyongGitHub.github.io" }],
     },

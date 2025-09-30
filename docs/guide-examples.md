@@ -26,7 +26,7 @@ $ pnpm install Wy-design
 
 ## 完整引入
 
-如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便,但你需要提前下载好相关组件的依赖。
+如果对打包后的文件大小不是很在乎，那么使用完整导入会更方便,但你需要提前下载好相关组件的依赖。
 
 ```ts
 // main.ts
@@ -125,7 +125,7 @@ export default function importPlugin() {
 ```
 
 ::: warning
-exclude中必须排除JB-design、因为 Wy-design 存在第三方包，vite预加载会报错、当然如果已安装了JB-design所有组件需要的包、则不需要做该处理
+exclude中必须排除Wy-design、因为 Wy-design 存在第三方包，vite预加载会报错、当然如果已安装了Wy-design所有组件需要的包、则不需要做该处理
 :::
 
 ```ts{7}
