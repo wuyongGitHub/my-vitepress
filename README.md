@@ -9,14 +9,14 @@
 
 预览地址：https://wuyonggithub.github.io/
 
-<img width="1908" height="919" alt="image" src="https://github.com/user-attachments/assets/f8454bf7-3541-4117-8677-712d9c4d1c4e" />
-<img width="1917" height="930" alt="image" src="https://github.com/user-attachments/assets/a1ec02ec-47f9-4c9c-b2ca-709e137aaa30" />
-<img width="1920" height="991" alt="image" src="https://github.com/user-attachments/assets/c380b3c4-e822-4a0e-bf2d-9e0da93dc67b" />
-<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/22955c25-dfba-4b28-9aab-0368b786196f" />
+<img width="1908" height="919" alt="image" src="https://github.com/user-attachments/assets/f8454bf7-3541-4117-8677-712d9c4d1c4e" /> 
+<img width="1917" height="930" alt="image" src="https://github.com/user-attachments/assets/a1ec02ec-47f9-4c9c-b2ca-709e137aaa30" /> 
+<img width="1920" height="991" alt="image" src="https://github.com/user-attachments/assets/c380b3c4-e822-4a0e-bf2d-9e0da93dc67b" /> 
+<img width="1920" height="911" alt="image" src="https://github.com/user-attachments/assets/22955c25-dfba-4b28-9aab-0368b786196f" /> 
 
 ## vsCode 安装插件
 
-vsCode插件市场查找 @recommended 一键安装相应插件
+vsCode插件市场查找 @recommended 一键安装相应插件, 
 EsLint@2.4.4、StyleLint@1.4.0、Vue - Official@2.0.16、Prettier@10.4.0
 
 ## 安装依赖
