@@ -4,7 +4,7 @@ import { resolveConfig, pluginsConfig } from "../../scripts/preview.ts";
 export default defineConfig({
     title: "Wy-design",
     description: "组件库",
-    base: "/", // GitHub 仓库名
+    base: "/",
     vite: {
         server: {
             port: 5175,
@@ -15,24 +15,29 @@ export default defineConfig({
     themeConfig: {
         nav: [
             { text: "Home", link: "/" },
-            { text: "组件", link: "/guide-examples" },
-            { text: "图表", link: "/demo" },
+            { text: "组件", link: "/components/guide-examples" },
+            { text: "图表", link: "/charts/demo" },
         ],
-        sidebar: [
-            // 第一组：组件
-            {
-                text: "组件",
-                items: [
-                    { text: "操作指南", link: "/guide-examples" },
-                    { text: "按钮", link: "/btn-examples" },
-                ],
-            },
-            // 第二组：图表
-            {
-                text: "图表",
-                items: [{ text: "demo1", link: "/demo" }],
-            },
-        ],
+        // 使用路径映射来控制侧边栏
+        sidebar: {
+            // 当前路径以 /guide-examples 开头时，显示“组件”侧边栏
+            "/components/": [
+                {
+                    text: "组件",
+                    items: [
+                        { text: "操作指南", link: "/components/guide-examples" },
+                        { text: "按钮", link: "/components/btn-examples" },
+                    ],
+                },
+            ],
+            // 当前路径以 /demo 开头时，显示“图表”侧边栏
+            "/charts/": [
+                {
+                    text: "图表",
+                    items: [{ text: "demo1", link: "/charts/demo" }],
+                },
+            ],
+        },
         socialLinks: [{ icon: "github", link: "https://github.com/wuyongGitHub/wuyongGitHub.github.io" }],
     },
 });

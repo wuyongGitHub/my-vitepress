@@ -9,10 +9,10 @@ hero:
     actions:
         - theme: brand
           text: 指南
-          link: /components/guide-examples
+          link: /guide-examples
         - theme: alt
           text: 组件示例
-          link: /components/btn-examples
+          link: /btn-examples
 
 features:
     - title: 🚀 支持多种引入方式
