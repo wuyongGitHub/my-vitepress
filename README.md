@@ -652,7 +652,72 @@ http://192.168.60.30
 
 ![Vue3 + VitePress 搭建部署组件库文档平台（结合 Element Plus 与 Arco Design Vue）—— 超详细图文教程](https://i-blog.csdnimg.cn/direct/b18ff82d8e9d40e09cc975ad83849a97.png)
 
-## 部署到github.io（待更新）
 
-### 完结~ 待补充
+## VitePress部署到GitHub Pages
+### 第一步、创建 .github/workflows/deploy.yml 文件
+
+```powershell
+name: Deploy VitePress site
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - run: npm ci
+            - run: npm run docs:build
+
+            - name: Check build output
+              run: ls -la docs/.vitepress/dist
+
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GH_PAT }}
+                  publish_dir: docs/.vitepress/dist
+                  allow_empty_commit: true
+                  force_orphan: true
+                  publish_branch: gh-pages
+                  keep_files: false
+                  enable_jekyll: false
+
+```
+
+![在这里插入图片描述](https://i-blog.csdnimg.cn/direct/c5f5a8714f8f45939d3da18906825651.png)
+
+### 第二步、创建github仓库
+创建一个github仓库，命名为` wuyongGitHub.github.io`
+![Vue3 + VitePress 搭建部署组件库文档平台（结合 Element Plus 与 Arco Design Vue）—— 超详细图文教程](https://i-blog.csdnimg.cn/direct/ed94758cc3244a5ca61ca7c3b8c5c86d.png)
+### 第三步、上传代码
+![Vue3 + VitePress 搭建部署组件库文档平台（结合 Element Plus 与 Arco Design Vue）—— 超详细图文教程](https://i-blog.csdnimg.cn/direct/90f142a9ca214bcca461b0f74e9580f5.png)
+
+### 第四步、启用 GitHub Pages
+进入你的`GitHub`仓库 → `Settings` → `Pages`
+在 `Source` 部分：
+`Branch: `选择 `gh-pages`（或 `main`）
+`Folder: `选择 `/ (root)`（如果是 `gh-pages`）或`/docs`（如果推到`main`的 `docs` 目录）
+点击 `Save`，等待 `1-2` 分钟，页面会显示部署成功的 `URL`，如：
+> https://<username>.github.io
+>  https://<username>.github.io/<repo>
+
+![Vue3 + VitePress 搭建部署组件库文档平台（结合 Element Plus 与 Arco Design Vue）—— 超详细图文教程](https://i-blog.csdnimg.cn/direct/d7c832e0712848188f2a87563a61ba9b.png)
+### 第五步、访问你的站点
+部署成功后，访问：
+`https://<username>.github.io`（如果是` <username>.github.io `仓库）
+`https://<username>.github.io/<repo>`（其他仓库）
+比如我的就为【[https://wuyonggithub.github.io/](https://wuyonggithub.github.io/)】 欢迎访问~
+
+### 完结~ 
 
