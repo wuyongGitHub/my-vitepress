@@ -717,7 +717,8 @@ jobs:
 部署成功后，访问：
 `https://<username>.github.io`（如果是` <username>.github.io `仓库）
 `https://<username>.github.io/<repo>`（其他仓库）
-比如我的就为【[https://wuyonggithub.github.io/](https://wuyonggithub.github.io/)】 欢迎访问~
+
+部署到githubPage后，通过【[https://wuyonggithub.github.io/](https://wuyonggithub.github.io/)】地址就可以访问我的页面 欢迎访问~
 
 ### 完结~ 
 
