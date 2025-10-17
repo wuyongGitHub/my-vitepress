@@ -15,69 +15,77 @@ const routes: RouteRecordRaw[] = [
         component: () => import(/* webpackChunkName: "button" */ "@/examples/button/components/BasicButton.vue"),
     },
     {
-        path: "/pie",
-        name: "pie",
+        path: "/heatMap",
+        name: "JBHeatMap",
         meta: {
-            title: "pie",
+            title: "button",
         },
-        component: () => import(/* webpackChunkName: "pie" */ "@/examples/pie/components/BasicsPie.vue"),
+        component: () => import(/* webpackChunkName: "button" */ "@/examples/heatmap/components/BasicsHeatMap.vue"),
     },
-    {
-        path: "/scaleBox",
-        name: "scaleBox",
-        meta: {
-            title: "scaleBox",
-        },
-        component: () => import(/* webpackChunkName: "scaleBox" */ "@/examples/scaleBox/components/BasicsScaleBox.vue"),
-    },
-    {
-        path: "/selectAll",
-        name: "selectAll",
-        meta: {
-            title: "selectAll",
-        },
-        component: () => import(/* webpackChunkName: "selectAll" */ "@/examples/selectAll/components/BasicsSelectAll.vue"),
-    },
-    {
-        path: "/numberAnimate",
-        name: "numberAnimate",
-        meta: {
-            title: "numberAnimate",
-        },
-        component: () => import(/* webpackChunkName: "numberAnimate" */ "@/examples/numberAnimate/components/BasicsNumberAnimate.vue"),
-    },
-    {
-        path: "/scrollBar",
-        name: "scrollBar",
-        meta: {
-            title: "scrollBar",
-        },
-        component: () => import(/* webpackChunkName: "scrollBar" */ "@/examples/scrollBar/components/BasicsScrollBar.vue"),
-    },
-    {
-        path: "/visibleComponent",
-        name: "visibleComponent",
-        meta: {
-            title: "visibleComponent",
-        },
-        component: () => import(/* webpackChunkName: "visibleComponent" */ "@/examples/visibleComponent/components/BasicsVisibleComponent.vue"),
-    },
-    {
-        path: "/action",
-        name: "action",
-        meta: {
-            title: "action",
-        },
-        component: () => import(/* webpackChunkName: "action" */ "@/examples/action/components/BasicsAction.vue"),
-    },
-    {
-        path: "/await",
-        name: "await",
-        meta: {
-            title: "basicsAwait",
-        },
-        component: () => import(/* webpackChunkName: "basicsAwait" */ "@/examples/await/components/CustomStatusAwait.vue"),
-    },
+    // {
+    //     path: "/pie",
+    //     name: "pie",
+    //     meta: {
+    //         title: "pie",
+    //     },
+    //     component: () => import(/* webpackChunkName: "pie" */ "@/examples/pie/components/BasicsPie.vue"),
+    // },
+    // {
+    //     path: "/scaleBox",
+    //     name: "scaleBox",
+    //     meta: {
+    //         title: "scaleBox",
+    //     },
+    //     component: () => import(/* webpackChunkName: "scaleBox" */ "@/examples/scaleBox/components/BasicsScaleBox.vue"),
+    // },
+    // {
+    //     path: "/selectAll",
+    //     name: "selectAll",
+    //     meta: {
+    //         title: "selectAll",
+    //     },
+    //     component: () => import(/* webpackChunkName: "selectAll" */ "@/examples/selectAll/components/BasicsSelectAll.vue"),
+    // },
+    // {
+    //     path: "/numberAnimate",
+    //     name: "numberAnimate",
+    //     meta: {
+    //         title: "numberAnimate",
+    //     },
+    //     component: () => import(/* webpackChunkName: "numberAnimate" */ "@/examples/numberAnimate/components/BasicsNumberAnimate.vue"),
+    // },
+    // {
+    //     path: "/scrollBar",
+    //     name: "scrollBar",
+    //     meta: {
+    //         title: "scrollBar",
+    //     },
+    //     component: () => import(/* webpackChunkName: "scrollBar" */ "@/examples/scrollBar/components/BasicsScrollBar.vue"),
+    // },
+    // {
+    //     path: "/visibleComponent",
+    //     name: "visibleComponent",
+    //     meta: {
+    //         title: "visibleComponent",
+    //     },
+    //     component: () => import(/* webpackChunkName: "visibleComponent" */ "@/examples/visibleComponent/components/BasicsVisibleComponent.vue"),
+    // },
+    // {
+    //     path: "/action",
+    //     name: "action",
+    //     meta: {
+    //         title: "action",
+    //     },
+    //     component: () => import(/* webpackChunkName: "action" */ "@/examples/action/components/BasicsAction.vue"),
+    // },
+    // {
+    //     path: "/await",
+    //     name: "await",
+    //     meta: {
+    //         title: "basicsAwait",
+    //     },
+    //     component: () => import(/* webpackChunkName: "basicsAwait" */ "@/examples/await/components/CustomStatusAwait.vue"),
+    // },
 ];
 const router = createRouter({
     // import.meta.env.VITE_APP_BASE_URL.slice(0, -1)

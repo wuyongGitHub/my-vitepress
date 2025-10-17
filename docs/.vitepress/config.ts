@@ -16,7 +16,7 @@ export default defineConfig({
         nav: [
             { text: "Home", link: "/" },
             { text: "组件", link: "/components/guide-examples" },
-            { text: "图表", link: "/charts/demo" },
+            { text: "图表", link: "/charts/3dHeadMao" },
         ],
         // 使用路径映射来控制侧边栏
         sidebar: {
@@ -34,7 +34,7 @@ export default defineConfig({
             "/charts/": [
                 {
                     text: "图表",
-                    items: [{ text: "demo1", link: "/charts/demo" }],
+                    items: [{ text: "3D热力图", link: "/charts/3dHeadMao.md" }],
                 },
             ],
         },

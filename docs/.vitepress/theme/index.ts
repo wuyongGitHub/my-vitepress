@@ -12,14 +12,14 @@ import "../../../packages/styles/element/index.scss";
 import ElementPlus from "element-plus";
 import ArcoVue from "@arco-design/web-vue";
 
-const BqBasicsDocsImage = defineAsyncComponent(() => asyncComponents.then((Components) => Components["BqBasicsDocsImage"]));
+const WyBasicsDocsImage = defineAsyncComponent(() => asyncComponents.then((Components) => Components["WyBasicsDocsImage"]));
 
 export default {
     ...Theme,
     Layout() {
         return h(Theme.Layout, null, {
             "home-hero-image": () => {
-                return h(BqBasicsDocsImage);
+                return h(WyBasicsDocsImage);
             },
         });
     },

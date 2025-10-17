@@ -2,72 +2,90 @@
     "hash": "1b6de581",
     "configHash": "1cacb195",
     "lockfileHash": "8bf68cbd",
-    "browserHash": "c9471991",
+    "browserHash": "8c365433",
     "optimized": {
         "vue": {
             "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
             "file": "vue.js",
-            "fileHash": "6db541a6",
+            "fileHash": "4071b811",
             "needsInterop": false
         },
         "vitepress > @vue/devtools-api": {
             "src": "../../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
             "file": "vitepress___@vue_devtools-api.js",
-            "fileHash": "a161a8b0",
+            "fileHash": "dbc852f4",
             "needsInterop": false
         },
         "vitepress > @vueuse/core": {
             "src": "../../../../node_modules/@vueuse/core/index.mjs",
             "file": "vitepress___@vueuse_core.js",
-            "fileHash": "ab5a76cb",
+            "fileHash": "5a9eb6db",
             "needsInterop": false
         },
         "element-plus": {
             "src": "../../../../node_modules/element-plus/es/index.mjs",
             "file": "element-plus.js",
-            "fileHash": "57197275",
+            "fileHash": "26bb6b42",
             "needsInterop": false
         },
         "@arco-design/web-vue": {
             "src": "../../../../node_modules/@arco-design/web-vue/es/index.js",
             "file": "@arco-design_web-vue.js",
-            "fileHash": "52589009",
+            "fileHash": "a5b92e97",
             "needsInterop": false
         },
         "resize-observer-polyfill": {
             "src": "../../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
             "file": "resize-observer-polyfill.js",
-            "fileHash": "89a8dfde",
+            "fileHash": "3980a946",
             "needsInterop": false
         },
         "ant-design-vue": {
             "src": "../../../../node_modules/ant-design-vue/es/index.js",
             "file": "ant-design-vue.js",
-            "fileHash": "6728bd16",
+            "fileHash": "1ec7d6cf",
             "needsInterop": false
         },
         "three": {
             "src": "../../../../node_modules/three/build/three.module.js",
             "file": "three.js",
-            "fileHash": "c14d42fc",
+            "fileHash": "aa8bcb7b",
+            "needsInterop": false
+        },
+        "three/examples/jsm/controls/OrbitControls.js": {
+            "src": "../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
+            "file": "three_examples_jsm_controls_OrbitControls__js.js",
+            "fileHash": "84626be5",
+            "needsInterop": false
+        },
+        "three/examples/jsm/controls/OrbitControls": {
+            "src": "../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
+            "file": "three_examples_jsm_controls_OrbitControls.js",
+            "fileHash": "660d6097",
             "needsInterop": false
         }
     },
     "chunks": {
-        "chunk-HF2Q42BO": {
-            "file": "chunk-HF2Q42BO.js"
+        "chunk-PWSN6HDX": {
+            "file": "chunk-PWSN6HDX.js"
+        },
+        "chunk-HLQL7ENM": {
+            "file": "chunk-HLQL7ENM.js"
         },
         "chunk-UY73ZLSN": {
             "file": "chunk-UY73ZLSN.js"
         },
-        "chunk-4DBEEITM": {
-            "file": "chunk-4DBEEITM.js"
+        "chunk-M3NKFC6K": {
+            "file": "chunk-M3NKFC6K.js"
+        },
+        "chunk-HF2Q42BO": {
+            "file": "chunk-HF2Q42BO.js"
+        },
+        "chunk-4LRQNXVY": {
+            "file": "chunk-4LRQNXVY.js"
         },
         "chunk-IOFU7UBR": {
             "file": "chunk-IOFU7UBR.js"
-        },
-        "chunk-M3NKFC6K": {
-            "file": "chunk-M3NKFC6K.js"
         },
         "chunk-G3PMV62Z": {
             "file": "chunk-G3PMV62Z.js"

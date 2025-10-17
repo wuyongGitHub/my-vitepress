@@ -1,6 +1,6 @@
 <!--
  * @Author: wyk
- * @Date: 2024-05-23 14:05:55
+ * @Date: 2024-09-23 14:05:55
  * @LastEditTime: 2024-08-27 14:27:47
  * @Description:
 -->
@@ -13,13 +13,16 @@
 
 <script setup>
 defineOptions({
-    name: "BqBasicsDocsImage",
+    name: "WyBasicsDocsImage",
 });
 
 import * as THREE from "three";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+
 let flagId = 0;
 const domRef = ref();
-onMounted(() => {
+onMounted(async () => {
+    const { OrbitControls } = await import("three/examples/jsm/controls/OrbitControls.js");
     const w = domRef.value?.clientWidth;
     const h = domRef.value?.clientHeight;
     const scene = new THREE.Scene();
@@ -38,6 +41,14 @@ onMounted(() => {
 
     // controls.enableDamping = true;
     // controls.enablePan = false;
+
+    //  创建 OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.rotateSpeed = 0.5;
+    controls.zoomSpeed = 0.8;
+    controls.enablePan = false;
 
     // 1. Sphere
     const sphereGeometry = new THREE.SphereGeometry(1, 200, 200); // 32 400
@@ -311,6 +322,9 @@ void main() {
         particles.rotation.y = time * 0.1;
         firefliesMaterial.uniforms.uTime.value = time;
         // textMaterial.uniforms.uTime.value = time;
+
+        // 更新控制器
+        controls.update();
 
         renderer.render(scene, camera);
 

@@ -5,10 +5,11 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 export {}
 
-declare module 'vue' {
-  export interface GlobalComponents {
-    Button: typeof import('./components/button/Button.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-  }
+declare module "vue" {
+    export interface GlobalComponents {
+        Button: (typeof import("./components/button/Button.vue"))["default"];
+        HeatMap: (typeof import("./components/heatMapChart/HeatMap.vue"))["default"];
+        RouterLink: (typeof import("vue-router"))["RouterLink"];
+        RouterView: (typeof import("vue-router"))["RouterView"];
+    }
 }
