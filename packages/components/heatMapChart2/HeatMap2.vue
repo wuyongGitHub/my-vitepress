@@ -97,7 +97,7 @@ onUnmounted(() => {
     renderer?.dispose();
 });
 
-// ========== 创建着色器材质 - 实现分段渐变 ==========
+// ========== 创建着色器材质 - 实现分段渐变 - 标准热力图 ==========
 function createShaderMaterial() {
     console.log("创建分段渐变着色器材质...");
 
@@ -212,6 +212,233 @@ function createShaderMaterial() {
     console.log("分段渐变着色器材质创建完成");
     return material;
 }
+
+// ========== 创建着色器材质 - 实现十段渐变 - 自定义段渐变==========
+// function createShaderMaterial() {
+//     console.log("创建十段渐变着色器材质...");
+
+//     // 定义十段渐变的颜色序列
+//     const colors = [
+//         new THREE.Vector3(0.0314, 0.1922, 0.3725), // #08315f 深蓝
+//         new THREE.Vector3(0.2706, 0.5333, 0.7333), // #4588bb 蓝色
+//         new THREE.Vector3(0.5216, 0.7451, 0.8902), // #85bee3 浅蓝色
+//         new THREE.Vector3(0.7451, 0.8627, 0.9569), // #bedcf4 更浅的蓝色
+//         new THREE.Vector3(0.8941, 0.8431, 0.8627), // #e4d7dc 淡紫色
+//         new THREE.Vector3(0.9882, 0.8745, 0.8549), // #fcdfda 淡粉色
+//         new THREE.Vector3(0.9765, 0.7137, 0.6353), // #f9b6a2 浅橙色
+//         new THREE.Vector3(0.9765, 0.4706, 0.3765), // #f97860 橙色
+//         new THREE.Vector3(0.7843, 0.0863, 0.149), // #c81626 红色
+//         new THREE.Vector3(0.6863, 0.0, 0.0588), // #af000f 深红色
+//     ];
+
+//     const material = new THREE.ShaderMaterial({
+//         uniforms: {
+//             color0: { value: colors[0] },
+//             color1: { value: colors[1] },
+//             color2: { value: colors[2] },
+//             color3: { value: colors[3] },
+//             color4: { value: colors[4] },
+//             color5: { value: colors[5] },
+//             color6: { value: colors[6] },
+//             color7: { value: colors[7] },
+//             color8: { value: colors[8] },
+//             color9: { value: colors[9] },
+//             baseSize: { value: props.baseSize },
+//             maxHeight: { value: props.maxHeight },
+//         },
+//         vertexShader: `
+//             attribute float instanceValue;
+//             attribute vec3 instancePosition;
+//             attribute vec3 instanceScale;
+
+//             varying float vValue;
+//             varying float vHeight;
+//             varying vec3 vPosition;
+
+//             void main() {
+//                 vValue = instanceValue;
+//                 vPosition = position;
+
+//                 // 计算顶点在柱体中的相对高度 (0到1)
+//                 vHeight = (position.y + 0.5); // 立方体原本y范围是-0.5到0.5
+
+//                 // 应用实例的缩放和位置
+//                 vec3 transformed = position * instanceScale;
+//                 transformed += instancePosition;
+
+//                 gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
+//             }
+//         `,
+//         fragmentShader: `
+//             uniform vec3 color0;
+//             uniform vec3 color1;
+//             uniform vec3 color2;
+//             uniform vec3 color3;
+//             uniform vec3 color4;
+//             uniform vec3 color5;
+//             uniform vec3 color6;
+//             uniform vec3 color7;
+//             uniform vec3 color8;
+//             uniform vec3 color9;
+
+//             varying float vValue;
+//             varying float vHeight;
+//             varying vec3 vPosition;
+
+//             vec3 getGradientColor(float value, float height) {
+//                 // 根据数值大小决定使用多少段渐变
+//                 if (value < 0.1) {
+//                     // 第一段：纯颜色
+//                     return color0;
+//                 } else if (value < 0.2) {
+//                     // 第二段：2色渐变
+//                     return mix(color0, color1, height);
+//                 } else if (value < 0.3) {
+//                     // 第三段：3色渐变
+//                     if (height < 0.5) {
+//                         return mix(color0, color1, height / 0.5);
+//                     } else {
+//                         return mix(color1, color2, (height - 0.5) / 0.5);
+//                     }
+//                 } else if (value < 0.4) {
+//                     // 第四段：4色渐变
+//                     if (height < 0.33) {
+//                         return mix(color0, color1, height / 0.33);
+//                     } else if (height < 0.66) {
+//                         return mix(color1, color2, (height - 0.33) / 0.33);
+//                     } else {
+//                         return mix(color2, color3, (height - 0.66) / 0.34);
+//                     }
+//                 } else if (value < 0.5) {
+//                     // 第五段：5色渐变
+//                     if (height < 0.25) {
+//                         return mix(color0, color1, height / 0.25);
+//                     } else if (height < 0.5) {
+//                         return mix(color1, color2, (height - 0.25) / 0.25);
+//                     } else if (height < 0.75) {
+//                         return mix(color2, color3, (height - 0.5) / 0.25);
+//                     } else {
+//                         return mix(color3, color4, (height - 0.75) / 0.25);
+//                     }
+//                 } else if (value < 0.6) {
+//                     // 第六段：6色渐变
+//                     if (height < 0.2) {
+//                         return mix(color0, color1, height / 0.2);
+//                     } else if (height < 0.4) {
+//                         return mix(color1, color2, (height - 0.2) / 0.2);
+//                     } else if (height < 0.6) {
+//                         return mix(color2, color3, (height - 0.4) / 0.2);
+//                     } else if (height < 0.8) {
+//                         return mix(color3, color4, (height - 0.6) / 0.2);
+//                     } else {
+//                         return mix(color4, color5, (height - 0.8) / 0.2);
+//                     }
+//                 } else if (value < 0.7) {
+//                     // 第七段：7色渐变
+//                     if (height < 0.1667) {
+//                         return mix(color0, color1, height / 0.1667);
+//                     } else if (height < 0.3333) {
+//                         return mix(color1, color2, (height - 0.1667) / 0.1667);
+//                     } else if (height < 0.5) {
+//                         return mix(color2, color3, (height - 0.3333) / 0.1667);
+//                     } else if (height < 0.6667) {
+//                         return mix(color3, color4, (height - 0.5) / 0.1667);
+//                     } else if (height < 0.8333) {
+//                         return mix(color4, color5, (height - 0.6667) / 0.1667);
+//                     } else {
+//                         return mix(color5, color6, (height - 0.8333) / 0.1667);
+//                     }
+//                 } else if (value < 0.8) {
+//                     // 第八段：8色渐变
+//                     if (height < 0.1429) {
+//                         return mix(color0, color1, height / 0.1429);
+//                     } else if (height < 0.2857) {
+//                         return mix(color1, color2, (height - 0.1429) / 0.1429);
+//                     } else if (height < 0.4286) {
+//                         return mix(color2, color3, (height - 0.2857) / 0.1429);
+//                     } else if (height < 0.5714) {
+//                         return mix(color3, color4, (height - 0.4286) / 0.1429);
+//                     } else if (height < 0.7143) {
+//                         return mix(color4, color5, (height - 0.5714) / 0.1429);
+//                     } else if (height < 0.8571) {
+//                         return mix(color5, color6, (height - 0.7143) / 0.1429);
+//                     } else {
+//                         return mix(color6, color7, (height - 0.8571) / 0.1429);
+//                     }
+//                 } else if (value < 0.9) {
+//                     // 第九段：9色渐变
+//                     if (height < 0.125) {
+//                         return mix(color0, color1, height / 0.125);
+//                     } else if (height < 0.25) {
+//                         return mix(color1, color2, (height - 0.125) / 0.125);
+//                     } else if (height < 0.375) {
+//                         return mix(color2, color3, (height - 0.25) / 0.125);
+//                     } else if (height < 0.5) {
+//                         return mix(color3, color4, (height - 0.375) / 0.125);
+//                     } else if (height < 0.625) {
+//                         return mix(color4, color5, (height - 0.5) / 0.125);
+//                     } else if (height < 0.75) {
+//                         return mix(color5, color6, (height - 0.625) / 0.125);
+//                     } else if (height < 0.875) {
+//                         return mix(color6, color7, (height - 0.75) / 0.125);
+//                     } else {
+//                         return mix(color7, color8, (height - 0.875) / 0.125);
+//                     }
+//                 } else {
+//                     // 第十段：10色渐变
+//                     if (height < 0.1111) {
+//                         return mix(color0, color1, height / 0.1111);
+//                     } else if (height < 0.2222) {
+//                         return mix(color1, color2, (height - 0.1111) / 0.1111);
+//                     } else if (height < 0.3333) {
+//                         return mix(color2, color3, (height - 0.2222) / 0.1111);
+//                     } else if (height < 0.4444) {
+//                         return mix(color3, color4, (height - 0.3333) / 0.1111);
+//                     } else if (height < 0.5556) {
+//                         return mix(color4, color5, (height - 0.4444) / 0.1111);
+//                     } else if (height < 0.6667) {
+//                         return mix(color5, color6, (height - 0.5556) / 0.1111);
+//                     } else if (height < 0.7778) {
+//                         return mix(color6, color7, (height - 0.6667) / 0.1111);
+//                     } else if (height < 0.8889) {
+//                         return mix(color7, color8, (height - 0.7778) / 0.1111);
+//                     } else {
+//                         return mix(color8, color9, (height - 0.8889) / 0.1111);
+//                     }
+//                 }
+//             }
+
+//             void main() {
+//                 // 简单的光照效果
+//                 vec3 lightDir = normalize(vec3(1.0, 2.0, 0.5));
+//                 vec3 normal;
+
+//                 // 计算法向量
+//                 if (abs(vPosition.y) > 0.49) {
+//                     normal = vec3(0.0, sign(vPosition.y), 0.0);
+//                 } else if (abs(vPosition.x) > 0.49) {
+//                     normal = vec3(sign(vPosition.x), 0.0, 0.0);
+//                 } else {
+//                     normal = vec3(0.0, 0.0, sign(vPosition.z));
+//                 }
+
+//                 float diffuse = max(dot(normal, lightDir), 0.3);
+
+//                 // 顶部更亮
+//                 float topBrightness = vPosition.y > 0.4 ? 1.2 : 1.0;
+
+//                 // 获取渐变颜色
+//                 vec3 gradientColor = getGradientColor(vValue, vHeight);
+
+//                 gl_FragColor = vec4(gradientColor * diffuse * topBrightness, 1.0);
+//             }
+//         `,
+//         transparent: false,
+//     });
+
+//     console.log("十段渐变着色器材质创建完成");
+//     return material;
+// }
 
 // ========== Three.js 初始化 ==========
 function initThree() {
