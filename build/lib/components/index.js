@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./button/index.js"),t=require("./heatMapChart/index.js");exports.WyButton=e.WyButton;exports.WyHeatMap=t.WyHeatMap;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./button/index.js"),t=require("./heatMapChart/index.js"),a=require("./heatMapChart2/index.js"),n=require("./heatMapChart2D/index.js");exports.WyButton=e.WyButton;exports.WyHeatMap=t.WyHeatMap;exports.JBHeatMap2=a.JBHeatMap2;exports.JBHeatMap2D=n.JBHeatMap2D;

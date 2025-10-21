@@ -1,6 +1,8 @@
-import { W as e, c as o, i as s } from "./index-qaWV7jyG.js";
+import { J as e, d as s, W as p, c as o, i as B } from "./index-D1L25P83.js";
 export {
-  e as WyButton,
+  e as JBHeatMap2,
+  s as JBHeatMap2D,
+  p as WyButton,
   o as WyHeatMap,
-  s as default
+  B as default
 };

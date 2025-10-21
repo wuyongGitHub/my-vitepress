@@ -19,7 +19,7 @@ export default defineConfig({
         nav: [
             { text: "Home", link: "/" },
             { text: "组件", link: "/components/guide-examples" },
-            { text: "图表", link: "/charts/3dHeadMao" },
+            { text: "图表", link: "/charts/3DHeatChart-examples" },
         ],
         // 使用路径映射来控制侧边栏
         sidebar: {
@@ -37,7 +37,10 @@ export default defineConfig({
             "/charts/": [
                 {
                     text: "图表",
-                    items: [{ text: "3D热力图", link: "/charts/3dHeadMao.md" }],
+                    items: [
+                        { text: "3D热力图", link: "/charts/3DHeatChart-examples.md" },
+                        { text: "2D热力图", link: "/charts/2DHeatChart-examples.md" },
+                    ],
                 },
             ],
         },

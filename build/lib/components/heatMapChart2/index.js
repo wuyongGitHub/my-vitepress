@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("./HeatMap2.vue.js"),a=require("../../utils/tool.js"),e=a.withInstall(t.default);exports.JBHeatMap2=e;exports.default=e;
