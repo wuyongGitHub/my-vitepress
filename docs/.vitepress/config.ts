@@ -13,6 +13,9 @@ export default defineConfig({
         plugins: pluginsConfig,
     },
     themeConfig: {
+        search: {
+            provider: "local",
+        },
         nav: [
             { text: "Home", link: "/" },
             { text: "组件", link: "/components/guide-examples" },

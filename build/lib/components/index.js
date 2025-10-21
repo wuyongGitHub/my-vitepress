@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./button/index.js");exports.WyButton=t.WyButton;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./button/index.js"),t=require("./heatMapChart/index.js");exports.WyButton=e.WyButton;exports.WyHeatMap=t.WyHeatMap;

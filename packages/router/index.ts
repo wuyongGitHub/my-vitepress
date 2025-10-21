@@ -22,6 +22,14 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "button" */ "@/examples/heatmap/components/BasicsHeatMap.vue"),
     },
+    {
+        path: "/heatMap2",
+        name: "JBHeatMap2",
+        meta: {
+            title: "heatMap2",
+        },
+        component: () => import(/* webpackChunkName: "button" */ "@/examples/heatmap2/components/BasicsHeatMap.vue"),
+    },
     // {
     //     path: "/pie",
     //     name: "pie",

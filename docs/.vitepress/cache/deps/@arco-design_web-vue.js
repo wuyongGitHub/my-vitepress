@@ -1,6 +1,5 @@
-import { es_default, i, require_quarterOfYear } from "./chunk-UY73ZLSN.js";
 import { ResizeObserver_es_default } from "./chunk-M3NKFC6K.js";
-import { require_advancedFormat, require_customParseFormat, require_dayjs_min, require_weekOfYear, require_weekYear } from "./chunk-4LRQNXVY.js";
+import { require_advancedFormat, require_customParseFormat, require_dayjs_min, require_weekOfYear, require_weekYear } from "./chunk-HJKKZ7T6.js";
 import {
     Comment,
     Fragment,
@@ -60,29 +59,72 @@ import {
     withKeys,
     withModifiers,
 } from "./chunk-IOFU7UBR.js";
-import { __commonJS, __toESM } from "./chunk-G3PMV62Z.js";
+import { __commonJS, __toESM } from "./chunk-5WRI5ZAA.js";
 
 // node_modules/dayjs/plugin/isBetween.js
 var require_isBetween = __commonJS({
     "node_modules/dayjs/plugin/isBetween.js"(exports, module) {
-        !(function (e, i2) {
+        !(function (e2, i2) {
             "object" == typeof exports && "undefined" != typeof module
                 ? (module.exports = i2())
                 : "function" == typeof define && define.amd
                   ? define(i2)
-                  : ((e = "undefined" != typeof globalThis ? globalThis : e || self).dayjs_plugin_isBetween = i2());
+                  : ((e2 = "undefined" != typeof globalThis ? globalThis : e2 || self).dayjs_plugin_isBetween = i2());
         })(exports, function () {
             "use strict";
-            return function (e, i2, t) {
-                i2.prototype.isBetween = function (e2, i3, s, f) {
-                    var n = t(e2),
-                        o = t(i3),
-                        r = "(" === (f = f || "()")[0],
+            return function (e2, i2, t2) {
+                i2.prototype.isBetween = function (e3, i3, s, f) {
+                    var n2 = t2(e3),
+                        o = t2(i3),
+                        r2 = "(" === (f = f || "()")[0],
                         u = ")" === f[1];
                     return (
-                        ((r ? this.isAfter(n, s) : !this.isBefore(n, s)) && (u ? this.isBefore(o, s) : !this.isAfter(o, s))) ||
-                        ((r ? this.isBefore(n, s) : !this.isAfter(n, s)) && (u ? this.isAfter(o, s) : !this.isBefore(o, s)))
+                        ((r2 ? this.isAfter(n2, s) : !this.isBefore(n2, s)) && (u ? this.isBefore(o, s) : !this.isAfter(o, s))) ||
+                        ((r2 ? this.isBefore(n2, s) : !this.isAfter(n2, s)) && (u ? this.isAfter(o, s) : !this.isBefore(o, s)))
                     );
+                };
+            };
+        });
+    },
+});
+
+// node_modules/dayjs/plugin/quarterOfYear.js
+var require_quarterOfYear = __commonJS({
+    "node_modules/dayjs/plugin/quarterOfYear.js"(exports, module) {
+        !(function (t2, n2) {
+            "object" == typeof exports && "undefined" != typeof module
+                ? (module.exports = n2())
+                : "function" == typeof define && define.amd
+                  ? define(n2)
+                  : ((t2 = "undefined" != typeof globalThis ? globalThis : t2 || self).dayjs_plugin_quarterOfYear = n2());
+        })(exports, function () {
+            "use strict";
+            var t2 = "month",
+                n2 = "quarter";
+            return function (e2, i2) {
+                var r2 = i2.prototype;
+                r2.quarter = function (t3) {
+                    return this.$utils().u(t3) ? Math.ceil((this.month() + 1) / 3) : this.month((this.month() % 3) + 3 * (t3 - 1));
+                };
+                var s = r2.add;
+                r2.add = function (e3, i3) {
+                    return (e3 = Number(e3)), this.$utils().p(i3) === n2 ? this.add(3 * e3, t2) : s.bind(this)(e3, i3);
+                };
+                var u = r2.startOf;
+                r2.startOf = function (e3, i3) {
+                    var r3 = this.$utils(),
+                        s2 = !!r3.u(i3) || i3;
+                    if (r3.p(e3) === n2) {
+                        var o = this.quarter() - 1;
+                        return s2
+                            ? this.month(3 * o)
+                                  .startOf(t2)
+                                  .startOf("day")
+                            : this.month(3 * o + 2)
+                                  .endOf(t2)
+                                  .endOf("day");
+                    }
+                    return u.bind(this)(e3, i3);
                 };
             };
         });
@@ -92,18 +134,18 @@ var require_isBetween = __commonJS({
 // node_modules/dayjs/locale/zh-cn.js
 var require_zh_cn = __commonJS({
     "node_modules/dayjs/locale/zh-cn.js"(exports, module) {
-        !(function (e, _) {
+        !(function (e2, _) {
             "object" == typeof exports && "undefined" != typeof module
                 ? (module.exports = _(require_dayjs_min()))
                 : "function" == typeof define && define.amd
                   ? define(["dayjs"], _)
-                  : ((e = "undefined" != typeof globalThis ? globalThis : e || self).dayjs_locale_zh_cn = _(e.dayjs));
-        })(exports, function (e) {
+                  : ((e2 = "undefined" != typeof globalThis ? globalThis : e2 || self).dayjs_locale_zh_cn = _(e2.dayjs));
+        })(exports, function (e2) {
             "use strict";
-            function _(e2) {
-                return e2 && "object" == typeof e2 && "default" in e2 ? e2 : { default: e2 };
+            function _(e3) {
+                return e3 && "object" == typeof e3 && "default" in e3 ? e3 : { default: e3 };
             }
-            var t = _(e),
+            var t2 = _(e2),
                 d = {
                     name: "zh-cn",
                     weekdays: "星期日_星期一_星期二_星期三_星期四_星期五_星期六".split("_"),
@@ -111,8 +153,8 @@ var require_zh_cn = __commonJS({
                     weekdaysMin: "日_一_二_三_四_五_六".split("_"),
                     months: "一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),
                     monthsShort: "1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月".split("_"),
-                    ordinal: function (e2, _2) {
-                        return "W" === _2 ? e2 + "周" : e2 + "日";
+                    ordinal: function (e3, _2) {
+                        return "W" === _2 ? e3 + "周" : e3 + "日";
                     },
                     weekStart: 1,
                     yearStart: 4,
@@ -143,12 +185,12 @@ var require_zh_cn = __commonJS({
                         y: "1 年",
                         yy: "%d 年",
                     },
-                    meridiem: function (e2, _2) {
-                        var t2 = 100 * e2 + _2;
-                        return t2 < 600 ? "凌晨" : t2 < 900 ? "早上" : t2 < 1100 ? "上午" : t2 < 1300 ? "中午" : t2 < 1800 ? "下午" : "晚上";
+                    meridiem: function (e3, _2) {
+                        var t3 = 100 * e3 + _2;
+                        return t3 < 600 ? "凌晨" : t3 < 900 ? "早上" : t3 < 1100 ? "上午" : t3 < 1300 ? "中午" : t3 < 1800 ? "下午" : "晚上";
                     },
                 };
-            return t.default.locale(d, null, true), d;
+            return t2.default.locale(d, null, true), d;
         });
     },
 });
@@ -788,7 +830,7 @@ var getDocumentSize = () => {
 var isServerRendering = (() => {
     try {
         return !(typeof window !== "undefined" && document !== void 0);
-    } catch (e) {
+    } catch (e2) {
         return true;
     }
 })();
@@ -1806,24 +1848,132 @@ var Alert = Object.assign(_Alert, {
     },
 });
 
+// node_modules/compute-scroll-into-view/dist/index.mjs
+function t(t2) {
+    return "object" == typeof t2 && null != t2 && 1 === t2.nodeType;
+}
+function e(t2, e2) {
+    return (!e2 || "hidden" !== t2) && "visible" !== t2 && "clip" !== t2;
+}
+function n(t2, n2) {
+    if (t2.clientHeight < t2.scrollHeight || t2.clientWidth < t2.scrollWidth) {
+        var r2 = getComputedStyle(t2, null);
+        return (
+            e(r2.overflowY, n2) ||
+            e(r2.overflowX, n2) ||
+            (function (t3) {
+                var e2 = (function (t4) {
+                    if (!t4.ownerDocument || !t4.ownerDocument.defaultView) return null;
+                    try {
+                        return t4.ownerDocument.defaultView.frameElement;
+                    } catch (t5) {
+                        return null;
+                    }
+                })(t3);
+                return !!e2 && (e2.clientHeight < t3.scrollHeight || e2.clientWidth < t3.scrollWidth);
+            })(t2)
+        );
+    }
+    return false;
+}
+function r(t2, e2, n2, r2, i2, o, l, d) {
+    return (o < t2 && l > e2) || (o > t2 && l < e2) ? 0 : (o <= t2 && d <= n2) || (l >= e2 && d >= n2) ? o - t2 - r2 : (l > e2 && d < n2) || (o < t2 && d > n2) ? l - e2 + i2 : 0;
+}
+var i = function (e2, i2) {
+    var o = window,
+        l = i2.scrollMode,
+        d = i2.block,
+        f = i2.inline,
+        h2 = i2.boundary,
+        u = i2.skipOverflowHiddenElements,
+        s =
+            "function" == typeof h2
+                ? h2
+                : function (t2) {
+                      return t2 !== h2;
+                  };
+    if (!t(e2)) throw new TypeError("Invalid target");
+    for (var a, c, g = document.scrollingElement || document.documentElement, p = [], m = e2; t(m) && s(m); ) {
+        if ((m = null == (c = (a = m).parentElement) ? a.getRootNode().host || null : c) === g) {
+            p.push(m);
+            break;
+        }
+        (null != m && m === document.body && n(m) && !n(document.documentElement)) || (null != m && n(m, u) && p.push(m));
+    }
+    for (
+        var w = o.visualViewport ? o.visualViewport.width : innerWidth,
+            v = o.visualViewport ? o.visualViewport.height : innerHeight,
+            W = window.scrollX || pageXOffset,
+            H = window.scrollY || pageYOffset,
+            b = e2.getBoundingClientRect(),
+            y = b.height,
+            E = b.width,
+            M = b.top,
+            V = b.right,
+            x = b.bottom,
+            I = b.left,
+            C = "start" === d || "nearest" === d ? M : "end" === d ? x : M + y / 2,
+            R = "center" === f ? I + E / 2 : "end" === f ? V : I,
+            T = [],
+            k = 0;
+        k < p.length;
+        k++
+    ) {
+        var B = p[k],
+            D = B.getBoundingClientRect(),
+            O = D.height,
+            X = D.width,
+            Y = D.top,
+            L = D.right,
+            S = D.bottom,
+            j = D.left;
+        if ("if-needed" === l && M >= 0 && I >= 0 && x <= v && V <= w && M >= Y && x <= S && I >= j && V <= L) return T;
+        var N = getComputedStyle(B),
+            q = parseInt(N.borderLeftWidth, 10),
+            z = parseInt(N.borderTopWidth, 10),
+            A = parseInt(N.borderRightWidth, 10),
+            F = parseInt(N.borderBottomWidth, 10),
+            G = 0,
+            J = 0,
+            K = "offsetWidth" in B ? B.offsetWidth - B.clientWidth - q - A : 0,
+            P = "offsetHeight" in B ? B.offsetHeight - B.clientHeight - z - F : 0,
+            Q = "offsetWidth" in B ? (0 === B.offsetWidth ? 0 : X / B.offsetWidth) : 0,
+            U = "offsetHeight" in B ? (0 === B.offsetHeight ? 0 : O / B.offsetHeight) : 0;
+        if (g === B)
+            (G = "start" === d ? C : "end" === d ? C - v : "nearest" === d ? r(H, H + v, v, z, F, H + C, H + C + y, y) : C - v / 2),
+                (J = "start" === f ? R : "center" === f ? R - w / 2 : "end" === f ? R - w : r(W, W + w, w, q, A, W + R, W + R + E, E)),
+                (G = Math.max(0, G + H)),
+                (J = Math.max(0, J + W));
+        else {
+            (G = "start" === d ? C - Y - z : "end" === d ? C - S + F + P : "nearest" === d ? r(Y, S, O, z, F + P, C, C + y, y) : C - (Y + O / 2) + P / 2),
+                (J = "start" === f ? R - j - q : "center" === f ? R - (j + X / 2) + K / 2 : "end" === f ? R - L + A + K : r(j, L, X, q, A + K, R, R + E, E));
+            var Z = B.scrollLeft,
+                $ = B.scrollTop;
+            (C += $ - (G = Math.max(0, Math.min($ + G / U, B.scrollHeight - O / U + P)))), (R += Z - (J = Math.max(0, Math.min(Z + J / Q, B.scrollWidth - X / Q + K))));
+        }
+        T.push({ el: B, top: G, left: J });
+    }
+    return T;
+};
+
 // node_modules/b-tween/dist/b-tween.es.js
 var easeInBy = function (power) {
-    return function (t) {
-        return Math.pow(t, power);
+    return function (t2) {
+        return Math.pow(t2, power);
     };
 };
 var easeOutBy = function (power) {
-    return function (t) {
-        return 1 - Math.abs(Math.pow(t - 1, power));
+    return function (t2) {
+        return 1 - Math.abs(Math.pow(t2 - 1, power));
     };
 };
 var easeInOutBy = function (power) {
-    return function (t) {
-        return t < 0.5 ? easeInBy(power)(t * 2) / 2 : easeOutBy(power)(t * 2 - 1) / 2 + 0.5;
+    return function (t2) {
+        return t2 < 0.5 ? easeInBy(power)(t2 * 2) / 2 : easeOutBy(power)(t2 * 2 - 1) / 2 + 0.5;
     };
 };
-var linear = function (t) {
-    return t;
+var linear = function (t2) {
+    return t2;
 };
 var quadIn = easeInBy(2);
 var quadOut = easeOutBy(2);
@@ -1837,37 +1987,37 @@ var quartInOut = easeInOutBy(4);
 var quintIn = easeInBy(5);
 var quintOut = easeOutBy(5);
 var quintInOut = easeInOutBy(5);
-var sineIn = function (t) {
-    return 1 + Math.sin((Math.PI / 2) * t - Math.PI / 2);
+var sineIn = function (t2) {
+    return 1 + Math.sin((Math.PI / 2) * t2 - Math.PI / 2);
 };
-var sineOut = function (t) {
-    return Math.sin((Math.PI / 2) * t);
+var sineOut = function (t2) {
+    return Math.sin((Math.PI / 2) * t2);
 };
-var sineInOut = function (t) {
-    return (1 + Math.sin(Math.PI * t - Math.PI / 2)) / 2;
+var sineInOut = function (t2) {
+    return (1 + Math.sin(Math.PI * t2 - Math.PI / 2)) / 2;
 };
-var bounceOut = function (t) {
+var bounceOut = function (t2) {
     var s = 7.5625;
     var p = 2.75;
-    if (t < 1 / p) {
-        return s * t * t;
+    if (t2 < 1 / p) {
+        return s * t2 * t2;
     }
-    if (t < 2 / p) {
-        t -= 1.5 / p;
-        return s * t * t + 0.75;
+    if (t2 < 2 / p) {
+        t2 -= 1.5 / p;
+        return s * t2 * t2 + 0.75;
     }
-    if (t < 2.5 / p) {
-        t -= 2.25 / p;
-        return s * t * t + 0.9375;
+    if (t2 < 2.5 / p) {
+        t2 -= 2.25 / p;
+        return s * t2 * t2 + 0.9375;
     }
-    t -= 2.625 / p;
-    return s * t * t + 0.984375;
+    t2 -= 2.625 / p;
+    return s * t2 * t2 + 0.984375;
 };
-var bounceIn = function (t) {
-    return 1 - bounceOut(1 - t);
+var bounceIn = function (t2) {
+    return 1 - bounceOut(1 - t2);
 };
-var bounceInOut = function (t) {
-    return t < 0.5 ? bounceIn(t * 2) * 0.5 : bounceOut(t * 2 - 1) * 0.5 + 0.5;
+var bounceInOut = function (t2) {
+    return t2 < 0.5 ? bounceIn(t2 * 2) * 0.5 : bounceOut(t2 * 2 - 1) * 0.5 + 0.5;
 };
 var easing = Object.freeze({
     linear,
@@ -2042,17 +2192,17 @@ var _sfc_main9 = defineComponent({
         const removeLink = (hash) => {
             delete links[hash];
         };
-        const handleClick = (e, hash) => {
+        const handleClick = (e2, hash) => {
             if (!props.changeHash) {
-                e.preventDefault();
+                e2.preventDefault();
             }
             if (hash) {
-                scrollIntoView(hash);
+                scrollIntoView2(hash);
                 handleAnchorChange(hash);
             }
             emit("select", hash, currentLink.value);
         };
-        const scrollIntoView = (hash) => {
+        const scrollIntoView2 = (hash) => {
             try {
                 const element = getElement(hash);
                 if (!element) return;
@@ -2072,8 +2222,8 @@ var _sfc_main9 = defineComponent({
                     isScrolling.value = false;
                 });
                 isScrolling.value = true;
-            } catch (e) {
-                console.error(e);
+            } catch (e2) {
+                console.error(e2);
             }
         };
         const handleScroll = throttleByRaf(() => {
@@ -2144,7 +2294,7 @@ var _sfc_main9 = defineComponent({
             getContainer();
             const hash = decodeURIComponent(window.location.hash);
             if (hash) {
-                scrollIntoView(hash);
+                scrollIntoView2(hash);
                 handleAnchorChange(hash);
             } else {
                 handleScroll();
@@ -2238,7 +2388,7 @@ var _sfc_main10 = defineComponent({
                 [`${linkCls}-active`]: (context == null ? void 0 : context.currentLink) === props.href,
             },
         ]);
-        const handleClick = (e) => (context == null ? void 0 : context.handleClick(e, props.href));
+        const handleClick = (e2) => (context == null ? void 0 : context.handleClick(e2, props.href));
         return {
             prefixCls,
             linkCls,
@@ -2716,9 +2866,9 @@ var _Input = defineComponent({
             _value.value = value;
             emit("update:modelValue", value);
         };
-        const handleMousedown = (e) => {
-            if (inputRef.value && e.target !== inputRef.value) {
-                e.preventDefault();
+        const handleMousedown = (e2) => {
+            if (inputRef.value && e2.target !== inputRef.value) {
+                e2.preventDefault();
                 inputRef.value.focus();
             }
         };
@@ -2743,10 +2893,10 @@ var _Input = defineComponent({
             emit("blur", ev);
             (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onBlur) == null ? void 0 : _b.call(_a, ev);
         };
-        const handleComposition = (e) => {
+        const handleComposition = (e2) => {
             var _a, _b, _c;
-            const { value, selectionStart, selectionEnd } = e.target;
-            if (e.type === "compositionend") {
+            const { value, selectionStart, selectionEnd } = e2.target;
+            if (e2.type === "compositionend") {
                 isComposition.value = false;
                 compositionValue.value = "";
                 if (
@@ -2760,12 +2910,12 @@ var _Input = defineComponent({
                     return;
                 }
                 updateValue(value);
-                emit("input", value, e);
-                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e);
+                emit("input", value, e2);
+                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e2);
                 keepControl();
             } else {
                 isComposition.value = true;
-                compositionValue.value = computedValue.value + ((_c = e.data) != null ? _c : "");
+                compositionValue.value = computedValue.value + ((_c = e2.data) != null ? _c : "");
             }
         };
         const keepControl = () => {
@@ -2777,23 +2927,23 @@ var _Input = defineComponent({
                 }
             });
         };
-        const handleInput = (e) => {
+        const handleInput = (e2) => {
             var _a, _b;
-            const { value } = e.target;
+            const { value } = e2.target;
             if (!isComposition.value) {
                 if (
                     maxLength.value &&
                     !maxLengthErrorOnly.value &&
                     valueLength.value >= maxLength.value &&
                     getValueLength(value) > maxLength.value &&
-                    e.inputType === "insertText"
+                    e2.inputType === "insertText"
                 ) {
                     keepControl();
                     return;
                 }
                 updateValue(value);
-                emit("input", value, e);
-                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e);
+                emit("input", value, e2);
+                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e2);
                 keepControl();
             }
         };
@@ -2802,11 +2952,11 @@ var _Input = defineComponent({
             emitChange("", ev);
             emit("clear", ev);
         };
-        const handleKeyDown = (e) => {
-            const keyCode = e.key || e.code;
+        const handleKeyDown = (e2) => {
+            const keyCode = e2.key || e2.code;
             if (!isComposition.value && keyCode === Enter.key) {
-                emitChange(computedValue.value, e);
-                emit("pressEnter", e);
+                emitChange(computedValue.value, e2);
+                emit("pressEnter", e2);
             }
         };
         const outerCls = computed(() => [
@@ -3349,9 +3499,9 @@ var InputSearch = defineComponent({
         const prefixCls = getPrefixCls("input-search");
         const { mergedSize } = useSize(size);
         const inputRef = ref();
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (inputRef.value.inputRef) {
-                emit("search", inputRef.value.inputRef.value, e);
+                emit("search", inputRef.value.inputRef.value, e2);
             }
         };
         const renderSuffix = () => {
@@ -4608,9 +4758,9 @@ var _Trigger = defineComponent({
                 delayTimer = 0;
             }
         };
-        const updateMousePosition = (e) => {
+        const updateMousePosition = (e2) => {
             if (props.alignPoint) {
-                const { pageX, pageY } = e;
+                const { pageX, pageY } = e2;
                 mousePosition.value = {
                     top: pageY,
                     left: pageX,
@@ -4693,55 +4843,55 @@ var _Trigger = defineComponent({
                 update2();
             }
         };
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             var _a;
-            (_a = attrs.onClick) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onClick) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || (computedVisible.value && !props.clickToClose)) {
                 return;
             }
             if (triggerMethods.value.includes("click")) {
-                updateMousePosition(e);
+                updateMousePosition(e2);
                 changeVisible(!computedVisible.value);
             } else if (triggerMethods.value.includes("contextMenu") && computedVisible.value) {
                 changeVisible(false);
             }
         };
-        const handleMouseEnter = (e) => {
+        const handleMouseEnter = (e2) => {
             var _a;
-            (_a = attrs.onMouseenter) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onMouseenter) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || !triggerMethods.value.includes("hover")) {
                 return;
             }
-            updateMousePosition(e);
+            updateMousePosition(e2);
             changeVisible(true, props.mouseEnterDelay);
         };
-        const handleMouseEnterWithContext = (e) => {
-            triggerCtx == null ? void 0 : triggerCtx.onMouseenter(e);
-            handleMouseEnter(e);
+        const handleMouseEnterWithContext = (e2) => {
+            triggerCtx == null ? void 0 : triggerCtx.onMouseenter(e2);
+            handleMouseEnter(e2);
         };
-        const handleMouseLeave = (e) => {
+        const handleMouseLeave = (e2) => {
             var _a;
-            (_a = attrs.onMouseleave) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onMouseleave) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || !triggerMethods.value.includes("hover")) {
                 return;
             }
             changeVisible(false, props.mouseLeaveDelay);
         };
-        const handleMouseLeaveWithContext = (e) => {
-            triggerCtx == null ? void 0 : triggerCtx.onMouseleave(e);
-            handleMouseLeave(e);
+        const handleMouseLeaveWithContext = (e2) => {
+            triggerCtx == null ? void 0 : triggerCtx.onMouseleave(e2);
+            handleMouseLeave(e2);
         };
-        const handleFocusin = (e) => {
+        const handleFocusin = (e2) => {
             var _a;
-            (_a = attrs.onFocusin) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onFocusin) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || !triggerMethods.value.includes("focus")) {
                 return;
             }
             changeVisible(true, props.focusDelay);
         };
-        const handleFocusout = (e) => {
+        const handleFocusout = (e2) => {
             var _a;
-            (_a = attrs.onFocusout) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onFocusout) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || !triggerMethods.value.includes("focus")) {
                 return;
             }
@@ -4750,15 +4900,15 @@ var _Trigger = defineComponent({
             }
             changeVisible(false);
         };
-        const handleContextmenu = (e) => {
+        const handleContextmenu = (e2) => {
             var _a;
-            (_a = attrs.onContextmenu) == null ? void 0 : _a.call(attrs, e);
+            (_a = attrs.onContextmenu) == null ? void 0 : _a.call(attrs, e2);
             if (props.disabled || !triggerMethods.value.includes("contextMenu") || (computedVisible.value && !props.clickToClose)) {
                 return;
             }
-            updateMousePosition(e);
+            updateMousePosition(e2);
             changeVisible(!computedVisible.value);
-            e.preventDefault();
+            e2.preventDefault();
         };
         const addChildRef = (ref2) => {
             childrenRefs.add(ref2);
@@ -4786,13 +4936,13 @@ var _Trigger = defineComponent({
             var _a;
             return props.hideEmpty && isEmptyChildren((_a = contentSlot.value) == null ? void 0 : _a.call(contentSlot));
         });
-        const handleOutsideClick = (e) => {
+        const handleOutsideClick = (e2) => {
             var _a, _b, _c;
-            if (((_a = firstElement.value) == null ? void 0 : _a.contains(e.target)) || ((_b = popupRef.value) == null ? void 0 : _b.contains(e.target))) {
+            if (((_a = firstElement.value) == null ? void 0 : _a.contains(e2.target)) || ((_b = popupRef.value) == null ? void 0 : _b.contains(e2.target))) {
                 return;
             }
             for (const item of childrenRefs) {
-                if ((_c = item.value) == null ? void 0 : _c.contains(e.target)) {
+                if ((_c = item.value) == null ? void 0 : _c.contains(e2.target)) {
                     return;
                 }
             }
@@ -4804,10 +4954,10 @@ var _Trigger = defineComponent({
             const { scrollTop: newScrollTop, scrollLeft: newScrollLeft } = element;
             return Math.abs(newScrollTop - scrollTop) >= props.scrollToCloseDistance || Math.abs(newScrollLeft - scrollLeft) >= props.scrollToCloseDistance;
         };
-        const handleScroll = throttleByRaf((e) => {
+        const handleScroll = throttleByRaf((e2) => {
             if (computedVisible.value) {
                 if (props.scrollToClose || (configCtx == null ? void 0 : configCtx.scrollToClose)) {
-                    const element = e.target;
+                    const element = e2.target;
                     if (!scrollPosition) {
                         scrollPosition = [element.scrollTop, element.scrollLeft];
                     }
@@ -4825,8 +4975,8 @@ var _Trigger = defineComponent({
             off(window, "scroll", onWindowScroll);
             windowListener = false;
         };
-        const onWindowScroll = throttleByRaf((e) => {
-            const element = e.target.documentElement;
+        const onWindowScroll = throttleByRaf((e2) => {
+            const element = e2.target.documentElement;
             if (!windowScrollPosition) {
                 windowScrollPosition = [element.scrollTop, element.scrollLeft];
             }
@@ -4844,9 +4994,9 @@ var _Trigger = defineComponent({
             handleResize();
             emit("resize");
         };
-        const handlePopupMouseDown = (e) => {
+        const handlePopupMouseDown = (e2) => {
             if (props.preventFocus) {
-                e.preventDefault();
+                e2.preventDefault();
             }
         };
         triggerCtx == null ? void 0 : triggerCtx.addChildRef(popupRef);
@@ -5202,7 +5352,7 @@ var Empty = defineComponent({
     },
     setup(props, { slots, attrs }) {
         const prefixCls = getPrefixCls("empty");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const configCtx = inject(configProviderInjectionKey, void 0);
         return () => {
             var _a, _b, _c, _d;
@@ -5245,7 +5395,7 @@ var Empty = defineComponent({
                         {
                             class: `${prefixCls}-description`,
                         },
-                        [(_d = (_c = slots.default) == null ? void 0 : _c.call(slots)) != null ? _d : props.description || t("empty.description")],
+                        [(_d = (_c = slots.default) == null ? void 0 : _c.call(slots)) != null ? _d : props.description || t2("empty.description")],
                     ),
                 ],
             );
@@ -5973,13 +6123,13 @@ var _sfc_main23 = defineComponent({
             (_c = (_b = configCtx == null ? void 0 : (_a = configCtx.slots).empty) == null ? void 0 : _b.call(_a, { component: "select" })) == null ? void 0 : _c[0];
         const { componentRef: wrapperComRef, elementRef: wrapperRef } = useComponentRef("containerRef");
         const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
-        const handleScroll = (e) => {
-            const { scrollTop, scrollHeight, offsetHeight } = e.target;
+        const handleScroll = (e2) => {
+            const { scrollTop, scrollHeight, offsetHeight } = e2.target;
             const bottom = scrollHeight - (scrollTop + offsetHeight);
             if (bottom <= props.bottomOffset) {
-                emit("reachBottom", e);
+                emit("reachBottom", e2);
             }
-            emit("scroll", e);
+            emit("scroll", e2);
         };
         const cls = computed(() => [
             prefixCls,
@@ -6193,9 +6343,9 @@ var _Checkbox = defineComponent({
         const handleClick = (ev) => {
             ev.stopPropagation();
         };
-        const handleChange = (e) => {
+        const handleChange = (e2) => {
             var _a, _b, _c, _d;
-            const { checked } = e.target;
+            const { checked } = e2.target;
             let newValue = checked;
             if (isArray(computedValue.value)) {
                 const set = new Set(computedValue.value);
@@ -6208,11 +6358,11 @@ var _Checkbox = defineComponent({
             }
             _checked.value = checked;
             if (isGroup && isArray(newValue)) {
-                checkboxGroupCtx == null ? void 0 : checkboxGroupCtx.handleChange(newValue, e);
+                checkboxGroupCtx == null ? void 0 : checkboxGroupCtx.handleChange(newValue, e2);
             } else {
                 emit("update:modelValue", newValue);
-                emit("change", newValue, e);
-                (_d = (_c = eventHandlers.value) == null ? void 0 : _c.onChange) == null ? void 0 : _d.call(_c, e);
+                emit("change", newValue, e2);
+                (_d = (_c = eventHandlers.value) == null ? void 0 : _c.onChange) == null ? void 0 : _d.call(_c, e2);
             }
             nextTick(() => {
                 if (checkboxRef.value && checkboxRef.value.checked !== computedChecked.value) {
@@ -6382,12 +6532,12 @@ var CheckboxGroup = defineComponent({
                 return option;
             });
         });
-        const handleChange = (value, e) => {
+        const handleChange = (value, e2) => {
             var _a, _b;
             _value.value = value;
             emit("update:modelValue", value);
-            emit("change", value, e);
-            (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onChange) == null ? void 0 : _b.call(_a, e);
+            emit("change", value, e2);
+            (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onChange) == null ? void 0 : _b.call(_a, e2);
         };
         provide(
             checkboxGroupKey,
@@ -7053,7 +7203,7 @@ var useSelect = ({
         const nextIndex = (_length + activeIndex + (direction === "up" ? -1 : 1)) % _length;
         return enabledOptionKeys.value[nextIndex];
     };
-    const scrollIntoView = (key) => {
+    const scrollIntoView2 = (key) => {
         var _a, _b;
         if (virtualListRef == null ? void 0 : virtualListRef.value) {
             virtualListRef.value.scrollTo({ key });
@@ -7088,7 +7238,7 @@ var useSelect = ({
             }
             nextTick(() => {
                 if (activeKey.value) {
-                    scrollIntoView(activeKey.value);
+                    scrollIntoView2(activeKey.value);
                 }
             });
         }
@@ -7097,52 +7247,52 @@ var useSelect = ({
         /* @__PURE__ */ new Map([
             [
                 KEYBOARD_KEY.ENTER,
-                (e) => {
-                    if (!(loading == null ? void 0 : loading.value) && !e.isComposing) {
+                (e2) => {
+                    if (!(loading == null ? void 0 : loading.value) && !e2.isComposing) {
                         if (popupVisible.value) {
                             if (activeKey.value) {
-                                onSelect(activeKey.value, e);
-                                e.preventDefault();
+                                onSelect(activeKey.value, e2);
+                                e2.preventDefault();
                             }
                         } else if (enterToOpen) {
                             onPopupVisibleChange(true);
-                            e.preventDefault();
+                            e2.preventDefault();
                         }
                     }
                 },
             ],
             [
                 KEYBOARD_KEY.ESC,
-                (e) => {
+                (e2) => {
                     if (popupVisible.value) {
                         onPopupVisibleChange(false);
-                        e.preventDefault();
+                        e2.preventDefault();
                     }
                 },
             ],
             [
                 KEYBOARD_KEY.ARROW_DOWN,
-                (e) => {
+                (e2) => {
                     if (popupVisible.value) {
                         const next = getNextActiveKey("down");
                         if (next) {
                             activeKey.value = next;
-                            scrollIntoView(next);
+                            scrollIntoView2(next);
                         }
-                        e.preventDefault();
+                        e2.preventDefault();
                     }
                 },
             ],
             [
                 KEYBOARD_KEY.ARROW_UP,
-                (e) => {
+                (e2) => {
                     if (popupVisible.value) {
                         const next = getNextActiveKey("up");
                         if (next) {
                             activeKey.value = next;
-                            scrollIntoView(next);
+                            scrollIntoView2(next);
                         }
-                        e.preventDefault();
+                        e2.preventDefault();
                     }
                 },
             ],
@@ -7175,7 +7325,7 @@ var useSelect = ({
         addSlotOptionInfo,
         removeSlotOptionInfo,
         getNextActiveKey,
-        scrollIntoView,
+        scrollIntoView: scrollIntoView2,
         handleKeyDown,
     };
 };
@@ -7706,11 +7856,11 @@ var _AutoComplete = defineComponent({
             emit("search", value);
             handleChange(value);
         };
-        const handleDropdownScroll = (e) => {
-            emit("dropdownScroll", e);
+        const handleDropdownScroll = (e2) => {
+            emit("dropdownScroll", e2);
         };
-        const handleDropdownReachBottom = (e) => {
-            emit("dropdownReachBottom", e);
+        const handleDropdownReachBottom = (e2) => {
+            emit("dropdownReachBottom", e2);
         };
         const { validOptions, optionInfoMap, validOptionInfos, handleKeyDown } = useSelect({
             options: data,
@@ -8112,8 +8262,8 @@ var _sfc_main27 = defineComponent({
         });
         const cls = computed(() => [prefixCls, `${prefixCls}-${mergedShape.value}`]);
         const wrapperCls = computed(() => (isImage2.value || props.imageUrl ? `${prefixCls}-image` : `${prefixCls}-text`));
-        const onClick = (e) => {
-            emit("click", e);
+        const onClick = (e2) => {
+            emit("click", e2);
         };
         const handleResize = () => {
             if (mergedAutoFixFontSize.value) {
@@ -9224,13 +9374,13 @@ var _sfc_main34 = defineComponent({
         const prefixCls = getPrefixCls("dropdown");
         const dropdownCtx = inject(dropdownInjectionKey, {});
         const wrapperRef = ref();
-        const handleScroll = (e) => {
-            const { scrollTop, scrollHeight, offsetHeight } = e.target;
+        const handleScroll = (e2) => {
+            const { scrollTop, scrollHeight, offsetHeight } = e2.target;
             const bottom = scrollHeight - (scrollTop + offsetHeight);
             if (bottom <= props.bottomOffset) {
-                emit("reachBottom", e);
+                emit("reachBottom", e2);
             }
-            emit("scroll", e);
+            emit("scroll", e2);
         };
         const style = computed(() => {
             if (isNumber(dropdownCtx.popupMaxHeight)) {
@@ -10392,7 +10542,7 @@ function getDayjsValue(time, format) {
     return formatValue(time);
 }
 function getDateValue(value) {
-    const formatValue = (t) => (t ? t.toDate() : void 0);
+    const formatValue = (t2) => (t2 ? t2.toDate() : void 0);
     if (isArray(value)) {
         return value.map(formatValue);
     }
@@ -10460,7 +10610,7 @@ var Week = defineComponent({
     setup(props) {
         const { dayStartOfWeek, isWeek, panel, mode } = toRefs(props);
         const prefixCls = getPrefixCls("calendar-week-list");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const weekList = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
         if (dayStartOfWeek.value === 0) {
             weekList.unshift("sunday");
@@ -10484,7 +10634,7 @@ var Week = defineComponent({
                                 class: `${prefixCls}-item`,
                                 key: w,
                             },
-                            [t(`calendar.week.${panel.value || mode.value === "year" ? "short" : "long"}.${w}`)],
+                            [t2(`calendar.week.${panel.value || mode.value === "year" ? "short" : "long"}.${w}`)],
                         ),
                     ),
                 ],
@@ -10723,7 +10873,7 @@ var Month = defineComponent({
                     const rowYear = props.value.year();
                     const rowMonth = props.value.month() + 1;
                     const rowWeek = props.value.week();
-                    const selectedWeek = props.value && col.weekRows.find((r) => r.year === rowYear && r.month === rowMonth) && rowWeek === col.weekOfYear;
+                    const selectedWeek = props.value && col.weekRows.find((r2) => r2.year === rowYear && r2.month === rowMonth) && rowWeek === col.weekOfYear;
                     return createVNode(
                         "div",
                         {
@@ -10879,7 +11029,7 @@ var Year = defineComponent({
                 isSameTime: (current, target3) => current.isSame(target3, "month"),
             }),
         );
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const showYear = computed(() => props.pageShowData.year());
         const mg = props.panel ? monthGroupPanel : monthGroup;
         return () =>
@@ -10932,7 +11082,7 @@ var Year = defineComponent({
                                                               {
                                                                   class: `${prefixCls}-date-value`,
                                                               },
-                                                              [t(`calendar.month.short.${col.name}`)],
+                                                              [t2(`calendar.month.short.${col.name}`)],
                                                           ),
                                                       ],
                                                   )
@@ -10947,7 +11097,7 @@ var Year = defineComponent({
                                                               {
                                                                   class: `${prefixCls}-month-title`,
                                                               },
-                                                              [t(`calendar.month.long.${col.name}`)],
+                                                              [t2(`calendar.month.long.${col.name}`)],
                                                           ),
                                                           createVNode(
                                                               Month,
@@ -11659,9 +11809,9 @@ var _InputTag = defineComponent({
                 _value.value = [];
             }
         });
-        const handleMousedown = (e) => {
-            if (inputRef.value && e.target !== inputRef.value) {
-                e.preventDefault();
+        const handleMousedown = (e2) => {
+            if (inputRef.value && e2.target !== inputRef.value) {
+                e2.preventDefault();
                 inputRef.value.focus();
             }
         };
@@ -11703,31 +11853,31 @@ var _InputTag = defineComponent({
             emit("change", value, ev);
             (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onChange) == null ? void 0 : _b.call(_a, ev);
         };
-        const handleRemove = (value, index2, e) => {
+        const handleRemove = (value, index2, e2) => {
             var _a;
             const newValue = (_a = computedValue.value) == null ? void 0 : _a.filter((_, i2) => i2 !== index2);
-            updateValue(newValue, e);
-            emit("remove", value, e);
+            updateValue(newValue, e2);
+            emit("remove", value, e2);
         };
-        const handleClear = (e) => {
+        const handleClear = (e2) => {
             const newValue = [];
-            updateValue(newValue, e);
-            emit("clear", e);
+            updateValue(newValue, e2);
+            emit("clear", e2);
         };
         const showClearBtn = computed(() => !mergedDisabled.value && !props.readonly && props.allowClear && Boolean(computedValue.value.length));
-        const handlePressEnter = (e) => {
+        const handlePressEnter = (e2) => {
             var _a;
             if (computedInputValue.value) {
-                e.preventDefault();
+                e2.preventDefault();
                 if (props.uniqueValue && ((_a = computedValue.value) == null ? void 0 : _a.includes(computedInputValue.value))) {
-                    emit("pressEnter", computedInputValue.value, e);
+                    emit("pressEnter", computedInputValue.value, e2);
                     return;
                 }
                 const newValue = computedValue.value.concat(computedInputValue.value);
-                updateValue(newValue, e);
-                emit("pressEnter", computedInputValue.value, e);
+                updateValue(newValue, e2);
+                emit("pressEnter", computedInputValue.value, e2);
                 if (!retainInputValue.value.create) {
-                    updateInputValue("", e);
+                    updateInputValue("", e2);
                 }
             }
         };
@@ -11754,18 +11904,18 @@ var _InputTag = defineComponent({
             }
             return -1;
         };
-        const handleKeyDown = (e) => {
+        const handleKeyDown = (e2) => {
             if (mergedDisabled.value || props.readonly) {
                 return;
             }
-            const keyCode = e.key || e.code;
+            const keyCode = e2.key || e2.code;
             if (!isComposition.value && computedInputValue.value && keyCode === Enter.key) {
-                handlePressEnter(e);
+                handlePressEnter(e2);
             }
             if (!isComposition.value && tags.value.length > 0 && !computedInputValue.value && keyCode === Backspace.key) {
                 const lastIndex = getLastClosableIndex();
                 if (lastIndex >= 0) {
-                    handleRemove(valueData.value[lastIndex].value, lastIndex, e);
+                    handleRemove(valueData.value[lastIndex].value, lastIndex, e2);
                 }
             }
         };
@@ -11931,7 +12081,7 @@ var _InputTag = defineComponent({
                             {
                                 class: `${prefixCls}-clear-btn`,
                                 onClick: handleClear,
-                                onMousedown: (e) => e.stopPropagation(),
+                                onMousedown: (e2) => e2.stopPropagation(),
                             },
                             {
                                 default: () => [createVNode(IconClose, null, null)],
@@ -12675,21 +12825,21 @@ var _Select = defineComponent({
             updateValue(newKeys);
             emit("remove", optionInfo == null ? void 0 : optionInfo.value);
         };
-        const handleClear = (e) => {
-            e == null ? void 0 : e.stopPropagation();
+        const handleClear = (e2) => {
+            e2 == null ? void 0 : e2.stopPropagation();
             const newKeys = computedValueKeys.value.filter((key) => {
                 var _a;
                 return (_a = optionInfoMap.get(key)) == null ? void 0 : _a.disabled;
             });
             updateValue(newKeys);
             updateInputValue("");
-            emit("clear", e);
+            emit("clear", e2);
         };
-        const handleDropdownScroll = (e) => {
-            emit("dropdownScroll", e);
+        const handleDropdownScroll = (e2) => {
+            emit("dropdownScroll", e2);
         };
-        const handleDropdownReachBottom = (e) => {
-            emit("dropdownReachBottom", e);
+        const handleDropdownReachBottom = (e2) => {
+            emit("dropdownReachBottom", e2);
         };
         const { validOptions, optionInfoMap, validOptionInfos, enabledOptionKeys, handleKeyDown } = useSelect({
             multiple,
@@ -13014,15 +13164,15 @@ var _Radio = defineComponent({
         const handleClick = (ev) => {
             ev.stopPropagation();
         };
-        const handleChange = (e) => {
+        const handleChange = (e2) => {
             var _a, _b, _c, _d, _e;
             _checked.value = true;
             if (isGroup.value) {
-                radioGroupCtx == null ? void 0 : radioGroupCtx.handleChange((_a = props.value) != null ? _a : true, e);
+                radioGroupCtx == null ? void 0 : radioGroupCtx.handleChange((_a = props.value) != null ? _a : true, e2);
             } else {
                 emit("update:modelValue", (_b = props.value) != null ? _b : true);
-                emit("change", (_c = props.value) != null ? _c : true, e);
-                (_e = (_d = eventHandlers.value) == null ? void 0 : _d.onChange) == null ? void 0 : _e.call(_d, e);
+                emit("change", (_c = props.value) != null ? _c : true, e2);
+                (_e = (_d = eventHandlers.value) == null ? void 0 : _d.onChange) == null ? void 0 : _e.call(_d, e2);
             }
             nextTick(() => {
                 if (inputRef.value && inputRef.value.checked !== computedChecked.value) {
@@ -13177,12 +13327,12 @@ var RadioGroup = defineComponent({
                 return option;
             });
         });
-        const handleChange = (value, e) => {
+        const handleChange = (value, e2) => {
             var _a, _b;
             _value.value = value;
             emit("update:modelValue", value);
-            emit("change", value, e);
-            (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onChange) == null ? void 0 : _b.call(_a, e);
+            emit("change", value, e2);
+            (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onChange) == null ? void 0 : _b.call(_a, e2);
         };
         provide(
             radioGroupKey,
@@ -13411,10 +13561,10 @@ var Header = defineComponent({
     emits: ["yearChange", "monthChange"],
     setup(props, { slots }) {
         const prefixCls = getPrefixCls("calendar");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const modesOptions = isArray(props.modes)
             ? props.modes.map((m) => ({
-                  label: t(`datePicker.view.${m}`),
+                  label: t2(`datePicker.view.${m}`),
                   value: m,
               }))
             : [];
@@ -13516,7 +13666,7 @@ var Header = defineComponent({
                                     size: "small",
                                     onClick: () => props.move(getNow()),
                                 },
-                                _isSlot2((_slot = t(`datePicker.today`)))
+                                _isSlot2((_slot = t2(`datePicker.today`)))
                                     ? _slot
                                     : {
                                           default: () => [_slot],
@@ -13607,7 +13757,7 @@ var _Calendar = defineComponent({
         const { dayStartOfWeek, isWeek } = toRefs(props);
         const prefixCls = getPrefixCls("calendar");
         const _mode = ref(props.defaultMode);
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const computedMode = computed(() => {
             if (props.mode) {
                 return props.mode;
@@ -13646,9 +13796,9 @@ var _Calendar = defineComponent({
         }
         let headerValueFormat = "";
         if (computedMode.value === "month") {
-            headerValueFormat = t("calendar.formatMonth");
+            headerValueFormat = t2("calendar.formatMonth");
         } else if (computedMode.value === "year") {
-            headerValueFormat = t("calendar.formatYear");
+            headerValueFormat = t2("calendar.formatYear");
         }
         function changePageShowDate(type, unit) {
             if (type === "prev") {
@@ -13769,7 +13919,7 @@ var _Calendar = defineComponent({
                             {
                                 class: `${prefixCls}-footer-btn-wrapper`,
                             },
-                            [t("today")],
+                            [t2("today")],
                         ),
                 ],
             );
@@ -15832,8 +15982,8 @@ var _sfc_main49 = defineComponent({
                 handleInputValueChange("", "optionListHide");
             }
         });
-        const handleClear = (e) => {
-            e.stopPropagation();
+        const handleClear = (e2) => {
+            e2.stopPropagation();
             if (props.multiple) {
                 const newValues = [];
                 computedValueMap.value.forEach((value, key) => {
@@ -15850,11 +16000,11 @@ var _sfc_main49 = defineComponent({
             emit("clear");
         };
         const showSearchPanel = computed(() => props.allowSearch && computedInputValue.value.length > 0);
-        const handleFocus = (e) => {
-            emit("focus", e);
+        const handleFocus = (e2) => {
+            emit("focus", e2);
         };
-        const handleBlur = (e) => {
-            emit("blur", e);
+        const handleBlur = (e2) => {
+            emit("blur", e2);
         };
         const { activeKey, activeOption, selectedPath, displayColumns, setActiveKey, setSelectedPath, getNextActiveNode } = useSelectedPath(optionInfos, {
             optionMap,
@@ -16526,7 +16676,7 @@ var _sfc_main51 = defineComponent({
             }
             return activeKey;
         });
-        const handleClick = (key, e) => {
+        const handleClick = (key, e2) => {
             let newActiveKeys = [];
             if (props.accordion) {
                 if (!computedActiveKeys.value.includes(key)) {
@@ -16546,7 +16696,7 @@ var _sfc_main51 = defineComponent({
                 _activeKey.value = newActiveKeys;
             }
             emit("update:activeKey", newActiveKeys);
-            emit("change", newActiveKeys, e);
+            emit("change", newActiveKeys, e2);
         };
         provide(
             collapseKey,
@@ -16834,10 +16984,10 @@ var CollapseItem = defineComponent({
             var _a2;
             return (_a2 = collapseCtx == null ? void 0 : collapseCtx.expandIconPosition) != null ? _a2 : "left";
         });
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             var _a2;
             if (!props.disabled) {
-                (_a2 = collapseCtx.handleClick) == null ? void 0 : _a2.call(collapseCtx, key, e);
+                (_a2 = collapseCtx.handleClick) == null ? void 0 : _a2.call(collapseCtx, key, e2);
             }
         };
         watch(isActive, (isActive2) => {
@@ -17055,23 +17205,23 @@ var hsvToRgb = (h2, s, v) => {
     const f = h2 * 6 - i2;
     const p = v * (1 - s);
     const q = v * (1 - f * s);
-    const t = v * (1 - (1 - f) * s);
+    const t2 = v * (1 - (1 - f) * s);
     const mod = i2 % 6;
-    const r = [v, q, p, p, t, v][mod];
-    const g = [t, v, v, q, p, p][mod];
-    const b = [p, p, t, v, v, q][mod];
+    const r2 = [v, q, p, p, t2, v][mod];
+    const g = [t2, v, v, q, p, p][mod];
+    const b = [p, p, t2, v, v, q][mod];
     return {
-        r: Math.round(r * 255),
+        r: Math.round(r2 * 255),
         g: Math.round(g * 255),
         b: Math.round(b * 255),
     };
 };
-var rgbToHsv = (r, g, b) => {
-    r /= 255;
+var rgbToHsv = (r2, g, b) => {
+    r2 /= 255;
     g /= 255;
     b /= 255;
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
+    const max = Math.max(r2, g, b);
+    const min = Math.min(r2, g, b);
     let h2 = 0;
     const v = max;
     const d = max - min;
@@ -17080,14 +17230,14 @@ var rgbToHsv = (r, g, b) => {
         h2 = 0;
     } else {
         switch (max) {
-            case r:
+            case r2:
                 h2 = (g - b) / d + (g < b ? 6 : 0);
                 break;
             case g:
-                h2 = (b - r) / d + 2;
+                h2 = (b - r2) / d + 2;
                 break;
             case b:
-                h2 = (r - g) / d + 4;
+                h2 = (r2 - g) / d + 4;
                 break;
         }
         h2 /= 6;
@@ -17207,13 +17357,13 @@ var hexToRgb = (color) => {
     }
     return false;
 };
-var rgbToHex = (r, g, b) => {
-    const hex = [Math.round(r).toString(16).padStart(2, "0"), Math.round(g).toString(16).padStart(2, "0"), Math.round(b).toString(16).padStart(2, "0")];
+var rgbToHex = (r2, g, b) => {
+    const hex = [Math.round(r2).toString(16).padStart(2, "0"), Math.round(g).toString(16).padStart(2, "0"), Math.round(b).toString(16).padStart(2, "0")];
     return hex.join("").toUpperCase();
 };
-var rgbaToHex = (r, g, b, a) => {
+var rgbaToHex = (r2, g, b, a) => {
     const hex = [
-        Math.round(r).toString(16).padStart(2, "0"),
+        Math.round(r2).toString(16).padStart(2, "0"),
         Math.round(g).toString(16).padStart(2, "0"),
         Math.round(b).toString(16).padStart(2, "0"),
         Math.round(a * 255)
@@ -17959,7 +18109,7 @@ var _InputNumber = defineComponent({
                                 type: "button",
                                 tabindex: "-1",
                                 disabled: mergedDisabled.value || isMax.value,
-                                onMousedown: (e) => handleStepButton(e, "plus", true),
+                                onMousedown: (e2) => handleStepButton(e2, "plus", true),
                                 onMouseup: clearRepeatTimer,
                                 onMouseleave: clearRepeatTimer,
                             },
@@ -17977,7 +18127,7 @@ var _InputNumber = defineComponent({
                                 type: "button",
                                 tabindex: "-1",
                                 disabled: mergedDisabled.value || isMin.value,
-                                onMousedown: (e) => handleStepButton(e, "minus", true),
+                                onMousedown: (e2) => handleStepButton(e2, "minus", true),
                                 onMouseup: clearRepeatTimer,
                                 onMouseleave: clearRepeatTimer,
                             },
@@ -18329,7 +18479,7 @@ var Panel = defineComponent({
         onHsvChange: Function,
     },
     setup(props) {
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const prefixCls = getPrefixCls("color-picker");
         const hsv = computed(() => props.color.hsv);
         const [format, setFormat] = useState(props.format || "hex");
@@ -18419,7 +18569,7 @@ var Panel = defineComponent({
                                       {
                                           class: `${prefixCls}-colors-empty`,
                                       },
-                                      [t("colorPicker.empty")],
+                                      [t2("colorPicker.empty")],
                                   ),
                         ],
                     ),
@@ -18433,8 +18583,8 @@ var Panel = defineComponent({
                         class: `${prefixCls}-panel-colors`,
                     },
                     [
-                        props.showHistory && renderColorSection(t("colorPicker.history"), props.historyColors),
-                        props.showPreset && renderColorSection(t("colorPicker.preset"), props.presetColors),
+                        props.showHistory && renderColorSection(t2("colorPicker.history"), props.historyColors),
+                        props.showPreset && renderColorSection(t2("colorPicker.preset"), props.presetColors),
                     ],
                 );
             }
@@ -18663,15 +18813,15 @@ var _ColorPicker = defineComponent({
             };
         });
         const colorString = computed(() => {
-            const { r, g, b } = color.value.rgb;
-            return `rgba(${r}, ${g}, ${b}, ${alpha.value.toFixed(2)})`;
+            const { r: r2, g, b } = color.value.rgb;
+            return `rgba(${r2}, ${g}, ${b}, ${alpha.value.toFixed(2)})`;
         });
         const formatValue = computed(() => {
-            const { r, g, b } = color.value.rgb;
+            const { r: r2, g, b } = color.value.rgb;
             if (props.format === "rgb") {
-                return alpha.value < 1 && !props.disabledAlpha ? `rgba(${r}, ${g}, ${b}, ${alpha.value.toFixed(2)})` : `rgb(${r}, ${g}, ${b})`;
+                return alpha.value < 1 && !props.disabledAlpha ? `rgba(${r2}, ${g}, ${b}, ${alpha.value.toFixed(2)})` : `rgb(${r2}, ${g}, ${b})`;
             }
-            return alpha.value < 1 && !props.disabledAlpha ? `#${rgbaToHex(r, g, b, alpha.value)}` : `#${rgbToHex(r, g, b)}`;
+            return alpha.value < 1 && !props.disabledAlpha ? `#${rgbaToHex(r2, g, b, alpha.value)}` : `#${rgbToHex(r2, g, b)}`;
         });
         watch(formatValue, (value) => {
             emit("update:modelValue", value);
@@ -19155,14 +19305,14 @@ var _sfc_main58 = defineComponent({
             onPressEnter() {
                 emit("press-enter");
             },
-            onChange(e) {
-                emit("change", e);
+            onChange(e2) {
+                emit("change", e2);
             },
-            onClear(e) {
-                emit("clear", e);
+            onClear(e2) {
+                emit("clear", e2);
             },
-            onBlur(e) {
-                emit("blur", e);
+            onBlur(e2) {
+                emit("blur", e2);
             },
         };
     },
@@ -19330,7 +19480,7 @@ function scrollTo(element, to, duration) {
 function getFormattedValue(time, format) {
     const formatValue = (time2) => {
         if (isArray(time2)) {
-            return time2.map((t) => formatValue(t));
+            return time2.map((t2) => formatValue(t2));
         }
         if (isUndefined(time2)) return void 0;
         return time2.format(format);
@@ -20577,7 +20727,7 @@ var _sfc_main66 = defineComponent({
     setup(props, { emit }) {
         const { value, visible, format, step, use12Hours, hideDisabledOptions, disabledHours, disabledMinutes, disabledSeconds, disabled } = toRefs(props);
         const prefixCls = getPrefixCls("timepicker");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const {
             columns,
             use12Hours: computedUse12Hours,
@@ -20683,7 +20833,7 @@ var _sfc_main66 = defineComponent({
         }
         return {
             prefixCls,
-            t,
+            t: t2,
             hours,
             minutes,
             seconds,
@@ -22828,11 +22978,11 @@ var setValueByPath = (obj, path, value, { addPath } = {}) => {
 // node_modules/@arco-design/web-vue/es/date-picker/hooks/use-provide-datepicker-transform.js
 function useDatePickerTransform2(props) {
     const { locale } = toRefs(props);
-    const { locale: i18nLocale, t } = useI18n();
+    const { locale: i18nLocale, t: t2 } = useI18n();
     dayjs.locale(i18nLocale.value.toLowerCase());
     const datePickerT = (key, ...args) => {
         const keyForLocale = key.startsWith("datePicker.") ? key.split(".").slice(1).join(".") : key;
-        return getValueByPath((locale == null ? void 0 : locale.value) || {}, keyForLocale) || t(key, ...args);
+        return getValueByPath((locale == null ? void 0 : locale.value) || {}, keyForLocale) || t2(key, ...args);
     };
     provide(PickerInjectionKey, {
         datePickerT,
@@ -23215,8 +23365,8 @@ var _sfc_main78 = defineComponent({
             if (mergedDisabled.value) return;
             setPanelVisible(visible);
         }
-        function onInputClear(e) {
-            e.stopPropagation();
+        function onInputClear(e2) {
+            e2.stopPropagation();
             confirm(void 0);
             emit("clear");
         }
@@ -23224,9 +23374,9 @@ var _sfc_main78 = defineComponent({
             var _a, _b;
             (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onBlur) == null ? void 0 : _b.call(_a);
         }
-        function onInputChange(e) {
+        function onInputChange(e2) {
             setPanelVisible(true);
-            const targetValue = e.target.value;
+            const targetValue = e2.target.value;
             setInputValue(targetValue);
             if (!isValidInputValue(targetValue, computedFormat.value)) return;
             const newValue = dayjs(targetValue, computedFormat.value);
@@ -23882,18 +24032,18 @@ var _sfc_main79 = defineComponent({
             emit("focused-index-change", index2);
             emit("update:focusedIndex", index2);
         }
-        function onChange(e) {
-            e.stopPropagation();
-            emit("change", e);
+        function onChange(e2) {
+            e2.stopPropagation();
+            emit("change", e2);
         }
         function onPressEnter() {
             emit("press-enter");
         }
-        function onPressTab(e) {
-            e.preventDefault();
+        function onPressTab(e2) {
+            e2.preventDefault();
         }
-        function onClear(e) {
-            emit("clear", e);
+        function onClear(e2) {
+            emit("clear", e2);
         }
         return {
             prefixCls,
@@ -25207,14 +25357,14 @@ var _sfc_main81 = defineComponent({
         function onPanelConfirm() {
             confirm(panelValue.value, false, true);
         }
-        function onInputClear(e) {
-            e.stopPropagation();
+        function onInputClear(e2) {
+            e2.stopPropagation();
             confirm(void 0);
             emit("clear");
         }
-        function onInputChange(e) {
+        function onInputChange(e2) {
             setPanelVisible(true);
-            const targetValue = e.target.value;
+            const targetValue = e2.target.value;
             if (!targetValue) {
                 setInputValue(void 0);
                 return;
@@ -26115,8 +26265,8 @@ var _sfc_main83 = defineComponent({
     },
     emits: {
         "update:visible": (visible) => true,
-        ok: (e) => true,
-        cancel: (e) => true,
+        ok: (e2) => true,
+        cancel: (e2) => true,
         open: () => true,
         close: () => true,
         beforeOpen: () => true,
@@ -26125,7 +26275,7 @@ var _sfc_main83 = defineComponent({
     setup(props, { emit }) {
         const { popupContainer } = toRefs(props);
         const prefixCls = getPrefixCls("drawer");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const _visible = ref(props.defaultVisible);
         const computedVisible = computed(() => {
             var _a;
@@ -26171,7 +26321,7 @@ var _sfc_main83 = defineComponent({
             _visible.value = false;
             emit("update:visible", false);
         };
-        const handleOk = async (e) => {
+        const handleOk = async (e2) => {
             const currentPromiseNumber = promiseNumber;
             const closed = await new Promise(async (resolve) => {
                 var _a;
@@ -26197,27 +26347,27 @@ var _sfc_main83 = defineComponent({
             });
             if (currentPromiseNumber === promiseNumber) {
                 if (closed) {
-                    emit("ok", e);
+                    emit("ok", e2);
                     close();
                 } else if (_okLoading.value) {
                     _okLoading.value = false;
                 }
             }
         };
-        const handleCancel = (e) => {
+        const handleCancel = (e2) => {
             var _a;
             let result = true;
             if (isFunction(props.onBeforeCancel)) {
                 result = (_a = props.onBeforeCancel()) != null ? _a : false;
             }
             if (result) {
-                emit("cancel", e);
+                emit("cancel", e2);
                 close();
             }
         };
-        const handleMask = (e) => {
+        const handleMask = (e2) => {
             if (props.maskClosable) {
-                handleCancel(e);
+                handleCancel(e2);
             }
         };
         const handleOpen = () => {
@@ -26274,7 +26424,7 @@ var _sfc_main83 = defineComponent({
         return {
             prefixCls,
             style,
-            t,
+            t: t2,
             mounted,
             computedVisible,
             mergedOkLoading,
@@ -26601,6 +26751,59 @@ var Drawer = Object.assign(_Drawer, {
     _context: null,
 });
 
+// node_modules/scroll-into-view-if-needed/es/index.js
+function isOptionsObject(options) {
+    return options === Object(options) && Object.keys(options).length !== 0;
+}
+function defaultBehavior(actions, behavior) {
+    if (behavior === void 0) {
+        behavior = "auto";
+    }
+    var canSmoothScroll = "scrollBehavior" in document.body.style;
+    actions.forEach(function (_ref) {
+        var el = _ref.el,
+            top = _ref.top,
+            left = _ref.left;
+        if (el.scroll && canSmoothScroll) {
+            el.scroll({
+                top,
+                left,
+                behavior,
+            });
+        } else {
+            el.scrollTop = top;
+            el.scrollLeft = left;
+        }
+    });
+}
+function getOptions(options) {
+    if (options === false) {
+        return {
+            block: "end",
+            inline: "nearest",
+        };
+    }
+    if (isOptionsObject(options)) {
+        return options;
+    }
+    return {
+        block: "start",
+        inline: "nearest",
+    };
+}
+function scrollIntoView(target3, options) {
+    var isTargetAttached = target3.isConnected || target3.ownerDocument.documentElement.contains(target3);
+    if (isOptionsObject(options) && typeof options.behavior === "function") {
+        return options.behavior(isTargetAttached ? i(target3, options) : []);
+    }
+    if (!isTargetAttached) {
+        return;
+    }
+    var computeOptions = getOptions(options);
+    return defaultBehavior(i(target3, computeOptions), computeOptions.behavior);
+}
+var es_default = scrollIntoView;
+
 // node_modules/@arco-design/web-vue/es/form/interface.js
 var VALIDATE_STATUSES = ["success", "warning", "error", "validating"];
 
@@ -26802,7 +27005,7 @@ var _sfc_main84 = defineComponent({
                 return hasError ? errors : void 0;
             });
         };
-        const handleSubmit = (e) => {
+        const handleSubmit = (e2) => {
             const list = [];
             fields.forEach((field) => {
                 list.push(field.validate());
@@ -26818,11 +27021,11 @@ var _sfc_main84 = defineComponent({
                 });
                 if (hasError) {
                     props.scrollToFirstError && scrollToFirstError(Object.keys(errors)[0]);
-                    emit("submitFailed", { values: model.value, errors }, e);
+                    emit("submitFailed", { values: model.value, errors }, e2);
                 } else {
-                    emit("submitSuccess", model.value, e);
+                    emit("submitSuccess", model.value, e2);
                 }
-                emit("submit", { values: model.value, errors: hasError ? errors : void 0 }, e);
+                emit("submit", { values: model.value, errors: hasError ? errors : void 0 }, e2);
             });
         };
         provide(
@@ -27326,8 +27529,8 @@ var CustomValidator = (function (Base4) {
                             function () {
                                 callback && callback(_this.error);
                             },
-                            function (e) {
-                                console.error(e);
+                            function (e2) {
+                                console.error(e2);
                             },
                         );
                     }
@@ -27423,15 +27626,15 @@ Schema.prototype.validate = function validate2(values, callback) {
                             bv = validator[type];
                         }
                     }
-                    Object.keys(rule).forEach(function (r) {
+                    Object.keys(rule).forEach(function (r2) {
                         if (rule.required) {
                             bv = bv.isRequired;
                         }
-                        if (r !== "message" && bv[r] && rule[r] && typeof bv[r] === "object") {
-                            bv = bv[r];
+                        if (r2 !== "message" && bv[r2] && rule[r2] && typeof bv[r2] === "object") {
+                            bv = bv[r2];
                         }
-                        if (bv[r] && rule[r] !== void 0 && typeof bv[r] === "function") {
-                            bv = bv[r](rule[r]);
+                        if (bv[r2] && rule[r2] !== void 0 && typeof bv[r2] === "function") {
+                            bv = bv[r2](rule[r2]);
                         }
                     });
                     bv.collect(function (error) {
@@ -29231,8 +29434,8 @@ function _sfc_render96(_ctx, _cache, $props, $setup, $data, $options) {
                         ]),
                         onClick:
                             _cache[0] ||
-                            (_cache[0] = (e) => {
-                                e.preventDefault();
+                            (_cache[0] = (e2) => {
+                                e2.preventDefault();
                                 _ctx.onPrev && _ctx.onPrev();
                             }),
                     },
@@ -29250,8 +29453,8 @@ function _sfc_render96(_ctx, _cache, $props, $setup, $data, $options) {
                         ]),
                         onClick:
                             _cache[1] ||
-                            (_cache[1] = (e) => {
-                                e.preventDefault();
+                            (_cache[1] = (e2) => {
+                                e2.preventDefault();
                                 _ctx.onNext && _ctx.onNext();
                             }),
                     },
@@ -29300,8 +29503,8 @@ var ImagePreviewAction = defineComponent({
                                 [`${prefixCls}-disabled`]: disabled,
                             },
                         ],
-                        onMousedown: (e) => {
-                            e.preventDefault();
+                        onMousedown: (e2) => {
+                            e2.preventDefault();
                         },
                     },
                     attrs,
@@ -29494,24 +29697,24 @@ function useImageDrag(props) {
             translate.value = [x, y];
         }
     };
-    const onMoving = (e) => {
-        e.preventDefault && e.preventDefault();
-        const nextX = startTranslate[0] + (e.pageX - startPageX) / scale.value;
-        const nextY = startTranslate[1] + (e.pageY - startPageY) / scale.value;
+    const onMoving = (e2) => {
+        e2.preventDefault && e2.preventDefault();
+        const nextX = startTranslate[0] + (e2.pageX - startPageX) / scale.value;
+        const nextY = startTranslate[1] + (e2.pageY - startPageY) / scale.value;
         translate.value = [nextX, nextY];
     };
-    const onMoveEnd = (e) => {
-        e.preventDefault && e.preventDefault();
+    const onMoveEnd = (e2) => {
+        e2.preventDefault && e2.preventDefault();
         moving.value = false;
         checkAndFixTranslate();
         offEvents();
     };
-    const onMoveStart = (e) => {
-        if (e.target !== e.currentTarget) return;
-        e.preventDefault && e.preventDefault();
+    const onMoveStart = (e2) => {
+        if (e2.target !== e2.currentTarget) return;
+        e2.preventDefault && e2.preventDefault();
         moving.value = true;
-        startPageX = e.pageX;
-        startPageY = e.pageY;
+        startPageX = e2.pageX;
+        startPageY = e2.pageY;
         startTranslate = [...translate.value];
         on(window, "mousemove", onMoving, false);
         on(window, "mouseup", onMoveEnd, false);
@@ -30279,7 +30482,7 @@ var _sfc_main104 = defineComponent({
     },
     emits: ["close", "update:visible"],
     setup(props, { emit }) {
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const { src, popupContainer, visible, defaultVisible, maskClosable, actionsLayout, defaultScale, zoomRate } = toRefs(props);
         const refWrapper = ref();
         const refImage = ref();
@@ -30376,11 +30579,11 @@ var _sfc_main104 = defineComponent({
                     break;
             }
         };
-        const onWheel = throttleByRaf((e) => {
-            e.preventDefault();
-            e.stopPropagation();
+        const onWheel = throttleByRaf((e2) => {
+            e2.preventDefault();
+            e2.stopPropagation();
             if (!props.wheelZoom) return;
-            const delta = e.deltaY || e.deltaX;
+            const delta = e2.deltaY || e2.deltaX;
             const action = delta > 0 ? "zoomOut" : "zoomIn";
             const newScale = getScaleByRate(scale.value, zoomRate.value, action);
             changeScale(newScale);
@@ -30418,10 +30621,10 @@ var _sfc_main104 = defineComponent({
                 setVisible(false);
             }
         }
-        function onMaskClick(e) {
+        function onMaskClick(e2) {
             var _a;
             (_a = refWrapper == null ? void 0 : refWrapper.value) == null ? void 0 : _a.focus();
-            if (maskClosable.value && e.target === e.currentTarget) {
+            if (maskClosable.value && e2.target === e2.currentTarget) {
                 close();
             }
         }
@@ -30478,39 +30681,39 @@ var _sfc_main104 = defineComponent({
             actions: computed(() => [
                 {
                     key: "fullScreen",
-                    name: t("imagePreview.fullScreen"),
+                    name: t2("imagePreview.fullScreen"),
                     content: () => h(IconFullscreen),
                     onClick: () => fullScreen(),
                 },
                 {
                     key: "rotateRight",
-                    name: t("imagePreview.rotateRight"),
+                    name: t2("imagePreview.rotateRight"),
                     content: () => h(IconRotateRight),
                     onClick: () => handleRotate("clockwise"),
                 },
                 {
                     key: "rotateLeft",
-                    name: t("imagePreview.rotateLeft"),
+                    name: t2("imagePreview.rotateLeft"),
                     content: () => h(IconRotateLeft),
                     onClick: () => handleRotate("counterclockwise"),
                 },
                 {
                     key: "zoomIn",
-                    name: t("imagePreview.zoomIn"),
+                    name: t2("imagePreview.zoomIn"),
                     content: () => h(IconZoomIn),
                     onClick: () => handleScale("zoomIn"),
                     disabled: scale.value === maxScale,
                 },
                 {
                     key: "zoomOut",
-                    name: t("imagePreview.zoomOut"),
+                    name: t2("imagePreview.zoomOut"),
                     content: () => h(IconZoomOut),
                     onClick: () => handleScale("zoomOut"),
                     disabled: scale.value === minScale,
                 },
                 {
                     key: "originalSize",
-                    name: t("imagePreview.originalSize"),
+                    name: t2("imagePreview.originalSize"),
                     content: () => h(IconOriginalSize),
                     onClick: () => changeScale(1),
                 },
@@ -30782,7 +30985,7 @@ var _sfc_main105 = defineComponent({
     },
     emits: ["preview-visible-change", "update:previewVisible"],
     setup(props, { attrs, slots, emit }) {
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const { height, width, hideFooter, title, description, src, footerPosition, defaultPreviewVisible, previewVisible, preview, previewProps } = toRefs(props);
         const groupContext = inject(PreviewGroupInjectionKey, void 0);
         const prefixCls = getPrefixCls("image");
@@ -30865,7 +31068,7 @@ var _sfc_main105 = defineComponent({
             setPreviewVisible(false);
         }
         return {
-            t,
+            t: t2,
             refImg,
             prefixCls,
             wrapperClassNames,
@@ -31828,13 +32031,13 @@ var _sfc_main114 = defineComponent({
                 bottom: 0,
             },
         };
-        function onMoving(e) {
+        function onMoving(e2) {
             if (!record.moving) return;
             const { startPageX, startPageY, startWidth, startHeight, direction } = record;
             let newWidth = startWidth;
             let newHeight = startHeight;
-            const offsetX = e.pageX - startPageX;
-            const offsetY = e.pageY - startPageY;
+            const offsetX = e2.pageX - startPageX;
+            const offsetY = e2.pageY - startPageY;
             switch (direction) {
                 case DIRECTION_LEFT:
                     newWidth = startWidth - offsetX;
@@ -31863,23 +32066,23 @@ var _sfc_main114 = defineComponent({
                     width: newWidth,
                     height: newHeight,
                 },
-                e,
+                e2,
             );
         }
-        function onMoveEnd(e) {
+        function onMoveEnd(e2) {
             record.moving = false;
             off(window, "mousemove", onMoving);
             off(window, "mouseup", onMoveEnd);
             off(window, "contextmenu", onMoveEnd);
             document.body.style.cursor = "default";
-            emit("movingEnd", e);
+            emit("movingEnd", e2);
         }
-        function onMoveStart(direction, e) {
+        function onMoveStart(direction, e2) {
             var _a, _b;
-            emit("movingStart", e);
+            emit("movingStart", e2);
             record.moving = true;
-            record.startPageX = e.pageX;
-            record.startPageY = e.pageY;
+            record.startPageX = e2.pageX;
+            record.startPageY = e2.pageY;
             record.direction = direction;
             const { top, left, right, bottom } = record.padding;
             record.startWidth = getRealSize(((_a = wrapperRef.value) == null ? void 0 : _a.clientWidth) || 0, left + right);
@@ -31938,8 +32141,8 @@ function _sfc_render114(_ctx, _cache, $props, $setup, $data, $options) {
                                         "prefix-cls": `${_ctx.prefixCls}-trigger`,
                                         class: normalizeClass(`${_ctx.prefixCls}-direction-${direction}`),
                                         direction: _ctx.isHorizontal(direction) ? "horizontal" : "vertical",
-                                        onMousedown: (e) => {
-                                            _ctx.onMoveStart(direction, e);
+                                        onMousedown: (e2) => {
+                                            _ctx.onMoveStart(direction, e2);
                                         },
                                         onResize: (entry) => {
                                             _ctx.onTiggerResize(direction, entry);
@@ -32250,9 +32453,9 @@ var _sfc_main116 = defineComponent({
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("pagination-item");
         const isActive = computed(() => props.current === props.pageNumber);
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (!props.disabled) {
-                emit("click", props.pageNumber, e);
+                emit("click", props.pageNumber, e2);
             }
         };
         const cls = computed(() => [
@@ -32351,7 +32554,7 @@ var _sfc_main117 = defineComponent({
                 max: props.pages,
             }),
         );
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (!mergedDisabled.value) {
                 emit("click", nextPage.value);
             }
@@ -32431,7 +32634,7 @@ var _sfc_main118 = defineComponent({
                 max: props.pages,
             }),
         );
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             emit("click", nextPage.value);
         };
         const cls = computed(() => [prefixCls, `${prefixCls}-ellipsis`]);
@@ -32492,7 +32695,7 @@ var _sfc_main119 = defineComponent({
     emits: ["change"],
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("pagination-jumper");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const inputValue = ref(props.simple ? props.current : void 0);
         const handleFormatter = (value) => {
             const parseIntVal = parseInt(value.toString(), 10);
@@ -32523,7 +32726,7 @@ var _sfc_main119 = defineComponent({
         return {
             prefixCls,
             cls,
-            t,
+            t: t2,
             inputValue,
             handleChange,
             handleFormatter,
@@ -32641,11 +32844,11 @@ var _sfc_main120 = defineComponent({
     emits: ["change"],
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("pagination-options");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const options = computed(() =>
             props.sizeOptions.map((value) => ({
                 value,
-                label: `${value} ${t("pagination.countPerPage")}`,
+                label: `${value} ${t2("pagination.countPerPage")}`,
             })),
         );
         const handleChange = (value) => {
@@ -32774,7 +32977,7 @@ var _Pagination = defineComponent({
     },
     setup(props, { emit, slots }) {
         const prefixCls = getPrefixCls("pagination");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const { disabled, pageItemStyle, activePageItemStyle, size } = toRefs(props);
         const { mergedSize } = useSize(size);
         const _current = ref(props.defaultCurrent);
@@ -33013,7 +33216,7 @@ var _Pagination = defineComponent({
                                               total: props.total,
                                           })) != null
                                     ? _b
-                                    : t("pagination.total", props.total),
+                                    : t2("pagination.total", props.total),
                             ],
                         ),
                     renderPager(),
@@ -33156,8 +33359,8 @@ var _List = defineComponent({
         const isVirtualList = computed(() => props.virtualListProps);
         const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
         let preScrollTop = 0;
-        const handleScroll = (e) => {
-            const { scrollTop, scrollHeight, offsetHeight } = e.target;
+        const handleScroll = (e2) => {
+            const { scrollTop, scrollHeight, offsetHeight } = e2.target;
             const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
             if (scrollTop > preScrollTop && bottom <= props.bottomOffset) {
                 emit("reachBottom");
@@ -33842,10 +34045,10 @@ var _sfc_main122 = defineComponent({
             (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onBlur) == null ? void 0 : _b.call(_a, ev);
             emitChange(computedValue.value, ev);
         };
-        const handleComposition = (e) => {
+        const handleComposition = (e2) => {
             var _a, _b;
-            const { value } = e.target;
-            if (e.type === "compositionend") {
+            const { value } = e2.target;
+            if (e2.type === "compositionend") {
                 isComposition.value = false;
                 compositionValue.value = "";
                 if (
@@ -33857,30 +34060,30 @@ var _sfc_main122 = defineComponent({
                     keepControl();
                     return;
                 }
-                emit("input", value, e);
+                emit("input", value, e2);
                 updateValue(value);
-                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e);
+                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e2);
             } else {
                 isComposition.value = true;
             }
         };
-        const handleInput = (e) => {
+        const handleInput = (e2) => {
             var _a, _b;
-            const { value } = e.target;
+            const { value } = e2.target;
             if (!isComposition.value) {
                 if (
                     computedMaxLength.value &&
                     !maxLengthErrorOnly.value &&
                     computedValue.value.length >= computedMaxLength.value &&
                     getValueLength(value) > computedMaxLength.value &&
-                    e.inputType === "insertText"
+                    e2.inputType === "insertText"
                 ) {
                     keepControl();
                     return;
                 }
-                emit("input", value, e);
+                emit("input", value, e2);
                 updateValue(value);
-                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e);
+                (_b = (_a = eventHandlers.value) == null ? void 0 : _a.onInput) == null ? void 0 : _b.call(_a, e2);
             } else {
                 compositionValue.value = value;
             }
@@ -33972,9 +34175,9 @@ var _sfc_main122 = defineComponent({
             }
             computeIsScroll();
         };
-        const handleMousedown = (e) => {
-            if (textareaRef.value && e.target !== textareaRef.value) {
-                e.preventDefault();
+        const handleMousedown = (e2) => {
+            if (textareaRef.value && e2.target !== textareaRef.value) {
+                e2.preventDefault();
                 textareaRef.value.focus();
             }
         };
@@ -34246,9 +34449,9 @@ var _Mention = defineComponent({
         const inputRef = ref();
         const measureText = computed(() => measureInfo.value.text);
         const filterOption = ref(true);
-        const handleInput = (value, e) => {
+        const handleInput = (value, e2) => {
             var _a, _b;
-            const text = getTextBeforeSelection(e.target);
+            const text = getTextBeforeSelection(e2.target);
             const lastMeasure = getLastMeasureIndex(text, props.prefix);
             if (lastMeasure.location > -1) {
                 const measureText2 = text.slice(lastMeasure.location + lastMeasure.prefix.length);
@@ -34287,7 +34490,7 @@ var _Mention = defineComponent({
         const handlePopupVisibleChange = (popupVisible) => {
             _popupVisible.value = popupVisible;
         };
-        const handleSelect = (key, e) => {
+        const handleSelect = (key, e2) => {
             var _a, _b, _c;
             const { value } = (_a = optionInfoMap.get(key)) != null ? _a : {};
             const measureStart = measureInfo.value.location;
@@ -35179,7 +35382,7 @@ function getStyle(element, prop) {
             const computed2 = document.defaultView.getComputedStyle(element, "");
             return element.style[styleName] || computed2 ? computed2[styleName] : "";
         }
-    } catch (e) {
+    } catch (e2) {
         return element.style[styleName];
     }
     return null;
@@ -36018,10 +36221,10 @@ var MenuItem = defineComponent({
             level,
             isSelected,
             refItemElement,
-            onClick(e) {
+            onClick(e2) {
                 if (props.disabled) return;
                 menuContext.onMenuItemClick && menuContext.onMenuItemClick(key.value);
-                emit("click", e);
+                emit("click", e2);
             },
         };
     },
@@ -36741,8 +36944,8 @@ var _sfc_main132 = defineComponent({
     },
     emits: {
         "update:visible": (visible) => true,
-        ok: (e) => true,
-        cancel: (e) => true,
+        ok: (e2) => true,
+        cancel: (e2) => true,
         open: () => true,
         close: () => true,
         beforeOpen: () => true,
@@ -36751,7 +36954,7 @@ var _sfc_main132 = defineComponent({
     setup(props, { emit }) {
         const { fullscreen, popupContainer, alignCenter } = toRefs(props);
         const prefixCls = getPrefixCls("modal");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const wrapperRef = ref();
         const modalRef = ref();
         const _visible = ref(props.defaultVisible);
@@ -36767,8 +36970,8 @@ var _sfc_main132 = defineComponent({
             visible: computedVisible,
         });
         const mounted = ref(computedVisible.value);
-        const okDisplayText = computed(() => props.okText || t("modal.okText"));
-        const cancelDisplayText = computed(() => props.cancelText || t("modal.cancelText"));
+        const okDisplayText = computed(() => props.okText || t2("modal.okText"));
+        const cancelDisplayText = computed(() => props.cancelText || t2("modal.cancelText"));
         const { zIndex, isLastDialog } = usePopupManager("dialog", {
             visible: computedVisible,
         });
@@ -36803,7 +37006,7 @@ var _sfc_main132 = defineComponent({
             _visible.value = false;
             emit("update:visible", false);
         };
-        const handleOk = async (e) => {
+        const handleOk = async (e2) => {
             const currentPromiseNumber = promiseNumber;
             const closed = await new Promise(async (resolve) => {
                 var _a;
@@ -36829,21 +37032,21 @@ var _sfc_main132 = defineComponent({
             });
             if (currentPromiseNumber === promiseNumber) {
                 if (closed) {
-                    emit("ok", e);
+                    emit("ok", e2);
                     close();
                 } else if (_okLoading.value) {
                     _okLoading.value = false;
                 }
             }
         };
-        const handleCancel = (e) => {
+        const handleCancel = (e2) => {
             var _a;
             let result = true;
             if (isFunction(props.onBeforeCancel)) {
                 result = (_a = props.onBeforeCancel()) != null ? _a : false;
             }
             if (result) {
-                emit("cancel", e);
+                emit("cancel", e2);
                 close();
             }
         };
@@ -36853,9 +37056,9 @@ var _sfc_main132 = defineComponent({
                 currentIsMask.value = true;
             }
         };
-        const handleMaskClick = (e) => {
+        const handleMaskClick = (e2) => {
             if (props.mask && props.maskClosable && currentIsMask.value) {
-                handleCancel(e);
+                handleCancel(e2);
             }
         };
         const handleOpen = () => {
@@ -37765,8 +37968,8 @@ var _sfc_main134 = defineComponent({
     emits: ["back"],
     setup(props, { emit, slots }) {
         const prefixCls = getPrefixCls("page-header");
-        const handleBack = (e) => {
-            emit("back", e);
+        const handleBack = (e2) => {
+            emit("back", e2);
         };
         const cls = computed(() => [
             prefixCls,
@@ -37993,7 +38196,7 @@ var _sfc_main135 = defineComponent({
     },
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("popconfirm");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const _popupVisible = ref(props.defaultPopupVisible);
         const computedPopupVisible = computed(() => {
             var _a;
@@ -38075,7 +38278,7 @@ var _sfc_main135 = defineComponent({
             handlePopupVisibleChange,
             handleOk,
             handleCancel,
-            t,
+            t: t2,
         };
     },
 });
@@ -44107,11 +44310,11 @@ var _sfc_main151 = defineComponent({
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("slider-btn");
         const isDragging = ref(false);
-        const handleMouseDown = (e) => {
+        const handleMouseDown = (e2) => {
             if (props.disabled) {
                 return;
             }
-            e.preventDefault();
+            e2.preventDefault();
             isDragging.value = true;
             on(window, "mousemove", handleMouseMove);
             on(window, "touchmove", handleMouseMove);
@@ -44120,15 +44323,15 @@ var _sfc_main151 = defineComponent({
             on(window, "touchend", handleMouseUp);
             emit("movestart");
         };
-        const handleMouseMove = (e) => {
+        const handleMouseMove = (e2) => {
             let clientX;
             let clientY;
-            if (e.type.startsWith("touch")) {
-                clientY = e.touches[0].clientY;
-                clientX = e.touches[0].clientX;
+            if (e2.type.startsWith("touch")) {
+                clientY = e2.touches[0].clientY;
+                clientX = e2.touches[0].clientX;
             } else {
-                clientY = e.clientY;
-                clientX = e.clientX;
+                clientY = e2.clientY;
+                clientX = e2.clientX;
             }
             emit("moving", clientX, clientY);
         };
@@ -44700,11 +44903,11 @@ var _sfc_main156 = defineComponent({
             endValue.value = getValueByCoords(x, y);
             handleChange();
         };
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (mergedDisabled.value) {
                 return;
             }
-            const { clientX, clientY } = e;
+            const { clientX, clientY } = e2;
             if (trackRef.value) {
                 trackRect.value = trackRef.value.getBoundingClientRect();
             }
@@ -45196,34 +45399,34 @@ var _sfc_main157 = defineComponent({
             });
             return getLegalPxSize(`${startPxSize + (endPosition - startPosition)}px`, startContainerSize);
         }
-        function onMoving(e) {
-            emit("moving", e);
+        function onMoving(e2) {
+            emit("moving", e2);
             const newPxSize = isHorizontal2.value
                 ? getNewPxSize({
                       startContainerSize: record.startContainerSize,
                       startSize: record.startSize,
                       startPosition: record.startPageX,
-                      endPosition: e.pageX,
+                      endPosition: e2.pageX,
                   })
                 : getNewPxSize({
                       startContainerSize: record.startContainerSize,
                       startSize: record.startSize,
                       startPosition: record.startPageY,
-                      endPosition: e.pageY,
+                      endPosition: e2.pageY,
                   });
             updateSize(newPxSize, record.startContainerSize);
         }
-        function onMovingEnd(e) {
+        function onMovingEnd(e2) {
             off(window, "mousemove", onMoving);
             off(window, "mouseup", onMovingEnd);
             off(window, "contextmenu", onMovingEnd);
             document.body.style.cursor = "default";
-            emit("moveEnd", e);
+            emit("moveEnd", e2);
         }
-        async function onMoveStart(e) {
-            emit("moveStart", e);
-            record.startPageX = e.pageX;
-            record.startPageY = e.pageY;
+        async function onMoveStart(e2) {
+            emit("moveStart", e2);
+            record.startPageX = e2.pageX;
+            record.startPageY = e2.pageY;
             record.startContainerSize = await getContainerSize();
             record.startSize = size.value;
             on(window, "mousemove", onMoving);
@@ -45815,11 +46018,11 @@ var _sfc_main160 = defineComponent({
             }
             return props.status;
         };
-        const handleClick = (step, e) => {
+        const handleClick = (step, e2) => {
             if (props.changeable) {
                 _current.value = step;
                 emit("update:current", step);
-                emit("change", step, e);
+                emit("change", step, e2);
             }
         };
         const stepMap = reactive(/* @__PURE__ */ new Map());
@@ -47470,7 +47673,7 @@ var Th = defineComponent({
     setup(props, { slots }) {
         const { column } = toRefs(props);
         const prefixCls = getPrefixCls("table");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const tableCtx = inject(tableInjectionKey, {});
         const resizing = computed(() => {
             var _a;
@@ -47606,7 +47809,7 @@ var Th = defineComponent({
                                     size: "mini",
                                     onClick: handleFilterReset,
                                 },
-                                _isSlot12((_slot = t("table.resetText")))
+                                _isSlot12((_slot = t2("table.resetText")))
                                     ? _slot
                                     : {
                                           default: () => [_slot],
@@ -47619,7 +47822,7 @@ var Th = defineComponent({
                                     size: "mini",
                                     onClick: handleFilterConfirm,
                                 },
-                                _isSlot12((_slot2 = t("table.okText")))
+                                _isSlot12((_slot2 = t2("table.okText")))
                                     ? _slot2
                                     : {
                                           default: () => [_slot2],
@@ -48682,13 +48885,13 @@ var useSpan = ({ spanMethod, data, columns }) => {
                               : {};
                       if (rowspan > 1 || colspan > 1) {
                           span[`${rowIndex}-${columnIndex}-${record.key}`] = [rowspan, colspan];
-                          Array.from({ length: rowspan }).forEach((_, r) => {
+                          Array.from({ length: rowspan }).forEach((_, r2) => {
                               var _a3;
-                              if (rowIndex + r < tableData.length) {
-                                  const { key } = (_a3 = tableData[rowIndex + r]) != null ? _a3 : {};
+                              if (rowIndex + r2 < tableData.length) {
+                                  const { key } = (_a3 = tableData[rowIndex + r2]) != null ? _a3 : {};
                                   Array.from({ length: colspan }).forEach((_2, c) => {
-                                      if (columnIndex + c < columns.value.length && `${rowIndex}-${columnIndex}-${record.key}` !== `${rowIndex + r}-${columnIndex + c}-${key}`) {
-                                          spanzero.value[`${rowIndex + r}-${columnIndex + c}-${key}`] = [0, 0];
+                                      if (columnIndex + c < columns.value.length && `${rowIndex}-${columnIndex}-${record.key}` !== `${rowIndex + r2}-${columnIndex + c}-${key}`) {
+                                          spanzero.value[`${rowIndex + r2}-${columnIndex + c}-${key}`] = [0, 0];
                                       }
                                   });
                               }
@@ -49356,15 +49559,15 @@ var _Table = defineComponent({
             }
             return cls2;
         };
-        const handleScroll = (e) => {
-            if (e.target.scrollLeft !== containerScrollLeft.value) {
-                containerScrollLeft.value = e.target.scrollLeft;
+        const handleScroll = (e2) => {
+            if (e2.target.scrollLeft !== containerScrollLeft.value) {
+                containerScrollLeft.value = e2.target.scrollLeft;
             }
             setAlignPosition();
         };
-        const onTbodyScroll = (e) => {
-            handleScroll(e);
-            const { scrollLeft } = e.target;
+        const onTbodyScroll = (e2) => {
+            handleScroll(e2);
+            const { scrollLeft } = e2.target;
             if (theadRef.value) {
                 theadRef.value.scrollLeft = scrollLeft;
             }
@@ -50659,9 +50862,9 @@ var _sfc_main167 = defineComponent({
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("tabs-tab");
         const tabsCtx = inject(tabsInjectionKey, {});
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (!props.tab.disabled) {
-                emit("click", props.tab.key, e);
+                emit("click", props.tab.key, e2);
             }
         };
         const onKeyDown = (ev) => {
@@ -50672,9 +50875,9 @@ var _sfc_main167 = defineComponent({
         const eventHandlers = computed(() => {
             return Object.assign(tabsCtx.trigger === "click" ? { onClick: handleClick } : { onMouseover: handleClick }, { onKeydown: onKeyDown });
         });
-        const handleDelete = (e) => {
+        const handleDelete = (e2) => {
             if (!props.tab.disabled) {
-                emit("delete", props.tab.key, e);
+                emit("delete", props.tab.key, e2);
             }
         };
         const cls = computed(() => [
@@ -51385,9 +51588,9 @@ var _Tabs = defineComponent({
                 emit("change", key);
             }
         };
-        const handleClick = (key, e) => {
+        const handleClick = (key, e2) => {
             handleChange(key);
-            emit("tabClick", key, e);
+            emit("tabClick", key, e2);
         };
         const handleAdd = (ev) => {
             emit("add", ev);
@@ -51830,15 +52033,15 @@ var _sfc_main170 = defineComponent({
                 emit("update:popupVisible", newVisible);
             }
         };
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const [focusedInputIndex, setFocusedInputIndex] = useState(0);
         const computedPlaceholder = computed(() => {
             const _placeholder = placeholder == null ? void 0 : placeholder.value;
             if (!isRange.value) {
-                return !isUndefined(_placeholder) ? _placeholder : t("datePicker.placeholder.time");
+                return !isUndefined(_placeholder) ? _placeholder : t2("datePicker.placeholder.time");
             }
             if (isUndefined(_placeholder)) {
-                return t("datePicker.rangePlaceholder.time");
+                return t2("datePicker.rangePlaceholder.time");
             }
             if (!isArray(_placeholder)) {
                 return [_placeholder, _placeholder];
@@ -51932,9 +52135,9 @@ var _sfc_main170 = defineComponent({
                 focusInput(newFocusedInputIndex);
             }
         }
-        function onInputChange(e) {
+        function onInputChange(e2) {
             setPanelVisible(true);
-            const targetValue = e.target.value;
+            const targetValue = e2.target.value;
             setInputValue(targetValue);
             if (!isValidInputValue(targetValue, computedFormat.value)) return;
             const newValue = dayjs(targetValue, computedFormat.value);
@@ -51945,9 +52148,9 @@ var _sfc_main170 = defineComponent({
                 select(newValue, true);
             }
         }
-        function onRangeInputChange(e) {
+        function onRangeInputChange(e2) {
             setPanelVisible(true);
-            const targetValue = e.target.value;
+            const targetValue = e2.target.value;
             const newInputValue = isArray(inputValue.value)
                 ? [...inputValue.value]
                 : (isArray(panelValue.value) && getFormattedValue(panelValue.value, computedFormat.value)) || [];
@@ -51964,8 +52167,8 @@ var _sfc_main170 = defineComponent({
                 select(newValue, true);
             }
         }
-        function onClear(e) {
-            e.stopPropagation();
+        function onClear(e2) {
+            e2.stopPropagation();
             setPanelValue(void 0);
             confirm(void 0, isRange.value);
         }
@@ -53617,8 +53820,8 @@ var _sfc_main176 = defineComponent({
                 const icon = (_b = (_a = icons == null ? void 0 : icons.value) == null ? void 0 : _a.loadingIcon) != null ? _b : nodeLoadingIcon.value;
                 return icon ? icon(nodeStatus.value) : (_c = treeContext.loadingIcon) == null ? void 0 : _c.call(treeContext, treeNodeData.value, nodeStatus.value);
             },
-            onClick(e) {
-                emit("click", e);
+            onClick(e2) {
+                emit("click", e2);
             },
         };
     },
@@ -53781,11 +53984,11 @@ function useDraggable2(props) {
     const isDragging = ref(false);
     const isAllowDrop = ref(false);
     const dropPosition = ref(0);
-    const updateDropPosition = throttleByRaf((e) => {
+    const updateDropPosition = throttleByRaf((e2) => {
         if (!refTitle.value) return;
         const rect = refTitle.value.getBoundingClientRect();
         const offsetY = window.pageYOffset + rect.top;
-        const { pageY } = e;
+        const { pageY } = e2;
         const gapHeight = rect.height / 4;
         const diff = pageY - offsetY;
         dropPosition.value = diff < gapHeight ? -1 : diff < rect.height - gapHeight ? 0 : 1;
@@ -53796,33 +53999,33 @@ function useDraggable2(props) {
         isDragging,
         isAllowDrop,
         dropPosition,
-        setDragStatus(status, e) {
+        setDragStatus(status, e2) {
             switch (status) {
                 case "dragStart":
                     isDragging.value = true;
                     dropPosition.value = 0;
-                    treeContext.onDragStart && treeContext.onDragStart(key.value, e);
+                    treeContext.onDragStart && treeContext.onDragStart(key.value, e2);
                     break;
                 case "dragEnd":
                     isDragging.value = false;
                     isDragOver.value = false;
                     dropPosition.value = 0;
                     updateDropPosition.cancel();
-                    treeContext.onDragEnd && treeContext.onDragEnd(key.value, e);
+                    treeContext.onDragEnd && treeContext.onDragEnd(key.value, e2);
                     break;
                 case "dragOver":
                     isDragOver.value = true;
-                    updateDropPosition(e);
-                    treeContext.onDragOver && treeContext.onDragOver(key.value, e);
+                    updateDropPosition(e2);
+                    treeContext.onDragOver && treeContext.onDragOver(key.value, e2);
                     break;
                 case "dragLeave":
                     isDragOver.value = false;
                     dropPosition.value = 0;
                     updateDropPosition.cancel();
-                    treeContext.onDragLeave && treeContext.onDragLeave(key.value, e);
+                    treeContext.onDragLeave && treeContext.onDragLeave(key.value, e2);
                     break;
                 case "drop":
-                    treeContext.onDrop && treeContext.onDrop(key.value, dropPosition.value, e);
+                    treeContext.onDrop && treeContext.onDrop(key.value, dropPosition.value, e2);
                     isDragOver.value = false;
                     dropPosition.value = 0;
                     updateDropPosition.cancel();
@@ -53968,13 +54171,13 @@ var _sfc_main177 = defineComponent({
         });
         const treeDragIcon = computed(() => treeContext.dragIcon);
         const treeNodeIcon = computed(() => treeContext.nodeIcon);
-        function onSwitcherClick(e) {
+        function onSwitcherClick(e2) {
             var _a, _b;
             if (isLeaf.value) return;
             if (!((_a = children.value) == null ? void 0 : _a.length) && isFunction(treeContext.onLoadMore)) {
                 treeContext.onLoadMore(key.value);
             } else {
-                (_b = treeContext == null ? void 0 : treeContext.onExpand) == null ? void 0 : _b.call(treeContext, !expanded.value, key.value, e);
+                (_b = treeContext == null ? void 0 : treeContext.onExpand) == null ? void 0 : _b.call(treeContext, !expanded.value, key.value, e2);
             }
         }
         const nodeStatus = reactive({
@@ -54018,52 +54221,52 @@ var _sfc_main177 = defineComponent({
             treeNodeIcon,
             extra,
             nodeStatus,
-            onCheckboxChange(checked2, e) {
+            onCheckboxChange(checked2, e2) {
                 var _a;
                 if (disableCheckbox.value || disabled.value) {
                     return;
                 }
-                (_a = treeContext.onCheck) == null ? void 0 : _a.call(treeContext, checked2, key.value, e);
+                (_a = treeContext.onCheck) == null ? void 0 : _a.call(treeContext, checked2, key.value, e2);
             },
-            onTitleClick(e) {
+            onTitleClick(e2) {
                 var _a;
                 if (actionOnNodeClick.value.includes("expand")) {
-                    onSwitcherClick(e);
+                    onSwitcherClick(e2);
                 }
                 if (!selectable.value || disabled.value) return;
-                (_a = treeContext.onSelect) == null ? void 0 : _a.call(treeContext, key.value, e);
+                (_a = treeContext.onSelect) == null ? void 0 : _a.call(treeContext, key.value, e2);
             },
             onSwitcherClick,
-            onDragStart(e) {
+            onDragStart(e2) {
                 var _a;
                 if (!draggable.value) return;
-                e.stopPropagation();
-                setDragStatus("dragStart", e);
+                e2.stopPropagation();
+                setDragStatus("dragStart", e2);
                 try {
-                    (_a = e.dataTransfer) == null ? void 0 : _a.setData("text/plain", "");
+                    (_a = e2.dataTransfer) == null ? void 0 : _a.setData("text/plain", "");
                 } catch (error) {}
             },
-            onDragEnd(e) {
+            onDragEnd(e2) {
                 if (!draggable.value) return;
-                e.stopPropagation();
-                setDragStatus("dragEnd", e);
+                e2.stopPropagation();
+                setDragStatus("dragEnd", e2);
             },
-            onDragOver(e) {
+            onDragOver(e2) {
                 if (!draggable) return;
-                e.stopPropagation();
-                e.preventDefault();
-                setDragStatus("dragOver", e);
+                e2.stopPropagation();
+                e2.preventDefault();
+                setDragStatus("dragOver", e2);
             },
-            onDragLeave(e) {
+            onDragLeave(e2) {
                 if (!draggable.value) return;
-                e.stopPropagation();
-                setDragStatus("dragLeave", e);
+                e2.stopPropagation();
+                setDragStatus("dragLeave", e2);
             },
-            onDrop(e) {
+            onDrop(e2) {
                 if (!draggable.value || !isAllowDrop.value) return;
-                e.stopPropagation();
-                e.preventDefault();
-                setDragStatus("drop", e);
+                e2.stopPropagation();
+                e2.preventDefault();
+                setDragStatus("drop", e2);
             },
         };
     },
@@ -55017,7 +55220,7 @@ var _sfc_main180 = defineComponent({
                 newExpandedKeys,
             });
         }
-        function onCheck(checked, key, e) {
+        function onCheck(checked, key, e2) {
             const node = key2TreeNode.value.get(key);
             if (!node) return;
             const [newCheckedKeys, newIndeterminateKeys] = getCheckedStateByCheck({
@@ -55033,10 +55236,10 @@ var _sfc_main180 = defineComponent({
                 targetChecked: checked,
                 newCheckedKeys,
                 newIndeterminateKeys,
-                event: e,
+                event: e2,
             });
         }
-        function onSelect(key, e) {
+        function onSelect(key, e2) {
             const node = key2TreeNode.value.get(key);
             if (!node) return;
             let newSelectedKeys;
@@ -55055,10 +55258,10 @@ var _sfc_main180 = defineComponent({
                 targetKey: key,
                 targetSelected: selected,
                 newSelectedKeys,
-                event: e,
+                event: e2,
             });
         }
-        function onExpand(expanded, key, e) {
+        function onExpand(expanded, key, e2) {
             if (currentExpandKeys.value.includes(key)) return;
             const node = key2TreeNode.value.get(key);
             if (!node) return;
@@ -55073,7 +55276,7 @@ var _sfc_main180 = defineComponent({
                 targetKey: key,
                 targetExpanded: expanded,
                 newExpandedKeys,
-                event: e,
+                event: e2,
             });
         }
         function onExpandEnd(key) {
@@ -55135,37 +55338,37 @@ var _sfc_main180 = defineComponent({
                 }
                 return true;
             },
-            onDragStart(key, e) {
+            onDragStart(key, e2) {
                 const node = key2TreeNode.value.get(key);
                 dragNode.value = node;
                 if (node) {
-                    emit("dragStart", e, node.treeNodeData);
+                    emit("dragStart", e2, node.treeNodeData);
                 }
             },
-            onDragEnd(key, e) {
+            onDragEnd(key, e2) {
                 const node = key2TreeNode.value.get(key);
                 dragNode.value = void 0;
                 if (node) {
-                    emit("dragEnd", e, node.treeNodeData);
+                    emit("dragEnd", e2, node.treeNodeData);
                 }
             },
-            onDragOver(key, e) {
+            onDragOver(key, e2) {
                 const node = key2TreeNode.value.get(key);
                 if (node) {
-                    emit("dragOver", e, node.treeNodeData);
+                    emit("dragOver", e2, node.treeNodeData);
                 }
             },
-            onDragLeave(key, e) {
+            onDragLeave(key, e2) {
                 const node = key2TreeNode.value.get(key);
                 if (node) {
-                    emit("dragLeave", e, node.treeNodeData);
+                    emit("dragLeave", e2, node.treeNodeData);
                 }
             },
-            onDrop(key, dropPosition, e) {
+            onDrop(key, dropPosition, e2) {
                 const node = key2TreeNode.value.get(key);
                 if (dragNode.value && node && !(node.key === dragNode.value.key || node.pathParentKeys.includes(dragNode.value.key || ""))) {
                     emit("drop", {
-                        e,
+                        e: e2,
                         dragNode: dragNode.value.treeNodeData,
                         dropNode: node.treeNodeData,
                         dropPosition,
@@ -55194,12 +55397,12 @@ var _sfc_main180 = defineComponent({
         };
     },
     methods: {
-        toggleCheck(key, e) {
+        toggleCheck(key, e2) {
             const { key2TreeNode, onCheck, checkedKeys } = this.treeContext;
             const checked = !checkedKeys.includes(key);
             const node = key2TreeNode.get(key);
             if (node && isNodeCheckable(node)) {
-                onCheck(checked, key, e);
+                onCheck(checked, key, e2);
             }
         },
         scrollIntoView(options) {
@@ -55683,11 +55886,11 @@ var _sfc_main185 = defineComponent({
     setup(props, { emit }) {
         const prefixCls = getPrefixCls("typography");
         const showExpand = computed(() => props.forceRenderExpand || (props.expandable && props.isEllipsis));
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         return {
             prefixCls,
             showExpand,
-            t,
+            t: t2,
             onEditClick() {
                 emit("edit");
             },
@@ -56528,12 +56731,12 @@ var uploadRequest = ({ fileItem, action, name: originName, data: originData, hea
     if (withCredentials) {
         xhr.withCredentials = true;
     }
-    xhr.upload.onprogress = (e) => {
-        const percent = e.total > 0 ? index_es_default.round(e.loaded / e.total, 2) : 0;
-        onProgress(percent, e);
+    xhr.upload.onprogress = (e2) => {
+        const percent = e2.total > 0 ? index_es_default.round(e2.loaded / e2.total, 2) : 0;
+        onProgress(percent, e2);
     };
-    xhr.onerror = function error(e) {
-        onError(e);
+    xhr.onerror = function error(e2) {
+        onError(e2);
     };
     xhr.onload = () => {
         if (xhr.status < 200 || xhr.status >= 300) {
@@ -56784,7 +56987,7 @@ var UploadButton = defineComponent({
     },
     setup(props, { slots }) {
         const prefixCls = getPrefixCls("upload");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const isDragging = ref(false);
         const inputRef = ref(null);
         const dropRef = ref(null);
@@ -56798,10 +57001,10 @@ var UploadButton = defineComponent({
                 dragEnterCount.value = 0;
             }
         };
-        const handleClick = (e) => {
+        const handleClick = (e2) => {
             if (props.disabled) return;
             if (isFunction(props.onButtonClick)) {
-                const result = props.onButtonClick(e);
+                const result = props.onButtonClick(e2);
                 if (isPromise(result)) {
                     result.then((files) => {
                         props.uploadFiles(getFiles(files));
@@ -56813,40 +57016,40 @@ var UploadButton = defineComponent({
                 inputRef.value.click();
             }
         };
-        const handleInputChange = (e) => {
-            const target3 = e.target;
+        const handleInputChange = (e2) => {
+            const target3 = e2.target;
             if (target3.files) {
                 props.uploadFiles(getFiles(target3.files));
             }
             target3.value = "";
         };
-        const handleDrop = (e) => {
+        const handleDrop = (e2) => {
             var _a, _b;
-            e.preventDefault();
+            e2.preventDefault();
             isDragging.value = false;
             setDragEnterCount("reset");
             if (props.disabled) {
                 return;
             }
-            if (props.directory && ((_a = e.dataTransfer) == null ? void 0 : _a.items)) {
-                loopDirectory(e.dataTransfer.items, props.accept, (files) => {
+            if (props.directory && ((_a = e2.dataTransfer) == null ? void 0 : _a.items)) {
+                loopDirectory(e2.dataTransfer.items, props.accept, (files) => {
                     props.uploadFiles(files);
                 });
             } else {
-                const files = getFiles((_b = e.dataTransfer) == null ? void 0 : _b.files, props.accept);
+                const files = getFiles((_b = e2.dataTransfer) == null ? void 0 : _b.files, props.accept);
                 props.uploadFiles(props.multiple ? files : files.slice(0, 1));
             }
         };
-        const handleDragLeave = (e) => {
-            e.preventDefault();
+        const handleDragLeave = (e2) => {
+            e2.preventDefault();
             setDragEnterCount("subtract");
             if (dragEnterCount.value === 0) {
                 isDragging.value = false;
                 setDragEnterCount("reset");
             }
         };
-        const handleDragOver = (e) => {
-            e.preventDefault();
+        const handleDragOver = (e2) => {
+            e2.preventDefault();
             if (!props.disabled && !isDragging.value) {
                 isDragging.value = true;
             }
@@ -56898,7 +57101,7 @@ var UploadButton = defineComponent({
                             {
                                 class: `${prefixCls}-drag-text`,
                             },
-                            [isDragging.value ? t("upload.dragHover") : t("upload.drag")],
+                            [isDragging.value ? t2("upload.dragHover") : t2("upload.drag")],
                         ),
                         props.tip &&
                             createVNode(
@@ -56918,7 +57121,7 @@ var UploadButton = defineComponent({
                     disabled: props.disabled,
                 },
                 {
-                    default: () => [t("upload.buttonText")],
+                    default: () => [t2("upload.buttonText")],
                     icon: () => createVNode(IconUpload, null, null),
                 },
             );
@@ -57198,7 +57401,7 @@ var UploadProgress = defineComponent({
     },
     setup(props) {
         const prefixCls = getPrefixCls("upload-progress");
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const uploadCtx = inject(uploadInjectionKey, void 0);
         const renderIcon = () => {
             var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
@@ -57218,7 +57421,7 @@ var UploadProgress = defineComponent({
                                   : _d.call(_c))) ||
                         props.listType === "picture-card"
                             ? createVNode(IconUpload, null, null)
-                            : t("upload.retry"),
+                            : t2("upload.retry"),
                     ],
                 );
             }
@@ -57244,7 +57447,7 @@ var UploadProgress = defineComponent({
                 return createVNode(
                     Tooltip,
                     {
-                        content: t("upload.start"),
+                        content: t2("upload.start"),
                     },
                     {
                         default: () => {
@@ -57277,7 +57480,7 @@ var UploadProgress = defineComponent({
                 createVNode(
                     Tooltip,
                     {
-                        content: t("upload.cancel"),
+                        content: t2("upload.cancel"),
                     },
                     {
                         default: () => {
@@ -57744,7 +57947,7 @@ var UploadListItem = defineComponent({
     setup(props) {
         const prefixCls = getPrefixCls("upload-list");
         const itemCls = `${prefixCls}-item`;
-        const { t } = useI18n();
+        const { t: t2 } = useI18n();
         const uploadCtx = inject(uploadInjectionKey, void 0);
         const renderFileIcon = () => {
             var _a, _b;
@@ -57905,7 +58108,7 @@ var UploadListItem = defineComponent({
                                         createVNode(
                                             Tooltip,
                                             {
-                                                content: t("upload.error"),
+                                                content: t2("upload.error"),
                                             },
                                             {
                                                 default: () => {
@@ -58981,9 +59184,9 @@ var _VerificationCode = defineComponent({
                 }
             }
         };
-        const handlePaste = (e, index2) => {
-            e.preventDefault();
-            const { clipboardData } = e;
+        const handlePaste = (e2, index2) => {
+            e2.preventDefault();
+            const { clipboardData } = e2;
             const text = clipboardData == null ? void 0 : clipboardData.getData("text");
             if (!text) return;
             text.split("").forEach((char, i2) => {
@@ -59002,17 +59205,17 @@ var _VerificationCode = defineComponent({
             });
             updateValue();
         };
-        const handleKeydown = (index2, e) => {
-            const keyCode = e.code || e.key;
+        const handleKeydown = (index2, e2) => {
+            const keyCode = e2.code || e2.key;
             if (keyCode === Backspace.code && !innerValue.value[index2]) {
-                e.preventDefault();
+                e2.preventDefault();
                 innerValue.value[Math.max(index2 - 1, 0)] = "";
                 updateValue();
             } else if (keyCode === ArrowLeft.code && index2 > 0) {
-                e.preventDefault();
+                e2.preventDefault();
                 handleFocus(index2 - 1);
             } else if (keyCode === ArrowRight.code && innerValue.value[index2] && index2 < props.length - 1) {
-                e.preventDefault();
+                e2.preventDefault();
                 handleFocus(index2 + 1);
             }
         };
@@ -59052,9 +59255,9 @@ var _VerificationCode = defineComponent({
                                     disabled: props.disabled,
                                     readonly: props.readonly,
                                     onFocus: () => focusFirstEmptyInput(i2),
-                                    onInput: (v, e) => handleInput(i2, v, e),
-                                    onKeydown: (e) => handleKeydown(i2, e),
-                                    onPaste: (e) => handlePaste(e, i2),
+                                    onInput: (v, e2) => handleInput(i2, v, e2),
+                                    onKeydown: (e2) => handleKeydown(i2, e2),
+                                    onPaste: (e2) => handlePaste(e2, i2),
                                 },
                                 null,
                             ),
@@ -59495,10 +59698,10 @@ var Panel3 = defineComponent({
                 selectedKeys: showCheckable.value ? [] : selectedKeys.value,
             };
         });
-        const onSelect = (newVal, e) => {
+        const onSelect = (newVal, e2) => {
             var _a, _b;
             if (showCheckable.value) {
-                (_b = (_a = refTree.value) == null ? void 0 : _a.toggleCheck) == null ? void 0 : _b.call(_a, newVal[0], e);
+                (_b = (_a = refTree.value) == null ? void 0 : _a.toggleCheck) == null ? void 0 : _b.call(_a, newVal[0], e2);
             } else {
                 emit("change", newVal);
             }

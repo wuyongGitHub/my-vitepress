@@ -1,1 +1,1 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./components/button/index.js"),t=require("./install.js");exports.WyButton=e.WyButton;exports.default=t.installer;
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("./components/button/index.js"),t=require("./components/heatMapChart/index.js"),r=require("./install.js");exports.WyButton=e.WyButton;exports.WyHeatMap=t.WyHeatMap;exports.default=r.installer;

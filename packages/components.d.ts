@@ -9,6 +9,7 @@ declare module "vue" {
     export interface GlobalComponents {
         Button: (typeof import("./components/button/Button.vue"))["default"];
         HeatMap: (typeof import("./components/heatMapChart/HeatMap.vue"))["default"];
+        HeatMap2: (typeof import("./components/heatMapChart2/HeatMap2.vue"))["default"];
         RouterLink: (typeof import("vue-router"))["RouterLink"];
         RouterView: (typeof import("vue-router"))["RouterView"];
     }
