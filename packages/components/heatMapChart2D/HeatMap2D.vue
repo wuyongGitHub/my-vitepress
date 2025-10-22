@@ -62,7 +62,7 @@ const props = defineProps({
 });
 
 // ========== 响应式数据 ==========
-const canvasWidth = ref(props.width);
+const canvasWidth = ref(props.width ? props.width : 0);
 const canvasHeight = ref(props.height);
 const blockWidth = ref(props.blockWidth);
 const blockHeight = ref(props.blockHeight);
@@ -343,6 +343,7 @@ watch(
 
         nextTick(() => {
             const canvas = heatmapCanvas.value;
+            if (!canvas) return; // 安全判断
             canvas.width = canvasWidth.value;
             canvas.height = canvasHeight.value;
             ctx = canvas.getContext("2d");
@@ -350,7 +351,7 @@ watch(
             renderHeatmap();
         });
     },
-    { immediate: true },
+    // 删除 { immediate: true }
 );
 
 // 监听刷新触发器
