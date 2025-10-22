@@ -1,5 +1,5 @@
 import { EventDispatcher, MOUSE, MathUtils, Plane, Quaternion, Ray, Spherical, TOUCH, Vector2, Vector3 } from "./chunk-HLQL7ENM.js";
-import "./chunk-5WRI5ZAA.js";
+import "./chunk-G3PMV62Z.js";
 
 // node_modules/three/examples/jsm/controls/OrbitControls.js
 var _changeEvent = { type: "change" };

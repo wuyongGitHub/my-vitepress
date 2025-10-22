@@ -40,6 +40,7 @@ export default defineConfig({
                     items: [
                         { text: "3D热力图", link: "/charts/3DHeatChart-examples.md" },
                         { text: "2D热力图", link: "/charts/2DHeatChart-examples.md" },
+                        { text: "雷达图", link: "/charts/RadarChart-examples" },
                     ],
                 },
             ],

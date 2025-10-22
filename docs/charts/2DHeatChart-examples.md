@@ -5,7 +5,7 @@
  * @Description:
 -->
 
-# 3D热力图
+# 2D热力图
 
 ::: tip
 

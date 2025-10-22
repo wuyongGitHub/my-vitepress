@@ -11,6 +11,7 @@ declare module "vue" {
         HeatMap: (typeof import("./components/heatMapChart/HeatMap.vue"))["default"];
         HeatMap2: (typeof import("./components/heatMapChart2/HeatMap2.vue"))["default"];
         HeatMap2D: (typeof import("./components/heatMapChart2D/HeatMap2D.vue"))["default"];
+        RadarChart: (typeof import("./components/radarChart/RadarChart.vue"))["default"];
         RouterLink: (typeof import("vue-router"))["RouterLink"];
         RouterView: (typeof import("vue-router"))["RouterView"];
     }
