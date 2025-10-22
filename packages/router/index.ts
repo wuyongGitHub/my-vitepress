@@ -38,6 +38,15 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "button" */ "@/examples/heatmap2D/components/BasicsHeatMap.vue"),
     },
+
+    {
+        path: "/radarChart",
+        name: "radarChart",
+        meta: {
+            title: "radarChart",
+        },
+        component: () => import(/* webpackChunkName: "button" */ "@/examples/radarChart/components/BasicsRadarChart.vue"),
+    },
     // {
     //     path: "/pie",
     //     name: "pie",
