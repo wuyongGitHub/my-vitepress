@@ -12,9 +12,12 @@
 
 <script setup lang="ts">
 import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 defineOptions({ name: "JBHeatMap3D" });
+
+// 在其他 ref 定义之后添加
+// const rotationSpeed = ref(0.01); // 控制旋转速度
+const currentAngle = ref(0); // 当前的角度
 
 // ========== Props ==========
 const props = defineProps({
@@ -30,6 +33,9 @@ const props = defineProps({
     backgroundColor: { type: String, default: "#0d1b2a" },
     showGridHelper: { type: Boolean, default: true },
     showAxesHelper: { type: Boolean, default: true },
+    isStandardColor: { type: Boolean, default: true },
+    rotateAnimation: { type: Boolean, default: false }, // 是否启用旋转动画
+    rotationSpeed: { type: Number, default: 0.01 }, // 旋转速度，可由外部传入
     gradientColors: {
         type: Array as () => string[],
         default: () => ["#9b30ff", "#00ffff", "#ffff00", "#ff0000"],
@@ -143,19 +149,20 @@ function generateData(rowCount: number = 10, colCount: number = 10) {
 }
 const allValues: number[] = [];
 
-function getColorStops(value: number) {
-    const index = allValues.indexOf(value);
-    const ratio = index / allValues.length; // 0 ~ 1
+// function getColorStops(value: number) {
+//     const index = allValues.indexOf(value);
+//     const ratio = index / allValues.length; // 0 ~ 1
 
-    if (ratio < 0.25)
-        return ["#9b30ff"]; // 最短柱子：蓝色
-    else if (ratio < 0.5)
-        return ["#9b30ff", "#00ffff"]; // 青色
-    else if (ratio < 0.75)
-        return ["#9b30ff", "#00ffff", "#ffff00"]; // 黄
-    else return ["#9b30ff", "#00ffff", "#ffff00", "#ff0000"]; // 红
-}
+//     if (ratio < 0.25)
+//         return ["#9b30ff"]; // 最短柱子：蓝色
+//     else if (ratio < 0.5)
+//         return ["#9b30ff", "#00ffff"]; // 青色
+//     else if (ratio < 0.75)
+//         return ["#9b30ff", "#00ffff", "#ffff00"]; // 黄
+//     else return ["#9b30ff", "#00ffff", "#ffff00", "#ff0000"]; // 红
+// }
 
+// 使用传统渐变色
 function createCube(x: number, z: number, value: number, min: number, max: number, allValues: number[]) {
     const height = 0.1 + ((value - min) / (max - min)) * props.maxHeight;
     // 增加高度方向的分段数，以便有更多的顶点来表现渐变
@@ -252,7 +259,6 @@ function createCube(x: number, z: number, value: number, min: number, max: numbe
 
     return cube;
 }
-
 // 使用十阶段渐变色
 function createCube2(x: number, z: number, value: number, min: number, max: number, allValues: number[]) {
     const height = 0.1 + ((value - min) / (max - min)) * props.maxHeight;
@@ -375,35 +381,35 @@ let heatmapGeometry: THREE.BoxGeometry | null = null;
 let heatmapMaterial: THREE.MeshBasicMaterial | THREE.MeshStandardMaterial | null = null;
 
 // 颜色映射函数（示例：蓝 -> 黄 -> 红）
-function getColor(value: number, min: number, max: number): THREE.Color {
-    const t = max - min === 0 ? 0.5 : (value - min) / (max - min);
-    if (t < 0.5) {
-        // 蓝 -> 黄
-        return new THREE.Color().lerpColors(new THREE.Color(0x0000ff), new THREE.Color(0xffff00), t * 2);
-    } else {
-        // 黄 -> 红
-        return new THREE.Color().lerpColors(new THREE.Color(0xffff00), new THREE.Color(0xff0000), (t - 0.5) * 2);
-    }
-}
+// function getColor(value: number, min: number, max: number): THREE.Color {
+//     const t = max - min === 0 ? 0.5 : (value - min) / (max - min);
+//     if (t < 0.5) {
+//         // 蓝 -> 黄
+//         return new THREE.Color().lerpColors(new THREE.Color(0x0000ff), new THREE.Color(0xffff00), t * 2);
+//     } else {
+//         // 黄 -> 红
+//         return new THREE.Color().lerpColors(new THREE.Color(0xffff00), new THREE.Color(0xff0000), (t - 0.5) * 2);
+//     }
+// }
 
 let gridHelper: THREE.GridHelper | null = null;
 
-function updateGridHelper() {
-    const { showGridHelper = false } = props;
-    const baseSize = props.baseSize || 1;
-    const size = Math.max(rows, cols) * baseSize * 1.2;
-    const divisions = Math.max(rows, cols);
+// function updateGridHelper() {
+//     const { showGridHelper = false } = props;
+//     const baseSize = props.baseSize || 1;
+//     const size = Math.max(rows, cols) * baseSize * 1.2;
+//     const divisions = Math.max(rows, cols);
 
-    if (gridHelper) {
-        scene.remove(gridHelper);
-    }
+//     if (gridHelper) {
+//         scene.remove(gridHelper);
+//     }
 
-    if (showGridHelper) {
-        gridHelper = new THREE.GridHelper(size, divisions, 0x444444, 0x222222);
-        gridHelper.position.y = -0.01; // 稍微下移避免 z-fighting
-        scene.add(gridHelper);
-    }
-}
+//     if (showGridHelper) {
+//         gridHelper = new THREE.GridHelper(size, divisions, 0x444444, 0x222222);
+//         gridHelper.position.y = -0.01; // 稍微下移避免 z-fighting
+//         scene.add(gridHelper);
+//     }
+// }
 
 function disposeHeatmap() {
     if (instancedMesh) {
@@ -429,13 +435,12 @@ function createHeatmap() {
     // 先释放旧的几何体和材质资源
     disposeHeatmap();
 
-    console.log("createHeatmap 调用，props.data =", props.data);
-
     // 判断 props.data 是否为二维数组且维度合法
     const hasValidExternalData = Array.isArray(props.data) && props.data.length > 0 && props.data.every((row) => Array.isArray(row));
 
     if (hasValidExternalData) {
-        dataGrid = props.data as number[][];
+        // dataGrid = props.data as number[][];
+        dataGrid = props.data.map((row) => [...row]); //  深拷贝
     } else {
         console.log("数据不合法，使用默认数据");
         dataGrid = generateData(); // 使用默认 10x10
@@ -483,14 +488,29 @@ function createHeatmap() {
         for (let j = 0; j < cols; j++) {
             const v = row[j];
             const val = typeof v === "number" ? v : 0;
-            const cube = createCube(i, j, val, min, max, allValues);
+            let cube = null;
+            if (props.isStandardColor) {
+                cube = createCube2(i, j, val, min, max, allValues);
+            } else {
+                cube = createCube2(i, j, val, min, max, allValues);
+            }
             heatmapGroup.add(cube);
         }
     }
 }
 function animate() {
     animationId = requestAnimationFrame(animate);
-    if (isAnimating.value) animateData();
+    // if (isAnimating.value) animateData();
+    // 根据 rotateAnimation 的值决定是否旋转 heatmapGroup
+    // if (props.rotateAnimation) {
+    //     currentAngle.value += rotationSpeed.value;
+    //     heatmapGroup.rotation.y = currentAngle.value; // 围绕Y轴旋转
+    // }
+    // 根据 rotateAnimation 的值决定是否旋转 heatmapGroup
+    if (props.rotateAnimation) {
+        currentAngle.value += props.rotationSpeed; // 使用 props 控制速度
+        heatmapGroup.rotation.y = currentAngle.value;
+    }
     if (controls) controls.update();
     renderer.render(scene, camera);
 }

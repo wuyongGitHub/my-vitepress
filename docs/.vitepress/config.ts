@@ -17,12 +17,23 @@ export default defineConfig({
             provider: "local",
         },
         nav: [
-            { text: "Home", link: "/" },
-            { text: "组件", link: "/components/guide-examples" },
+            { text: "首页", link: "/" },
+            { text: "指南", link: "/guide/guide-examples" },
+            { text: "组件", link: "/components/btn-examples" },
             { text: "图表", link: "/charts/3DHeatChart-examples" },
         ],
         // 使用路径映射来控制侧边栏
         sidebar: {
+            "/guide/": [
+                {
+                    text: "指南",
+                    items: [
+                        { text: "开发指南", link: "/guide/guide-examples" },
+                        { text: "更新日志", link: "/guide/versionDescriptionDocument‌" },
+                        { text: "开发常见问题", link: "/guide/quesion" },
+                    ],
+                },
+            ],
             // 当前路径以 /guide-examples 开头时，显示“组件”侧边栏
             "/components/": [
                 {

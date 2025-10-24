@@ -114,27 +114,18 @@ function hideLoading() {
 }
 
 function calculateImagePosition(img: HTMLImageElement) {
-    const imgRatio = img.width / img.height;
-    const canvasRatio = containerWidth / containerHeight;
-
-    if (imgRatio > canvasRatio) {
-        // 以宽度为基准
-        scale = containerWidth / img.width;
-        offsetX = 0;
-        offsetY = (containerHeight - img.height * scale) / 2;
-    } else {
-        // 以高度为基准
-        scale = containerHeight / img.height;
-        offsetX = (containerWidth - img.width * scale) / 2;
-        offsetY = 0;
-    }
+    // 不缩放，保持原始尺寸
+    scale = 1;
+    // 计算图片在 canvas 中的居中位置
+    offsetX = (containerWidth - img.width) / 2;
+    offsetY = (containerHeight - img.height) / 2;
 }
 
 function drawImage() {
     if (!ctx.value || !image.complete) return;
-
     ctx.value.clearRect(0, 0, containerWidth, containerHeight);
     ctx.value.drawImage(image, offsetX, offsetY, image.width * scale, image.height * scale);
+    // ctx.value.drawImage(image, offsetX, offsetY, image.width, image.height);
 }
 
 function loadImage() {
@@ -144,9 +135,9 @@ function loadImage() {
     }
 
     showLoading();
-    // image.src = props.imageUrl;
+    image.src = props.imageUrl;
     // 在 imageUrl 后添加一个随机数或时间戳作为查询参数
-    image.src = `${props.imageUrl}?t=${Date.now()}`;
+    // image.src = `${props.imageUrl}?t=${Date.now()}`;
 
     image.onload = () => {
         calculateImagePosition(image);
@@ -167,17 +158,34 @@ function loadImage() {
 // 绘制标注
 // ========================
 function drawTitleAnnotations() {
+    // if (!ctx.value || !props.titleData.length) return;
+    // ctx.value.font = "14px Arial";
+    // ctx.value.fillStyle = "#2ecc71";
+    // ctx.value.textBaseline = "top";
+    // props.titleData.forEach((pos) => {
+    //     // 直接使用 pos.x 和 pos.y，因为后端已经处理了缩放
+    //     const x = offsetX + pos.x;
+    //     const y = offsetY + pos.y;
+    //     if (ctx.value) {
+    //         ctx.value.fillText(pos.title || "", x, y);
+    //     }
+    // });
+
     if (!ctx.value || !props.titleData.length) return;
 
     ctx.value.font = "14px Arial";
     ctx.value.fillStyle = "#2ecc71";
-    ctx.value.textBaseline = "top";
+    ctx.value.textBaseline = "middle";
 
     props.titleData.forEach((pos) => {
         const x = offsetX + pos.x * scale;
         const y = offsetY + pos.y * scale;
+
+        // 防止越界
+        const actualY = y < 10 ? y + 15 : y;
+
         if (ctx.value) {
-            ctx.value.fillText(pos.title || "", x, y);
+            ctx.value.fillText(pos.title || "", x, actualY);
         }
     });
 }
@@ -189,6 +197,7 @@ function drawShapeAnnotations() {
     ctx.value.lineWidth = 2;
 
     props.shapeData.forEach((pos) => {
+        // 直接使用传入的坐标值，因为后端已经处理了缩放
         const x1 = offsetX + pos.leftTopX * scale;
         const y1 = offsetY + pos.leftTopY * scale;
         const x2 = offsetX + pos.rightBottomX * scale;
@@ -202,25 +211,73 @@ function drawShapeAnnotations() {
             ctx.value.strokeRect(x1, y1, width, height);
         }
 
-        // 添加文字标签
+        // 添加文字标签（如果需要）
         if (ctx.value) {
-            const text = `瑕疵 (${Math.round(width / scale)}×${Math.round(height / scale)})`;
+            // const text = `瑕疵 (${x1},${y1}),(${x2},${y2})`;
+            // const textWidth = ctx.value.measureText(text).width;
+
+            // // 白色背景
+            // ctx.value.fillStyle = "rgba(255, 255, 255, 0.8)";
+            // ctx.value.fillRect(x1, y1 - 20, textWidth + 10, 18);
+
+            // // 红色文字
+            // ctx.value.fillStyle = "#e74c3c";
+            // ctx.value.font = "12px Arial";
+            // ctx.value.fillText(text, x1 + 5, y1 - 17);
+
+            // 智能标签位置
+            const labelY = y1 - 20 < 0 ? y1 + height + 5 : y1 - 20;
+            const text = `瑕疵 (${x1.toFixed(0)},${y1.toFixed(0)}),(${x2.toFixed(0)},${y2.toFixed(0)})`;
             const textWidth = ctx.value.measureText(text).width;
 
             // 白色背景
             ctx.value.fillStyle = "rgba(255, 255, 255, 0.8)";
-            ctx.value.fillRect(x1, y1 - 20, textWidth + 10, 18);
+            ctx.value.fillRect(x1, labelY - 18, textWidth + 10, 18);
 
             // 红色文字
             ctx.value.fillStyle = "#e74c3c";
             ctx.value.font = "12px Arial";
-            ctx.value.fillText(text, x1 + 5, y1 - 17);
+            ctx.value.fillText(text, x1 + 5, labelY);
         }
     });
 }
 // ========================
 // 公共方法（可通过 ref 暴露调用）
 // ========================
+
+// function drawShapeAnnotations() {
+//     if (!ctx.value || !props.shapeData.length) return;
+
+//     ctx.value.strokeStyle = "#e74c3c";
+//     ctx.value.lineWidth = 2;
+
+//     props.shapeData.forEach((pos) => {
+//         const x1 = offsetX + pos.leftTopX * scale;
+//         const y1 = offsetY + pos.leftTopY * scale;
+//         const x2 = offsetX + pos.rightBottomX * scale;
+//         const y2 = offsetY + pos.rightBottomY * scale;
+
+//         const width = x2 - x1;
+//         const height = y2 - y1;
+
+//         // 绘制矩形框
+//         ctx.value.strokeRect(x1, y1, width, height);
+
+//         // 智能标签位置
+//         const labelY = y1 - 20 < 0 ? y1 + height + 5 : y1 - 20;
+//         const text = `瑕疵 (${x1.toFixed(0)},${y1.toFixed(0)}),(${x2.toFixed(0)},${y2.toFixed(0)})`;
+//         const textWidth = ctx.value.measureText(text).width;
+
+//         // 白色背景
+//         ctx.value.fillStyle = "rgba(255, 255, 255, 0.8)";
+//         ctx.value.fillRect(x1, labelY - 18, textWidth + 10, 18);
+
+//         // 红色文字
+//         ctx.value.fillStyle = "#e74c3c";
+//         ctx.value.font = "12px Arial";
+//         ctx.value.fillText(text, x1 + 5, labelY);
+//     });
+// }
 function refreshAnnotations() {
     // if (!image.complete) {
     //     status.value = "图片未加载完成";

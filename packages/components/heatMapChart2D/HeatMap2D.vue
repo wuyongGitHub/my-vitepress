@@ -3,13 +3,11 @@
     <div class="heatmap-container">
         <!-- 画布容器 -->
         <div class="canvas-wrapper" :style="{ width: `${canvasWidth}px`, height: `${canvasHeight}px` }">
-            <canvas
-                ref="heatmapCanvas"
+            <!-- 
                 @mousedown="handleMouseDown"
-                @mousemove="handleMouseMove"
-                @mouseup="handleMouseUp"
-                @mouseleave="handleMouseLeave"
-                @contextmenu.prevent></canvas>
+
+                @mouseup="handleMouseUp" -->
+            <canvas ref="heatmapCanvas" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave" @contextmenu.prevent></canvas>
 
             <!-- 坐标显示 -->
             <div class="coordinates">X: {{ mouseX }}, Y: {{ mouseY }}</div>
@@ -47,8 +45,8 @@
 </template>
 
 <script setup>
+defineOptions({ name: "HeatMap2D" });
 import { ref, reactive, onMounted, computed, watch, nextTick } from "vue";
-
 // ========== Props 定义 ==========
 const props = defineProps({
     width: { type: Number, default: 612 },
@@ -169,8 +167,8 @@ const avgValue = computed(() => {
 
 // ========== 方法 ==========
 function initGrid() {
-    cols.value = Math.floor(canvasWidth.value / blockWidth.value);
-    rows.value = Math.floor(canvasHeight.value / blockHeight.value);
+    cols.value = Math.ceil(canvasWidth.value / blockWidth.value);
+    rows.value = Math.ceil(canvasHeight.value / blockHeight.value);
     // initHeatData();
 }
 
