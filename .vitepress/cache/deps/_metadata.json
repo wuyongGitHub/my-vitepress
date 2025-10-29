@@ -1,0 +1,73 @@
+{
+    "hash": "18e2de57",
+    "configHash": "59ad726e",
+    "lockfileHash": "fdcb6b86",
+    "browserHash": "4ebbcb53",
+    "optimized": {
+        "vue": {
+            "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+            "file": "vue.js",
+            "fileHash": "701924f3",
+            "needsInterop": false
+        },
+        "vitepress > @vue/devtools-api": {
+            "src": "../../../node_modules/vitepress/node_modules/@vue/devtools-api/dist/index.js",
+            "file": "vitepress___@vue_devtools-api.js",
+            "fileHash": "c759cb42",
+            "needsInterop": false
+        },
+        "vitepress > @vueuse/core": {
+            "src": "../../../node_modules/@vueuse/core/index.mjs",
+            "file": "vitepress___@vueuse_core.js",
+            "fileHash": "b0c3e34c",
+            "needsInterop": false
+        },
+        "@arco-design/web-vue": {
+            "src": "../../../node_modules/@arco-design/web-vue/es/index.js",
+            "file": "@arco-design_web-vue.js",
+            "fileHash": "d8e65863",
+            "needsInterop": false
+        },
+        "element-plus": {
+            "src": "../../../node_modules/element-plus/es/index.mjs",
+            "file": "element-plus.js",
+            "fileHash": "66e5e245",
+            "needsInterop": false
+        },
+        "resize-observer-polyfill": {
+            "src": "../../../node_modules/resize-observer-polyfill/dist/ResizeObserver.es.js",
+            "file": "resize-observer-polyfill.js",
+            "fileHash": "a24ba9c9",
+            "needsInterop": false
+        },
+        "vue-router": {
+            "src": "../../../node_modules/vue-router/dist/vue-router.mjs",
+            "file": "vue-router.js",
+            "fileHash": "f7e599f1",
+            "needsInterop": false
+        },
+        "@theme/index": {
+            "src": "../../../node_modules/vitepress/dist/client/theme-default/index.js",
+            "file": "@theme_index.js",
+            "fileHash": "dc724f00",
+            "needsInterop": false
+        }
+    },
+    "chunks": {
+        "chunk-GVL62HVB": {
+            "file": "chunk-GVL62HVB.js"
+        },
+        "chunk-YIP7QGVX": {
+            "file": "chunk-YIP7QGVX.js"
+        },
+        "chunk-XSRKKOPT": {
+            "file": "chunk-XSRKKOPT.js"
+        },
+        "chunk-J52K34YX": {
+            "file": "chunk-J52K34YX.js"
+        },
+        "chunk-5WRI5ZAA": {
+            "file": "chunk-5WRI5ZAA.js"
+        }
+    }
+}
