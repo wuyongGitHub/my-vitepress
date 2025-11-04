@@ -61,9 +61,9 @@ export declare const JBHeatMap2: {
         toggleAnimation: () => boolean;
         updateData: (newData: number[][]) => void;
     }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, import('vue').PublicProps, {
-        data: number[][];
         width: number;
         height: number;
+        data: number[][];
         baseSize: number;
         maxHeight: number;
         enableOrbit: boolean;
@@ -146,9 +146,9 @@ export declare const JBHeatMap2: {
         toggleAnimation: () => boolean;
         updateData: (newData: number[][]) => void;
     }, {}, {}, {}, {
-        data: number[][];
         width: number;
         height: number;
+        data: number[][];
         baseSize: number;
         maxHeight: number;
         enableOrbit: boolean;
@@ -228,9 +228,9 @@ export declare const JBHeatMap2: {
     toggleAnimation: () => boolean;
     updateData: (newData: number[][]) => void;
 }, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, {
-    data: number[][];
     width: number;
     height: number;
+    data: number[][];
     baseSize: number;
     maxHeight: number;
     enableOrbit: boolean;

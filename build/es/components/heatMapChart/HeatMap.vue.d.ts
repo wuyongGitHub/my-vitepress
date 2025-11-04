@@ -36,6 +36,18 @@ declare const _default: import('vue').DefineComponent<globalThis.ExtractPropType
         type: BooleanConstructor;
         default: boolean;
     };
+    isStandardColor: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    rotateAnimation: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    rotationSpeed: {
+        type: NumberConstructor;
+        default: number;
+    };
     gradientColors: {
         type: () => string[];
         default: () => string[];
@@ -96,6 +108,18 @@ declare const _default: import('vue').DefineComponent<globalThis.ExtractPropType
         type: BooleanConstructor;
         default: boolean;
     };
+    isStandardColor: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    rotateAnimation: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
+    rotationSpeed: {
+        type: NumberConstructor;
+        default: number;
+    };
     gradientColors: {
         type: () => string[];
         default: () => string[];
@@ -117,15 +141,18 @@ declare const _default: import('vue').DefineComponent<globalThis.ExtractPropType
         };
     };
 }>> & Readonly<{}>, {
-    data: number[][];
     width: number;
     height: number;
+    data: number[][];
     baseSize: number;
     maxHeight: number;
     enableOrbit: boolean;
     backgroundColor: string;
     showGridHelper: boolean;
     showAxesHelper: boolean;
+    isStandardColor: boolean;
+    rotateAnimation: boolean;
+    rotationSpeed: number;
     gradientColors: string[];
     autoAnimate: boolean;
     cameraPosition: {

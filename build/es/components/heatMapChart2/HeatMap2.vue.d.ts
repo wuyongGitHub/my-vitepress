@@ -118,9 +118,9 @@ declare const _default: import('vue').DefineComponent<globalThis.ExtractPropType
         };
     };
 }>> & Readonly<{}>, {
-    data: number[][];
     width: number;
     height: number;
+    data: number[][];
     baseSize: number;
     maxHeight: number;
     enableOrbit: boolean;
