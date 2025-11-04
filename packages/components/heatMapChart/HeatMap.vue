@@ -1,7 +1,7 @@
 <!--
     * @Author: wyk
     * @Date: 2025-10-20
-    * @Description: 3D 热力图封装组件 (已移除 gridSize，基于 data 动态生成)
+    * @Description: 3D 热力图封装组件 
     -->
 <template>
     <div class="heatmap-wrapper" :style="{ width: width + 'px', height: height + 'px' }">
@@ -36,10 +36,6 @@ const props = defineProps({
     isStandardColor: { type: Boolean, default: true },
     rotateAnimation: { type: Boolean, default: false }, // 是否启用旋转动画
     rotationSpeed: { type: Number, default: 0.01 }, // 旋转速度，可由外部传入
-    gradientColors: {
-        type: Array as () => string[],
-        default: () => ["#9b30ff", "#00ffff", "#ffff00", "#ff0000"],
-    },
     autoAnimate: { type: Boolean, default: false },
     cameraPosition: {
         type: Object as () => { x: number; y: number; z: number },
@@ -47,7 +43,15 @@ const props = defineProps({
     },
 });
 
-// ========== Refs & State ==========
+// 👉 全局变量声明
+let instancedMesh: THREE.InstancedMesh | null = null;
+const dummy = new THREE.Object3D(); // 用于临时变换计算
+
+// 材质和几何体缓存（可选）
+let heatmapGeometry: THREE.BoxGeometry | null = null;
+let heatmapMaterial: THREE.MeshBasicMaterial | THREE.MeshStandardMaterial | null = null;
+
+let gridHelper: THREE.GridHelper | null = null;
 const containerRef = ref<HTMLDivElement | null>(null);
 const tooltip = ref({ show: false, x: 0, y: 0, content: "" });
 const isAnimating = ref(props.autoAnimate);
@@ -149,19 +153,6 @@ function generateData(rowCount: number = 10, colCount: number = 10) {
 }
 const allValues: number[] = [];
 
-// function getColorStops(value: number) {
-//     const index = allValues.indexOf(value);
-//     const ratio = index / allValues.length; // 0 ~ 1
-
-//     if (ratio < 0.25)
-//         return ["#9b30ff"]; // 最短柱子：蓝色
-//     else if (ratio < 0.5)
-//         return ["#9b30ff", "#00ffff"]; // 青色
-//     else if (ratio < 0.75)
-//         return ["#9b30ff", "#00ffff", "#ffff00"]; // 黄
-//     else return ["#9b30ff", "#00ffff", "#ffff00", "#ff0000"]; // 红
-// }
-
 // 使用传统渐变色
 function createCube(x: number, z: number, value: number, min: number, max: number, allValues: number[]) {
     const height = 0.1 + ((value - min) / (max - min)) * props.maxHeight;
@@ -260,8 +251,125 @@ function createCube(x: number, z: number, value: number, min: number, max: numbe
     return cube;
 }
 // 使用十阶段渐变色
+// function createCube2(x: number, z: number, value: number, min: number, max: number, allValues: number[]) {
+//     const height = 0.1 + ((value - min) / (max - min)) * props.maxHeight;
+//     const geometry = new THREE.BoxGeometry(props.baseSize, height, props.baseSize, 1, 8, 1);
+
+//     const positions = geometry.attributes.position as THREE.BufferAttribute;
+//     const normals = geometry.attributes.normal as THREE.BufferAttribute;
+//     const colors: number[] = [];
+
+//     // 计算值在[min, max]范围内的归一化比例 (0到1)
+//     const normalizedValue = (value - min) / (max - min);
+
+//     // 定义完整的十段颜色渐变序列
+//     const fullGradient = [
+//         new THREE.Color(0x08315f), // 深蓝色
+//         new THREE.Color(0x4588bb), // 蓝色
+//         new THREE.Color(0x85bee3), // 浅蓝色
+//         new THREE.Color(0xbedcf4), // 更浅的蓝色
+//         new THREE.Color(0xe4d7dc), // 淡紫色
+//         new THREE.Color(0xfcdfda), // 淡粉色
+//         new THREE.Color(0xf9b6a2), // 浅橙色
+//         new THREE.Color(0xf97860), // 橙色
+//         new THREE.Color(0xc81626), // 红色
+//         new THREE.Color(0xaf000f), // 深红色
+//     ];
+
+//     // 根据归一化值决定使用多少段渐变
+//     let usedColors: THREE.Color[] = [];
+//     let segmentCount = 0;
+
+//     if (normalizedValue >= 0.9) {
+//         segmentCount = 10;
+//         usedColors = fullGradient.slice(0, 10);
+//     } else if (normalizedValue >= 0.8) {
+//         segmentCount = 9;
+//         usedColors = fullGradient.slice(0, 9);
+//     } else if (normalizedValue >= 0.7) {
+//         segmentCount = 8;
+//         usedColors = fullGradient.slice(0, 8);
+//     } else if (normalizedValue >= 0.6) {
+//         segmentCount = 7;
+//         usedColors = fullGradient.slice(0, 7);
+//     } else if (normalizedValue >= 0.5) {
+//         segmentCount = 6;
+//         usedColors = fullGradient.slice(0, 6);
+//     } else if (normalizedValue >= 0.4) {
+//         segmentCount = 5;
+//         usedColors = fullGradient.slice(0, 5);
+//     } else if (normalizedValue >= 0.3) {
+//         segmentCount = 4;
+//         usedColors = fullGradient.slice(0, 4);
+//     } else if (normalizedValue >= 0.2) {
+//         segmentCount = 3;
+//         usedColors = fullGradient.slice(0, 3);
+//     } else if (normalizedValue >= 0.1) {
+//         segmentCount = 2;
+//         usedColors = fullGradient.slice(0, 2);
+//     } else {
+//         segmentCount = 1;
+//         usedColors = fullGradient.slice(0, 1);
+//     }
+
+//     // 为每个顶点设置颜色
+//     for (let i = 0; i < positions.count; i++) {
+//         const y = positions.getY(i);
+//         const ny = normals.getY(i);
+//         let color = new THREE.Color();
+
+//         // 计算顶点在柱体高度上的位置 (0到1)
+//         const t = Math.max(0, Math.min(1, (y + height / 2) / height)); // 确保t在0-1范围内
+
+//         if (ny > 0.5) {
+//             // 顶面：使用对应等级的最高颜色
+//             color.copy(usedColors[usedColors.length - 1]);
+//         } else {
+//             // 侧面：根据使用的颜色数量进行渐变
+//             if (segmentCount === 1) {
+//                 // 单色：深蓝色
+//                 color.copy(usedColors[0]);
+//             } else {
+//                 // 多段渐变 - 修复索引计算
+//                 const segmentLength = 1.0 / (segmentCount - 1);
+//                 let segmentIndex = Math.floor(t / segmentLength);
+
+//                 // 确保索引不越界
+//                 segmentIndex = Math.min(segmentIndex, segmentCount - 2);
+//                 segmentIndex = Math.max(0, segmentIndex); // 确保不小于0
+
+//                 const localT = (t - segmentIndex * segmentLength) / segmentLength;
+
+//                 // 确保颜色索引有效
+//                 if (segmentIndex >= 0 && segmentIndex + 1 < usedColors.length) {
+//                     color.lerpColors(usedColors[segmentIndex], usedColors[segmentIndex + 1], localT);
+//                 } else {
+//                     // 如果索引无效，使用最后一个颜色
+//                     color.copy(usedColors[usedColors.length - 1]);
+//                 }
+//             }
+//         }
+
+//         colors.push(color.r, color.g, color.b);
+//     }
+
+//     geometry.setAttribute("color", new THREE.BufferAttribute(new Float32Array(colors), 3));
+//     const material = new THREE.MeshBasicMaterial({ vertexColors: true });
+//     const cube = new THREE.Mesh(geometry, material);
+
+//     cube.position.set((x - (rows - 1) / 2) * props.baseSize, height / 2, (z - (cols - 1) / 2) * props.baseSize);
+//     cube.userData = { value, x, z };
+
+//     return cube;
+// }
+
 function createCube2(x: number, z: number, value: number, min: number, max: number, allValues: number[]) {
-    const height = 0.1 + ((value - min) / (max - min)) * props.maxHeight;
+    // 修复高度计算，避免除以0的情况
+    let height = 0.1;
+    if (max !== min) {
+        height += ((value - min) / (max - min)) * props.maxHeight;
+    }
+
     const geometry = new THREE.BoxGeometry(props.baseSize, height, props.baseSize, 1, 8, 1);
 
     const positions = geometry.attributes.position as THREE.BufferAttribute;
@@ -269,7 +377,7 @@ function createCube2(x: number, z: number, value: number, min: number, max: numb
     const colors: number[] = [];
 
     // 计算值在[min, max]范围内的归一化比例 (0到1)
-    const normalizedValue = (value - min) / (max - min);
+    const normalizedValue = max !== min ? (value - min) / (max - min) : 0;
 
     // 定义完整的十段颜色渐变序列
     const fullGradient = [
@@ -372,45 +480,6 @@ function createCube2(x: number, z: number, value: number, min: number, max: numb
     return cube;
 }
 
-// 👉 全局变量声明
-let instancedMesh: THREE.InstancedMesh | null = null;
-const dummy = new THREE.Object3D(); // 用于临时变换计算
-
-// 材质和几何体缓存（可选）
-let heatmapGeometry: THREE.BoxGeometry | null = null;
-let heatmapMaterial: THREE.MeshBasicMaterial | THREE.MeshStandardMaterial | null = null;
-
-// 颜色映射函数（示例：蓝 -> 黄 -> 红）
-// function getColor(value: number, min: number, max: number): THREE.Color {
-//     const t = max - min === 0 ? 0.5 : (value - min) / (max - min);
-//     if (t < 0.5) {
-//         // 蓝 -> 黄
-//         return new THREE.Color().lerpColors(new THREE.Color(0x0000ff), new THREE.Color(0xffff00), t * 2);
-//     } else {
-//         // 黄 -> 红
-//         return new THREE.Color().lerpColors(new THREE.Color(0xffff00), new THREE.Color(0xff0000), (t - 0.5) * 2);
-//     }
-// }
-
-let gridHelper: THREE.GridHelper | null = null;
-
-// function updateGridHelper() {
-//     const { showGridHelper = false } = props;
-//     const baseSize = props.baseSize || 1;
-//     const size = Math.max(rows, cols) * baseSize * 1.2;
-//     const divisions = Math.max(rows, cols);
-
-//     if (gridHelper) {
-//         scene.remove(gridHelper);
-//     }
-
-//     if (showGridHelper) {
-//         gridHelper = new THREE.GridHelper(size, divisions, 0x444444, 0x222222);
-//         gridHelper.position.y = -0.01; // 稍微下移避免 z-fighting
-//         scene.add(gridHelper);
-//     }
-// }
-
 function disposeHeatmap() {
     if (instancedMesh) {
         instancedMesh.geometry.dispose();
@@ -500,12 +569,6 @@ function createHeatmap() {
 }
 function animate() {
     animationId = requestAnimationFrame(animate);
-    // if (isAnimating.value) animateData();
-    // 根据 rotateAnimation 的值决定是否旋转 heatmapGroup
-    // if (props.rotateAnimation) {
-    //     currentAngle.value += rotationSpeed.value;
-    //     heatmapGroup.rotation.y = currentAngle.value; // 围绕Y轴旋转
-    // }
     // 根据 rotateAnimation 的值决定是否旋转 heatmapGroup
     if (props.rotateAnimation) {
         currentAngle.value += props.rotationSpeed; // 使用 props 控制速度
